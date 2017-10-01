@@ -11,7 +11,7 @@ export const routes = [
     {
         path: '', component: PublicArea,
         children: [
-            {path: '/login', component: Login},
+            {path: '/login', alias: '', component: Login},
             {path: '/register', component: Register},
             {path: '/404', component: NotFound}
         ]
