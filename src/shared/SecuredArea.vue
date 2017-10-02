@@ -1,5 +1,8 @@
 <template>
     <div>
+
+
+        <menu-left></menu-left>
         <secured-header></secured-header>
         <router-view></router-view>
     </div>
@@ -8,10 +11,12 @@
 <script>
 
     import SecuredHeader from './SecuredHeader.vue';
+    import MenuLeft from './MenuLeft.vue';
 
     export default {
         components: {
-            'secured-header': SecuredHeader
+            'secured-header': SecuredHeader,
+            'menu-left': MenuLeft
         }
     }
 

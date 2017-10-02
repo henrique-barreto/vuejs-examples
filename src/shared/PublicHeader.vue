@@ -1,24 +1,22 @@
 <template>
 
     <header>
-        <h4>Project name</h4>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+
+            <a class="navbar-brand" href="#">DETRAN</a>
+
+
+        </nav>
     </header>
 
 </template>
 
 
 <script>
-    export default {
-
-    }
+    export default {}
 </script>
 
 <style scoped>
 
-    header {
-        height: 80px;
-        background-color: #333;
-        color: #fff;
-    }
 
 </style>

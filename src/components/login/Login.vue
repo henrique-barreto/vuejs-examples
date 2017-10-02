@@ -1,12 +1,15 @@
 <template>
 
 
-    <div class="login">
-        <h1>Login</h1>
-        <hr/>
+    <div class="container">
 
-        <input type="text" placeholder="username"><br>
-        <input type="password" placeholder="password"><br>
+        <div class="login">
+            <h1>Login</h1>
+            <hr/>
+
+            <input type="text" placeholder="username"><br>
+            <input type="password" placeholder="password"><br>
+        </div>
     </div>
 </template>
 
