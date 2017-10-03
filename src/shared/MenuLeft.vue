@@ -22,7 +22,7 @@
         data() {
             return {
 
-                showMenu: true
+                showMenu: false
             }
         },
         methods: {

@@ -1,7 +1,9 @@
 <template>
     <div>
-        <public-header></public-header>
+
+        <!--<public-header></public-header>-->
         <router-view></router-view>
+
     </div>
 </template>
 
@@ -11,9 +13,13 @@
 
     export default {
         components: {
-            'public-header': PublicHeader
+            'public-header': PublicHeader,
+
         }
     }
+
+
+
 
 </script>
 

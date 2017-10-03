@@ -1,15 +1,33 @@
 <template>
 
     <header>
-        <nav class="navbar fixed-top navbar-expand-lg navbar-white bg-white">
-
-            <span v-bind:class="{'rotate-in': showMenu}" @click="toggleMenu(this)" class="toggle-icon">
-                <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
-            </span>
-
-            <a class="navbar-brand" href="#">DETRAN</a>
+        <nav class="navbar fixed-top navbar-white bg-white">
 
 
+           <span v-bind:class="{'rotate-in': showMenu}" @click="toggleMenu(this)"
+                 class="navbar-toggler navbar-toggler-left toggle-icon">
+                        <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+                    </span>
+
+
+            <a class="navbar-brand" href="#">Detran</a>
+
+
+            <div class="user-icon">
+
+
+                <div class="vinculos" style="display: inline-block; border-right: 1px solid #f1f1f1;">
+
+                    <span style="margin-right: 8px;"><i class="fa fa-car fa-2x" aria-hidden="true"></i></span>
+
+                </div>
+                <div class="teste" style="display: inline-block;">
+                    <span STYLE="font-size: 0.8em;">HENRIQUE GONCALVES BARRETO</span>
+                </div>
+                <span class="icon-wrapper">
+                <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+                </span>
+            </div>
         </nav>
     </header>
 </template>
@@ -24,7 +42,7 @@
 
         data() {
             return {
-                showMenu: true
+                showMenu: false
             }
         },
         methods: {
@@ -55,8 +73,8 @@
     }
 
     .rotate-in {
-        -webkit-transform: rotate(180deg);
-        transform: rotate(180deg);
+        -webkit-transform: rotate(-180deg);
+        transform: rotate(-180deg);
     }
 
     @-webkit-keyframes fadeout {
@@ -74,6 +92,12 @@
         }
         100% {
             opacity: 0;
+        }
+    }
+
+    @media (min-width: 993px) {
+        .toggle-icon {
+            display: none;
         }
     }
 </style>
