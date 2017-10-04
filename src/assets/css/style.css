@@ -1,9 +1,32 @@
-html {
-    position: relative;
+/*= fim estrutura ================*/
+
+
+html, body{
+    margin: 0;
+    padding: 0;
+
+    min-width: 100%;
+    width: 100%;
+    max-width: 100%;
+
     min-height: 100%;
+    height: 100%;
+    max-height: 100%;
 }
-body {
-    margin-bottom: 60px;
-    padding-top: 50px;
-    background-color: #f1f1f1;
+
+.wrapper {
+    height: 100%;
+}
+
+.nanobar {
+    width: 100%;
+    height: 3px;
+    z-index: 9999;
+    top:0
+}
+.bar {
+    width: 0;
+    height: 100%;
+    transition: height .9s;
+    background: #FEAA15;
 }

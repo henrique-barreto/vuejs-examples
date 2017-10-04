@@ -1,15 +1,81 @@
 <template>
 
     <div>
-        <div v-if="showMenu" class="body-overlay"></div>
+        <div v-if="showMenu" @click="toggleMenu" class="body-overlay"></div>
 
         <div id="slide-out" v-bind:class="{'active': showMenu}" class="side-nav fixed">
 
-            <div class="menu-treinoapp">
-                <span>TreinoApp</span>
+            <div class="menu-left">
+                <span>Detran</span>
             </div>
 
+            <div class="nav-links">
+
+                <div class="nav-group">
+                    <div class="nav-item-header">
+                        <span>Veiculos</span>
+                    </div>
+                    <!--./nav-item-header-->
+                    <div class="nav-list">
+                        <ul class="menu-list">
+                            <li>
+                                <router-link @click.native="toggleMenu" to="/">Inicio Teste</router-link>
+                            </li>
+                            <li>
+                                <router-link @click.native="toggleMenu" to="/area-segura">Home</router-link>
+                            </li>
+                            <li>
+                                <router-link @click.native="toggleMenu" to="/area-segura/segunda-via-crlv">
+                                    Mudança de Endereço do Veículo
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link @click.native="toggleMenu" to="/area-segura/segunda-via-crlv">
+                                    Solicitação de 2° via de CRLV
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link @click.native="toggleMenu" to="/area-segura/segunda-via-crlv">
+                                    Transformar Notificação de Autuação em Penalidade
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link @click.native="toggleMenu" to="/area-segura/segunda-via-crlv">
+                                    Emissão de Autorização de Estacionamento para Idoso
+                                </router-link>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- ./nav-list-->
+                </div>
+                <!--./nav-group-->
+
+                <div class="nav-group">
+                    <div class="nav-item-header">
+                        <span>Habilitacao</span>
+                    </div>
+                    <!--./nav-item-header-->
+                    <div class="nav-list">
+                        <ul class="menu-list">
+                            <li>
+                                <router-link @click.native="toggleMenu" to="/">Inicio</router-link>
+                            </li>
+                            <li>
+                                <router-link @click.native="toggleMenu" to="/area-segura/habilitacao">
+                                    Consulta Pontuação
+                                </router-link>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- ./nav-list-->
+                </div>
+                <!--./nav-group-->
+
+            </div>
+            <!--./ nav-links -->
+
         </div>
+        <!--side-nav-->
 
     </div>
 </template>
@@ -17,24 +83,31 @@
 <script>
 
     import {eventHub} from '../main.js';
+
+    import {MenuService} from '../services/menuService';
+
     export default {
 
         data() {
             return {
-
                 showMenu: false
             }
         },
         methods: {
-            alertTest: function (showMenuArg) {
-                console.log(showMenuArg);
-                this.showMenu = showMenuArg;
-            }
-        }
-        ,
-        created: function() {
+            toggleMenu: function () {
+                let width = window.innerWidth
+                    || document.documentElement.clientWidth
+                    || document.body.clientWidth;
 
-            eventHub.$on('toggleMenuEvent', this.alertTest);
+                if (width <= 992)
+                    MenuService.toggle();
+            },
+            updateToggleState: function () {
+                this.showMenu = MenuService.getShowMenu();
+            }
+        },
+        created: function () {
+            eventHub.$on('toggleMenuEvent', this.updateToggleState);
         }
     }
 </script>
@@ -55,7 +128,7 @@
         height: calc(100% - 50px);
         height: -moz-calc(100%);
         padding-bottom: 60px;
-        background-color: #1a256e;
+        background-color: #2c303b;
         border-right: 1px solid #e8e8e8;
         z-index: 999;
         -webkit-backface-visibility: hidden;
@@ -68,48 +141,46 @@
         -webkit-transform: translateX(-105%);
         transform: translateX(-105%);
         padding-left: 0;
+
+        color: #FFF;
     }
 
-    /*.side-nav:hover {
-        overflow-y: auto;
-    }*/
-
-    .side-nav.right-aligned {
-        right: 0;
-        -webkit-transform: translateX(105%);
-        transform: translateX(105%);
-        left: auto;
-        -webkit-transform: translateX(100%);
-        transform: translateX(100%);
-    }
-
-    .side-nav .collapsible {
-        margin: 0;
+    .side-nav ul {
+        padding-left: 0px;
+        margin: 10px 0 0;
     }
 
     .side-nav li {
         float: none;
-        line-height: 48px;
+        /*line-height: 48px;*/
+        /*min-height: 48px;*/
+        border-left: 4px solid #face0e;
+        margin-left: 10px;
+        margin-bottom: 10px;
     }
 
-    .side-nav li.active {
-        background-color: rgba(0, 0, 0, 0.05);
-    }
-
-    .side-nav a {
-        color: rgba(0, 0, 0, 0.87);
-        display: block;
+    .side-nav li a {
+        display:table-cell;
+        vertical-align:middle;
+        padding: 0 14px;
+        height: 32px;
+        width: 100%;
+        color: #fff;
         font-size: 14px;
-        font-weight: 500;
-        height: 48px;
-        line-height: 48px;
-        padding: 0 32px;
     }
 
-    .side-nav.fixed a {
-        display: block;
-        padding: 0 16px;
+    .side-nav li a:hover {
+        background-color: blue;
     }
+
+    /*.side-nav a {*/
+        /*!*color: rgba(0, 0, 0, 0.87);*!*/
+        /*color: #fff;*/
+        /*display: block;*/
+        /*font-size: 14px;*/
+        /*font-weight: 500;*/
+        /*height: 32px;*/
+    /*}*/
 
     .side-nav.fixed {
         left: 0;
@@ -118,21 +189,11 @@
         position: fixed;
     }
 
-    .side-nav.fixed.right-aligned {
-        right: 0;
-        left: auto;
-    }
-
     /*menor que 992*/
     @media only screen and (max-width: 992px) {
         .side-nav.fixed {
             -webkit-transform: translateX(-105%);
             transform: translateX(-105%);
-        }
-
-        .side-nav.fixed.right-aligned {
-            -webkit-transform: translateX(105%);
-            transform: translateX(105%);
         }
 
         .side-nav a {
@@ -148,7 +209,7 @@
 
     }
 
-    #sidenav-overlay {
+    .body-overlay {
         position: fixed;
         top: 0;
         left: 0;

@@ -4,7 +4,7 @@
         <nav class="navbar fixed-top navbar-white bg-white">
 
 
-           <span v-bind:class="{'rotate-in': showMenu}" @click="toggleMenu(this)"
+           <span v-bind:class="{'rotate-in': showMenu}" @click="toggleMenu()"
                  class="navbar-toggler navbar-toggler-left toggle-icon">
                         <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
                     </span>
@@ -35,22 +35,26 @@
 
 <script>
 
-
     import {eventHub} from '../main.js';
+    import {MenuService} from '../services/menuService';
 
     export default {
 
         data() {
             return {
-                showMenu: false
+                showMenu: MenuService.getShowMenu()
             }
         },
         methods: {
-            toggleMenu: function (event) {
-                this.showMenu = !this.showMenu;
-
-                eventHub.$emit('toggleMenuEvent', this.showMenu);
+            toggleMenu: function () {
+                MenuService.toggle();
+            },
+            updateToggleState: function () {
+                this.showMenu = MenuService.getShowMenu();
             }
+        },
+        created: function () {
+            eventHub.$on('toggleMenuEvent', this.updateToggleState);
         }
     }
 </script>
