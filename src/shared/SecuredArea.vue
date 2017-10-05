@@ -1,7 +1,5 @@
 <template>
-    <div>
-
-
+    <div class="wrapper">
         <menu-left></menu-left>
         <secured-header></secured-header>
         <main class="padding-side-nav">
@@ -31,14 +29,8 @@
 
 <style>
 
-    html {
-        position: relative;
-        min-height: 100%;
-    }
     body {
-        margin-bottom: 60px;
-        padding-top: 60px;
-        background-color: #f1f1f1;
+        background-color: red;
     }
 
     .container-conteudo {
@@ -46,6 +38,7 @@
         margin-left: auto;
         padding-left: 6px;
         padding-right: 6px;
+        min-height: calc(100vh - 110px); /*footer + header*/
     }
 
     @media (min-width: 768px) {

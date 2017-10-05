@@ -1,7 +1,12 @@
 
 
+import {vue} from '../main.js';
+
 export const AuthService = {
 
+    state: {
+        dadosUsuario: {}
+    },
 
     login(username, password) {
 
@@ -9,13 +14,20 @@ export const AuthService = {
         // Vue.http.get('https://newsapi.org/v1/sources?language=en')
 
 
-        vue.http.post('/my-api', {}).then((response) => {
-            //success
-        }, (response) => {
-            //error
-        });
+        return vue.$http.get('https://yesno.wtf/api/');
+        // return this._httpResource.get('https://yesno.wtf/api/');
 
+    },
+
+    getAuthorizationToken() {
+        return window.localStorage.getItem('token');
+    },
+
+
+    getDadosUsuario() {
+        return this.dadosUsuario;
     }
+
 
 
 };

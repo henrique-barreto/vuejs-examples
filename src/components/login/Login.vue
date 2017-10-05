@@ -24,6 +24,10 @@
                             <span v-html="entrarMsg"></span>
                         </button>
 
+                        <div class="alert alert-danger" role="alert">
+                            Usuário ou senha incorreto!
+                        </div>
+
                         <div class="line"><span class="texto">OU</span></div>
 
                         <button type="button" class="btn btn-outline-success btn-block">Registrar-se</button>
@@ -50,11 +54,16 @@
         },
         methods: {
             entrar: function () {
-                if (this.loading)
-                    return;
+//                if (this.loading)
+//                    return;
 
+//                let authService = new AuthService(this.$http);
 
-                AuthService.login('asdasd', '42342343');
+                let promise = AuthService.login('asdasd', '42342343');
+
+//                let promise = this.$http.get('https://yesno.wtf/api/');
+                promise.then(res => console.log(res));
+
                 this.loading = !this.loading;
             }
 
@@ -77,14 +86,6 @@
 
 <style scoped>
 
-
-    html {
-        height: 100vh;
-    }
-
-    body {
-        height: 100vh;
-    }
 
     .login-container {
         background-image: url('../../assets/img/bg-login2.jpg');
@@ -170,6 +171,11 @@
 
     .login-forms button {
         cursor: pointer;
+    }
+
+    .alert {
+        margin-top: 20px;
+        font-size: 0.9em;
     }
 
 </style>
