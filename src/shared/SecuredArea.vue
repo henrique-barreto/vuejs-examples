@@ -59,8 +59,9 @@
         padding-left: 6px;
         padding-right: 6px;
         padding-top: 56px;
-        min-height: calc(100vh - 110px); /*footer + header*/
+        min-height: calc(100vh - 83px); /*footer-size*/
     }
+
 
     @media (min-width: 768px) {
         .container-conteudo {

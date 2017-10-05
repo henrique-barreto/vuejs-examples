@@ -1,13 +1,13 @@
 <template>
 
 
-    <div>
+    <section class="section">
         <h1>Olá, {{ dadosUsuario.nome}}</h1>
 
         <img  class="rounded-circle" style="border: 1px solid #333; max-height: 34px;"
               :src="dadosUsuario.imagem64" alt="asdff">
 
-    </div>
+    </section>
 
 
 </template>

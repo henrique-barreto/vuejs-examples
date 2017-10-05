@@ -126,7 +126,7 @@
         height: -moz-calc(100%);
         padding-bottom: 60px;
         background-color: #2c303b;
-        border-right: 1px solid #e8e8e8;
+        border-right: 1px solid #333;
         z-index: 999;
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;

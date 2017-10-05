@@ -5,6 +5,10 @@ html, body {
     height: 100%;
 }
 
+.section {
+    margin-top: 30px;
+    padding-bottom: 30px;
+}
 
 .wrapper {
     height: 100%;
