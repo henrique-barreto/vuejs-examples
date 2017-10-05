@@ -4,18 +4,14 @@ import VueRouter from 'vue-router';
 import {routes} from './routes.js';
 import {progressBar} from './services/progressBar.js';
 import VueResource from 'vue-resource';
-
+import AuthService from './services/authService.js';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/style.css';
 
 Vue.use(VueRouter);
-
 Vue.use(VueResource);
 
-
-console.log(process.env.NODE_ENV);
-console.log(process.env.VUE_ENV);
 
 const router = new VueRouter({
     routes: routes,
@@ -48,9 +44,18 @@ router.afterEach((to, from) => {
 
 export const eventHub = new Vue();
 
-export const vue = new Vue({
+export default new Vue({
     el: '#app',
     router: router,
     render: h => h(App)
 });
 
+
+// Vue.http.interceptors.push(function(request, next) {
+//
+//     let token = AuthService.getAuthorizationToken();
+//     if (token)
+//         request.headers.set('Authorization', token);
+//
+//     next();
+// });

@@ -122,9 +122,6 @@
         left: 0;
         top: 50px;
         margin: 0;
-        -webkit-transform: translateX(-100%);
-        transform: translateX(-100%);
-        height: 100%;
         height: calc(100% - 50px);
         height: -moz-calc(100%);
         padding-bottom: 60px;
@@ -134,10 +131,7 @@
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
         overflow-y: auto;
-        /*overflow: auto;*/
         will-change: transform;
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
         -webkit-transform: translateX(-105%);
         transform: translateX(-105%);
         padding-left: 0;

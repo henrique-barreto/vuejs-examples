@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
         <menu-left></menu-left>
-        <secured-header></secured-header>
+        <secured-header :dadosUsuario="dadosUsuario"></secured-header>
         <main class="padding-side-nav">
             <div class="container-conteudo">
                 <router-view></router-view>
@@ -16,12 +16,32 @@
     import SecuredHeader from './SecuredHeader.vue';
     import MenuLeft from './MenuLeft.vue';
     import PublicFooter from './PublicFooter.vue';
+    import AuthService from '../services/authService.js';
 
     export default {
+
+        data() {
+            return {
+                dadosUsuario: {}
+            }
+        },
         components: {
             'secured-header': SecuredHeader,
             'menu-left': MenuLeft,
             'public-footer': PublicFooter
+        },
+        created: function () {
+            console.log('inicializando area segura');
+            AuthService.getDadosUsuario(this.$http).then(
+                res => {
+                    console.log('response usuario logado: ');
+                    this.dadosUsuario = res;
+                },
+                error => {
+                    console.log('response usuario logado: ');
+                    console.log(error);
+                });
+
         }
     }
 
@@ -30,7 +50,7 @@
 <style>
 
     body {
-        background-color: red;
+        background-color: #f1f1f1;
     }
 
     .container-conteudo {
@@ -38,6 +58,7 @@
         margin-left: auto;
         padding-left: 6px;
         padding-right: 6px;
+        padding-top: 56px;
         min-height: calc(100vh - 110px); /*footer + header*/
     }
 

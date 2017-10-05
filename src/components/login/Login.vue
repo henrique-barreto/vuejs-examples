@@ -41,7 +41,7 @@
 
 <script>
 
-    import {AuthService} from '../../services/authService.js';
+    import AuthService from '../../services/authService.js';
 
     export default {
 
@@ -54,17 +54,34 @@
         },
         methods: {
             entrar: function () {
-//                if (this.loading)
-//                    return;
+                if (this.loading)
+                    return;
 
-//                let authService = new AuthService(this.$http);
+                this.loading = true;
 
-                let promise = AuthService.login('asdasd', '42342343');
+                AuthService.login(this.$http, '03702805125', '123456').then(
+                    res => {
 
-//                let promise = this.$http.get('https://yesno.wtf/api/');
-                promise.then(res => console.log(res));
+//                        AuthService.getDadosUsuario().then(
+//                            res => {
+//                                console.log('response usuario logado: ');
+//                                console.log(res);
+//                                this.loading = !this.loading;
+//                            }, error => {
+//                                console.log('response usuario logado: ');
+//                                console.log(error);
+//
+//                            });
 
-                this.loading = !this.loading;
+                        this.loading = !this.loading;
+                        this.$router.push({ path: '/area-segura/home' });
+                    },
+                    error => {
+                        console.log(error);
+                        this.loading = !this.loading;
+                    });
+
+
             }
 
         },

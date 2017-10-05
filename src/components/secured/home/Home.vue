@@ -2,9 +2,10 @@
 
 
     <div>
-        <h1>Home</h1>
+        <h1>Olá, {{ dadosUsuario.nome}}</h1>
 
-        <img  class="rounded-circle" style="border: 1px solid #333; max-height: 60px;" src="../../../assets/img/user.png" alt="asdff">
+        <img  class="rounded-circle" style="border: 1px solid #333; max-height: 34px;"
+              :src="dadosUsuario.imagem64" alt="asdff">
 
     </div>
 
@@ -12,9 +13,27 @@
 </template>
 
 <script>
+    import AuthService from '../../../services/authService.js';
 
     export default {
 
+
+        data() {
+            return {
+                dadosUsuario: {}
+            }
+        },
+        created: function () {
+            console.log('inicializando area segura');
+            AuthService.getDadosUsuario(this.$http).then(
+                res => {
+                    this.dadosUsuario = res;
+                },
+                error => {
+                    console.log('response usuario logado: ');
+                    console.log(error);
+                });
+        }
     }
 
 </script>

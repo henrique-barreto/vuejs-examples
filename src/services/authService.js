@@ -1,21 +1,23 @@
-
-
-import {vue} from '../main.js';
-
-export const AuthService = {
+export default {
 
     state: {
         dadosUsuario: {}
     },
 
-    login(username, password) {
-
-        console.log('hello');
-        // Vue.http.get('https://newsapi.org/v1/sources?language=en')
-
-
-        return vue.$http.get('https://yesno.wtf/api/');
-        // return this._httpResource.get('https://yesno.wtf/api/');
+    login(http, username, password) {
+        console.log('loggin in');
+        return new Promise((resolve, reject) => {
+            let promisse = http.post('http://localhost:8080/portal/login', {username, password});
+            promisse.then(
+                response => {
+                    let authToken = response.headers.get('authorization');
+                    window.localStorage.setItem('token', authToken);
+                    resolve(response);
+                },
+                error => {
+                    reject(error);
+                });
+        });
 
     },
 
@@ -23,11 +25,37 @@ export const AuthService = {
         return window.localStorage.getItem('token');
     },
 
+    getDadosUsuario(http) {
+        console.log('pegando dados usuario');
+        return new Promise((resolve, reject) => {
+            let dadosUsuario = this.state.dadosUsuario;
+            if (dadosUsuario.cpf) {
+                resolve(dadosUsuario);
+            } else {
+                http.get('http://localhost:8080/portal/area-segura/usuarioLogado', this.buildHeader())
+                    .then(
+                        response => {
+                            this.state.dadosUsuario = response.body;
+                            resolve(response.body);
+                        },
+                        error => {
+                            reject(error);
+                        });
+            }
+        });
+    },
 
-    getDadosUsuario() {
-        return this.dadosUsuario;
+
+    buildHeader() {
+        let token = this.getAuthorizationToken();
+        if (token) {
+            return {
+                headers: {
+                    Authorization: token
+                }
+            }
+        }
     }
-
 
 
 };
