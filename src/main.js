@@ -4,14 +4,18 @@ import VueRouter from 'vue-router';
 import {routes} from './routes.js';
 import {progressBar} from './services/progressBar.js';
 import VueResource from 'vue-resource';
-import AuthService from './services/authService.js';
+import VeeValidate from 'vee-validate';
+import VueMask from 'v-mask'
+import AuthService from './services/authService';
+
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/style.css';
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
-
+Vue.use(VeeValidate);
+Vue.use(VueMask);
 
 const router = new VueRouter({
     routes: routes,
@@ -21,19 +25,17 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
     console.log('beforeEach', to.fullPath);
     progressBar.start();
-    // if (to.matched.some(record => record.meta.requiresAuth)) {
-    //     if (true) {
-    //         next({
-    //             path: '/login',
-    //         });
-    //     } else {
-    //         next();
-    //     }
-    // } else {
-    //     next();
-    // }
-
-    next();
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        if (!AuthService.getAuthorizationToken()) {
+            next({
+                path: '/login',
+            });
+        } else {
+            next();
+        }
+    } else {
+        next();
+    }
 
 });
 

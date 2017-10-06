@@ -7,6 +7,8 @@
 
             <div class="menu-left">
                 <span>Detran</span>
+
+                <button class="btn btn-danger btn-sm" @click="sair">Sair</button>
             </div>
 
             <div class="nav-links">
@@ -83,8 +85,8 @@
 <script>
 
     import {eventHub} from '../main.js';
-
     import {MenuService} from '../services/menuService';
+    import AuthService from '../services/authService.js';
 
     export default {
 
@@ -104,6 +106,16 @@
             },
             updateToggleState: function () {
                 this.showMenu = MenuService.getShowMenu();
+            },
+            sair: function () {
+                console.log('sair');
+                AuthService.logout().then(
+                    res => {
+                        this.$router.push({path: '/'});
+                    }, error => {
+                        console.log(error);
+                        this.$router.push({path: '/'});
+                    });
             }
         },
         created: function () {
@@ -154,8 +166,8 @@
     }
 
     .side-nav li a {
-        display:table-cell;
-        vertical-align:middle;
+        display: table-cell;
+        vertical-align: middle;
         padding: 0 14px;
         height: 32px;
         width: 100%;
@@ -168,12 +180,12 @@
     }
 
     /*.side-nav a {*/
-        /*!*color: rgba(0, 0, 0, 0.87);*!*/
-        /*color: #fff;*/
-        /*display: block;*/
-        /*font-size: 14px;*/
-        /*font-weight: 500;*/
-        /*height: 32px;*/
+    /*!*color: rgba(0, 0, 0, 0.87);*!*/
+    /*color: #fff;*/
+    /*display: block;*/
+    /*font-size: 14px;*/
+    /*font-weight: 500;*/
+    /*height: 32px;*/
     /*}*/
 
     .side-nav.fixed {

@@ -7,31 +7,7 @@
                     DETRAN-DF
                 </div>
                 <div class="login-forms">
-                    <form>
-                        <div class="form-group">
-                            <label for="cpf">CPF</label>
-                            <input type="text" class="form-control" id="cpf" placeholder="Digite seu CPF">
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Senha</label>
-                            <input type="password" class="form-control" id="password" placeholder="Senha">
-                        </div>
-
-                        <button @click="entrar"
-                                v-bind:class="{'disabled': loading}"
-                                type="button"
-                                class="btn btn-success btn-block">
-                            <span v-html="entrarMsg"></span>
-                        </button>
-
-                        <div class="alert alert-danger" role="alert">
-                            Usuário ou senha incorreto!
-                        </div>
-
-                        <div class="line"><span class="texto">OU</span></div>
-
-                        <button type="button" class="btn btn-outline-success btn-block">Registrar-se</button>
-                    </form>
+                    <login-form></login-form>
                 </div>
             </div>
         </div>
@@ -41,68 +17,18 @@
 
 <script>
 
-    import AuthService from '../../services/authService.js';
+    import LoginForm from './LoginForm.vue';
 
     export default {
-
-        data() {
-            return {
-                loading: false,
-                username: '',
-                password: ''
-            }
-        },
-        methods: {
-            entrar: function () {
-                if (this.loading)
-                    return;
-
-                this.loading = true;
-
-                AuthService.login(this.$http, '03702805125', '123456').then(
-                    res => {
-
-//                        AuthService.getDadosUsuario().then(
-//                            res => {
-//                                console.log('response usuario logado: ');
-//                                console.log(res);
-//                                this.loading = !this.loading;
-//                            }, error => {
-//                                console.log('response usuario logado: ');
-//                                console.log(error);
-//
-//                            });
-
-                        this.loading = !this.loading;
-                        this.$router.push({ path: '/area-segura/home' });
-                    },
-                    error => {
-                        console.log(error);
-                        this.loading = !this.loading;
-                    });
-
-
-            }
-
-        },
-        computed: {
-
-            entrarMsg: function () {
-
-                if (!this.loading) {
-                    return 'Entrar';
-                }
-                return 'Entrando <i class="fa fa-spinner fa-spin fa-1x fa-fw"></i>';
-            }
+        components: {
+            'login-form': LoginForm
         }
-
     }
 
 </script>
 
 
 <style scoped>
-
 
     .login-container {
         background-image: url('../../assets/img/bg-login2.jpg');
@@ -161,38 +87,6 @@
         width: 70px;
     }
 
-    .login-forms .line {
 
-        border-bottom: 1px solid #c1c1c1;
-        width: 100%;
-        display: block;
-        margin-top: 8px;
-        margin-bottom: 25px;
-        text-align: center;
-    }
-
-    .login-forms .line span {
-
-        font-size: 0.7em;
-        color: #c1c1c1;
-        background-color: #fff;
-        padding: 10px;
-        top: 10px;
-        position: relative;
-
-    }
-
-    .login-forms label {
-        font-weight: bold;
-    }
-
-    .login-forms button {
-        cursor: pointer;
-    }
-
-    .alert {
-        margin-top: 20px;
-        font-size: 0.9em;
-    }
 
 </style>

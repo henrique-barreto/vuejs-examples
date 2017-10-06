@@ -26,3 +26,8 @@ html, body {
     transition: height .9s;
     background: #ffc624;
 }
+
+/*forms*/
+.invalid-feedback {
+    display: inline-block;
+}

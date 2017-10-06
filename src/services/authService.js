@@ -6,6 +6,7 @@ export default {
 
     login(http, username, password) {
         console.log('loggin in');
+        username = username.split('.').join("").split('-').join("");
         return new Promise((resolve, reject) => {
             let promisse = http.post('http://localhost:8080/portal/login', {username, password});
             promisse.then(
@@ -42,6 +43,16 @@ export default {
                             reject(error);
                         });
             }
+        });
+    },
+
+
+    logout() {
+        console.log('AuthService logout....');
+        return new Promise((resolve, reject) => {
+            window.localStorage.removeItem('token');
+            this.dadosUsuario = {};
+            resolve({message: "Deslogado!"});
         });
     },
 
