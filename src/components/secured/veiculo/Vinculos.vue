@@ -92,7 +92,6 @@
 
     import VinculoService from '../../../services/vinculoService.js';
 
-    import StoreVinculo from '../../../services/storeVinculo.js';
 
     export default {
         data() {
@@ -134,7 +133,7 @@
                             console.log(res);
                             this.loadingVinculo = false;
                             alert(res.body.message);
-                            StoreVinculo.add({placa: })
+                            //StoreVinculo.add({placa: 'JHA5151'})
                         },
                         error => {
                             console.log(error);

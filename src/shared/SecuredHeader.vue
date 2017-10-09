@@ -18,7 +18,6 @@
 
             <div @click="goToVeiculos" class="my-navbar-item vinculos-icon">
                 <div class="vinculos-icon-wrapper">
-
                     <div class="vinculo-icon"><i class="fa fa-car" aria-hidden="true"></i></div>
                     <div class="vinculo-info">Veículos</div>
                 </div>
@@ -27,7 +26,7 @@
             <div class="my-navbar-item user-icon">
                 <div class="user-toggle-icon">
                     <img class="rounded-circle"
-                         :src="dadosUsuario.imagem64" alt="asdff">
+                         :src="dadosUsuario.imagem64" alt="imagem cnh">
                 </div>
             </div>
 
@@ -46,15 +45,12 @@
         props: ['dadosUsuario'],
         data() {
             return {
-                showMenu: MenuService.getShowMenu(),
+                showMenu: false
             }
         },
         methods: {
             toggleMenu: function () {
                 MenuService.toggle();
-            },
-            updateToggleState: function () {
-                this.showMenu = MenuService.getShowMenu();
             },
             goToVeiculos() {
                 this.$router.push({path: '/area-segura/veiculos'});
@@ -64,7 +60,9 @@
             }
         },
         created: function () {
-            eventHub.$on('toggleMenuEvent', this.updateToggleState);
+            eventHub.$on('toggleMenuEvent', (show) => {
+                this.showMenu = show;
+            });
         }
     }
 </script>
@@ -78,7 +76,8 @@
         overflow: hidden;
         display: table;
         width: 100%;
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+        /*box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);*/
+        border-bottom: 1px solid #cac5c5;
     }
 
     .my-navbar .my-navbar-item {
@@ -194,6 +193,7 @@
     .brand-middle-wrapper {
         width: 165px;
         cursor: pointer;
+        margin: 0 auto;
     }
 
     @media (min-width: 993px) {
@@ -202,6 +202,7 @@
         }
         .brand-middle-wrapper {
             width: 200px;
+            margin: 0;
         }
     }
 

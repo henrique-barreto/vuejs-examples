@@ -1,6 +1,6 @@
 <template>
-    <div class="wrapper">
-        <menu-left></menu-left>
+    <div class="wrapper" v-if="!loading">
+        <menu-left :dadosUsuario="dadosUsuario"></menu-left>
         <secured-header :dadosUsuario="dadosUsuario"></secured-header>
         <main class="padding-side-nav">
             <div class="container-conteudo">
@@ -9,6 +9,9 @@
         </main>
         <public-footer></public-footer>
     </div>
+    <div v-else>
+        <div class="signal"></div>
+    </div>
 </template>
 
 <script>
@@ -16,13 +19,18 @@
     import SecuredHeader from './SecuredHeader.vue';
     import MenuLeft from './MenuLeft.vue';
     import PublicFooter from './PublicFooter.vue';
-    import AuthService from '../services/authService.js';
+    import {usuarioStore} from '../store/usuarioStore.js';
 
     export default {
 
         data() {
             return {
-                dadosUsuario: {}
+                loading: true
+            }
+        },
+        computed: {
+            dadosUsuario: function () {
+                return usuarioStore.getters.dadosUsuarioLogado;
             }
         },
         components: {
@@ -32,14 +40,13 @@
         },
         created: function () {
             console.log('inicializando area segura');
-            AuthService.getDadosUsuario(this.$http).then(
+            usuarioStore.dispatch('getDadosUsuarioLogado').then(
                 res => {
-                    console.log('response usuario logado: ');
-                    this.dadosUsuario = res;
+                    this.loading = false;
                 },
                 error => {
-                    console.log('response usuario logado: ');
                     console.log(error);
+                    this.loading = false;
                 });
 
         }
@@ -61,7 +68,6 @@
         padding-top: 56px;
         min-height: calc(100vh - 83px); /*footer-size*/
     }
-
 
     @media (min-width: 768px) {
         .container-conteudo {

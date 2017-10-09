@@ -47,22 +47,21 @@
 
 <script>
 
-    import AuthService from '../../services/authService.js';
+    import  { authStore } from '../../store/authStore.js';
 
     export default {
 
         data() {
             return {
                 loading: false,
-                username: '',
-                password: '',
+                username: '037.028.051-25',
+                password: '123456',
                 usuarioSenhaInvalido: false,
                 erroServidor: false
             }
         },
         methods: {
             entrar: function () {
-
                 this.$validator.validateAll().then((result) => {
                     if (!result) {
                         console.log('fomulario invalido');
@@ -76,7 +75,8 @@
                     this.loading = true;
                     this.usuarioSenhaInvalido = false;
                     this.erroServidor = false;
-                    AuthService.login(this.$http, this.username, this.password).then(
+
+                    authStore.dispatch('login', {username: this.username.split('.').join("").split('-').join(""), password: this.password}).then(
                         res => {
                             this.$router.push({path: '/area-segura/home'});
                             this.loading = !this.loading;
@@ -90,6 +90,7 @@
                                 this.erroServidor = true;
                             this.loading = !this.loading;
                         });
+
                 });
             }
         },

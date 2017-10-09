@@ -2,10 +2,12 @@
 
 
     <section class="section">
-        <h1>Olá, {{ dadosUsuario.nome}}</h1>
+        <!--<h1>Olá, {{ dadosUsuario.nome}}</h1>-->
 
-        <img  class="rounded-circle" style="border: 1px solid #333; max-height: 34px;"
-              :src="dadosUsuario.imagem64" alt="asdff">
+        <h1>home</h1>
+
+        <!--<img  class="rounded-circle" style="border: 1px solid #333; max-height: 34px;"-->
+              <!--:src="dadosUsuario.imagem64" alt="asdff">-->
 
     </section>
 
@@ -13,7 +15,7 @@
 </template>
 
 <script>
-    import AuthService from '../../../services/authService.js';
+//    import AuthService from '../../../services/authService.js';
 
     export default {
 
@@ -24,15 +26,15 @@
             }
         },
         created: function () {
-            console.log('inicializando area segura');
-            AuthService.getDadosUsuario(this.$http).then(
-                res => {
-                    this.dadosUsuario = res;
-                },
-                error => {
-                    console.log('response usuario logado: ');
-                    console.log(error);
-                });
+//            console.log('inicializando area segura');
+//            AuthService.getDadosUsuario(this.$http).then(
+//                res => {
+//                    this.dadosUsuario = res;
+//                },
+//                error => {
+//                    console.log('response usuario logado: ');
+//                    console.log(error);
+//                });
         }
     }
 

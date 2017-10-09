@@ -5,11 +5,7 @@
 
         <div id="slide-out" v-bind:class="{'active': showMenu}" class="side-nav fixed">
 
-            <div class="menu-left">
-                <span>Detran</span>
-
-                <button class="btn btn-danger btn-sm" @click="sair">Sair</button>
-            </div>
+            <left-menu-header :dadosUsuario="dadosUsuario"></left-menu-header>
 
             <div class="nav-links">
 
@@ -86,10 +82,15 @@
 
     import {eventHub} from '../main.js';
     import {MenuService} from '../services/menuService';
-    import AuthService from '../services/authService.js';
+    import {authStore} from '../store/authStore.js';
+    import LeftMenuHeader from './LeftMenuHeader.vue';
 
     export default {
 
+        props: ['dadosUsuario'],
+        components: {
+            'left-menu-header': LeftMenuHeader,
+        },
         data() {
             return {
                 showMenu: false
@@ -101,25 +102,15 @@
                     || document.documentElement.clientWidth
                     || document.body.clientWidth;
 
-                if (width <= 992)
+                if (width <= 992 || this.showMenu)
                     MenuService.toggle();
-            },
-            updateToggleState: function () {
-                this.showMenu = MenuService.getShowMenu();
-            },
-            sair: function () {
-                console.log('sair');
-                AuthService.logout().then(
-                    res => {
-                        this.$router.push({path: '/'});
-                    }, error => {
-                        console.log(error);
-                        this.$router.push({path: '/'});
-                    });
+
             }
         },
         created: function () {
-            eventHub.$on('toggleMenuEvent', this.updateToggleState);
+            eventHub.$on('toggleMenuEvent', (show) => {
+                this.showMenu = show;
+            });
         }
     }
 </script>
@@ -132,13 +123,13 @@
         position: fixed;
         width: 280px;
         left: 0;
-        top: 50px;
+        top: 56px;
         margin: 0;
-        height: calc(100% - 50px);
-        height: -moz-calc(100%);
+        height: calc(100% - 56px);
+        height: -moz-calc(100% - 56px);
         padding-bottom: 60px;
-        background-color: #2c303b;
-        border-right: 1px solid #333;
+        background-color: #fff;
+        border-right: 1px solid #cac5c5;
         z-index: 999;
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
@@ -147,46 +138,41 @@
         -webkit-transform: translateX(-105%);
         transform: translateX(-105%);
         padding-left: 0;
+        color: #333;
 
-        color: #FFF;
+        overflow-x: hidden;
     }
 
     .side-nav ul {
         padding-left: 0px;
         margin: 10px 0 0;
+        display: table;
     }
 
     .side-nav li {
-        float: none;
         /*line-height: 48px;*/
         /*min-height: 48px;*/
         border-left: 4px solid #face0e;
         margin-left: 10px;
         margin-bottom: 10px;
+        display: table;
+        width: 100%;
     }
 
     .side-nav li a {
         display: table-cell;
         vertical-align: middle;
         padding: 0 14px;
-        height: 32px;
+        height: 42px;
+        max-height: 42px;
         width: 100%;
-        color: #fff;
         font-size: 14px;
+        color: #444444;
     }
 
     .side-nav li a:hover {
-        background-color: blue;
+        background-color: #f1f1f1;
     }
-
-    /*.side-nav a {*/
-    /*!*color: rgba(0, 0, 0, 0.87);*!*/
-    /*color: #fff;*/
-    /*display: block;*/
-    /*font-size: 14px;*/
-    /*font-weight: 500;*/
-    /*height: 32px;*/
-    /*}*/
 
     .side-nav.fixed {
         left: 0;
