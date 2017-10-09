@@ -5,7 +5,8 @@ import PublicArea from './shared/PublicArea.vue';
 import Home from './components/secured/home/Home.vue';
 import NotFound from './shared/NotFound.vue';
 import SegundaViaCRLV from './components/secured/veiculo/SegungaViaCRLV.vue';
-import Vinculos from './components/secured/veiculo/Vinculos.vue';
+import Vinculos from './components/secured/veiculo/vinculos/Vinculos.vue';
+import ConsultaHabilitacao from './components/secured/habilitacao/ConsultaHabilitacao.vue';
 
 
 export const routes = [
@@ -23,7 +24,8 @@ export const routes = [
         children: [
             {path: '/area-segura/home', alias: '/area-segura', component: Home, meta: {requiresAuth: true}},
             {path: '/area-segura/veiculos', component: Vinculos, meta: {requiresAuth: true}},
-            {path: '/area-segura/segunda-via-crlv', component: SegundaViaCRLV, meta: {requiresAuth: true}}
+            {path: '/area-segura/segunda-via-crlv', component: SegundaViaCRLV, meta: {requiresAuth: true}},
+            {path: '/area-segura/habilitacao', component: ConsultaHabilitacao, meta: {requiresAuth: true}}
         ]
     },
     {path: '*', redirect: '/404'}

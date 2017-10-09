@@ -7,13 +7,23 @@ import VueResource from 'vue-resource';
 import VeeValidate from 'vee-validate';
 import VueMask from 'v-mask'
 import {authStore} from './store/authStore.js';
+import CxltToastr from 'cxlt-vue2-toastr'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/spinner.css';
+import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css'
 import './assets/css/style.css';
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
+
+var toastrConfigs = {
+    position: 'top right',
+    showDuration: 300,
+    hideDuration: 300,
+    timeOut: 4000
+};
+Vue.use(CxltToastr, toastrConfigs);
 
 Vue.http.options.root = 'http://localhost:8080/portal';
 
@@ -47,7 +57,6 @@ router.beforeEach((to, from, next) => {
 Vue.http.interceptors.push(function(request, next) {
 
     let token = authStore.getters.authorizationToken;
-    console.log('token ' + token);
     if (token)
         request.headers.set('Authorization', token);
 

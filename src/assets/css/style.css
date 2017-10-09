@@ -1,6 +1,5 @@
 /*= fim estrutura ================*/
 
-
 html, body {
     height: 100%;
 }
@@ -18,8 +17,9 @@ html, body {
     width: 100%;
     height: 3px;
     z-index: 9999;
-    top:0
+    top: 0
 }
+
 .bar {
     width: 0;
     height: 100%;
@@ -32,3 +32,87 @@ html, body {
     display: inline-block;
 }
 
+button {
+    cursor: pointer;
+}
+
+
+/*cards*/
+
+.card {
+    margin: 0 0 0px;
+    border: 0;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.card-padding {
+    padding: 15px;
+}
+
+/*fim cards*/
+/*toasts*/
+.cxlt-toastr-container {
+    width: 100%;
+}
+
+.cxlt-toastr-container .toast {
+    width: 100%;
+    padding: 8px;
+}
+
+.cxlt-toastr-container.toast-top-right {
+    /*top: 70px;*/
+    top: inherit;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+
+    position: fixed;
+    z-index: 999999;
+    pointer-events: none;
+
+}
+
+.toast-success {
+    background-color: #5fa764;
+}
+
+.cxlt-toastr-container .toast.toast-success,
+.cxlt-toastr-container .toast.toast-error {
+    background-image: none !important;
+}
+
+.toast-error {
+    background-color: #dc3545;
+}
+
+@media (min-width: 992px) {
+
+    .cxlt-toastr-container {
+        width: auto;
+
+    }
+
+    .cxlt-toastr-container .toast {
+        width: 300px;
+        padding: 8px;
+    }
+
+    .cxlt-toastr-container.toast-top-right {
+        top: 70px;
+    }
+
+    .cxlt-toastr-container.toast-top-right {
+        top: 70px;
+        right: 12px;
+        width: auto;
+        bottom: auto;
+
+        /*pointer-events: none;*/
+    }
+}
+
+/*fim toaster*/

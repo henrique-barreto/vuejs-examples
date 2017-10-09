@@ -17,6 +17,9 @@ export const usuarioStore = new Vuex.Store({
     mutations: {
         setDadosUsuario: (state, payload) => {
             state.dadosUsuarioLogado = payload;
+        },
+        setVinculosVeiculo: (state, payload) => {
+            state.dadosUsuarioLogado.vinculos = payload;
         }
     },
     actions: {
@@ -41,6 +44,36 @@ export const usuarioStore = new Vuex.Store({
 
             });
 
+        },
+        vincularVeiculo: (context, payload) => {
+            let placa = payload;
+            placa = placa.split('-').join('');
+            placa = placa.toUpperCase();
+            return new Promise((resolve, reject) => {
+                Vue.http.post('area-segura/vinculoVeiculo', {placa: placa})
+                    .then(
+                        response => {
+                            context.commit('setVinculosVeiculo', response.body);
+                            resolve();
+                        },
+                        error => {
+                            reject(error);
+                        });
+            });
+        },
+        desvincularVeiculo: (context, payload) => {
+
+            return new Promise((resolve, reject) => {
+                Vue.http.delete('area-segura/vinculoVeiculo/' + payload)
+                    .then(
+                        response => {
+                            context.commit('setVinculosVeiculo', response.body);
+                            resolve();
+                        },
+                        error => {
+                            reject(error);
+                        });
+            });
         }
     }
 
