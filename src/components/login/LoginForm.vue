@@ -13,7 +13,10 @@
             <small class="invalid-feedback" v-show="isUsernameInvalid">CPF Inválido</small>
         </div>
         <div :class="{ 'form-group-invalid': isPasswordInvalid}" class="form-group">
-            <label for="password">Senha</label>
+            <div>
+                <label for="password">Senha</label>
+                <span class="pull-right"><router-link to="/recuperar-senha">Esqueceu a senha?</router-link></span>
+            </div>
             <input type="password"
                    name="password"
                    class="form-control"
@@ -21,7 +24,6 @@
                    placeholder="Senha"
                    v-validate="{ required: true, min: 6}"
                    v-model="password">
-
             <small class="invalid-feedback" v-show="isPasswordInvalid">Senha deve conter pelo menos 6 digitos</small>
         </div>
 
@@ -117,15 +119,6 @@
 
 
 <style scoped>
-
-    /*form validation*/
-    .form-group.form-group-invalid label {
-        color: #dc3545;
-    }
-
-    .form-group.form-group-invalid input {
-        border-color: #dc3545;
-    }
 
     .alert {
         margin-top: 20px;

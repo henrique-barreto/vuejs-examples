@@ -36,6 +36,16 @@ button {
     cursor: pointer;
 }
 
+/*form validation*/
+.form-group.form-group-invalid label {
+    color: #dc3545;
+}
+
+.form-group.form-group-invalid input {
+    border-color: #dc3545;
+}
+
+/*fim forms*/
 
 /*cards*/
 
@@ -53,6 +63,24 @@ button {
 }
 
 /*fim cards*/
+
+/*breadcrumb*/
+
+.breadcrumb {
+    padding: 0;
+    background-color: #f1f1f1;
+}
+.breadcrumb-item+.breadcrumb-item::before {
+    display: inline-block;
+    padding-right: .5rem;
+    padding-left: .5rem;
+    color: #FFC107;
+    content: " » ";
+}
+
+/*fim breadcrumb*/
+
+
 /*toasts*/
 .cxlt-toastr-container {
     width: 100%;
@@ -116,3 +144,4 @@ button {
 }
 
 /*fim toaster*/
+

@@ -1,4 +1,5 @@
 import Login from './components/login/Login.vue';
+import RecuperarSenha from './components/login/RecuperarSenha.vue';
 import Register from './components/register/Register.vue';
 import SecuredArea from './shared/SecuredArea.vue';
 import PublicArea from './shared/PublicArea.vue';
@@ -16,6 +17,7 @@ export const routes = [
         children: [
             {path: '/login', alias: '', component: Login},
             {path: '/register', component: Register},
+            {path: '/recuperar-senha', component: RecuperarSenha},
             {path: '/404', component: NotFound}
         ]
     },

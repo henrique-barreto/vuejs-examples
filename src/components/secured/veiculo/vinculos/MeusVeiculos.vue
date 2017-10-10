@@ -1,7 +1,8 @@
 <template>
 
     <div class="meus-veiculos-wrapper">
-        <label>Meus veículos</label>
+        <!--<label>Meus veículos</label>-->
+        <titulo-pagina :title="'Meus veículos'" :tipo="'secundario'"></titulo-pagina>
         <div class="card card-padding">
             <div class="lista-veiculos">
                 <table class="table table-responsive"
@@ -39,10 +40,13 @@
 <script>
 
     import {usuarioStore} from '../../../../store/usuarioStore.js';
+    import TituloPagina from '../../../../shared/types/TituloPagina.vue';
 
     export default {
 
-
+        components: {
+            'titulo-pagina': TituloPagina
+        },
         computed: {
             dadosUsuario: function () {
                 return usuarioStore.getters.dadosUsuarioLogado;

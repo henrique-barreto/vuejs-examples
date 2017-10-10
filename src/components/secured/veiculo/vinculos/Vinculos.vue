@@ -10,11 +10,8 @@
             <li class="breadcrumb-item active">Veículos</li>
         </ol>
 
-        <div class="pagina-title">
-            <h1 class="title">Veículos Vinculados</h1>
-            <h2 class="subtitle">Vincule veículos ao seu perfil</h2>
-
-        </div>
+        <titulo-pagina :title="'Veículos Vinculados'" :tipo="'primario'"></titulo-pagina>
+        <p>Víncule veículos ao seu perfil</p>
 
 
         <div class="busca-veiculo-card">
@@ -87,6 +84,7 @@
     import VeiculoService from '../../../../services/veiculoService';
     import {usuarioStore} from '../../../../store/usuarioStore.js';
     import MeusVeiculos from './MeusVeiculos.vue';
+    import TituloPagina from '../../../../shared/types/TituloPagina.vue';
 
     export default {
         data() {
@@ -98,7 +96,8 @@
             }
         },
         components: {
-            'meus-veiculos': MeusVeiculos
+            'meus-veiculos': MeusVeiculos,
+            'titulo-pagina': TituloPagina
         },
         computed: {
             dadosUsuario: function () {
@@ -173,7 +172,16 @@
 <style scoped>
 
 
-
+    .breadcrumb {
+        padding-left: 0px;
+    }
+    .breadcrumb-item+.breadcrumb-item::before {
+        display: inline-block;
+        padding-right: .5rem;
+        padding-left: .5rem;
+        color: #FFC107;
+        content: " » ";
+    }
 
     /*validacao form*/
     .form-group.form-group-invalid label {
@@ -190,7 +198,7 @@
     }
 
     .busca-veiculo-card {
-        margin-top: 30px;
+        /*margin-top: 30px;*/
     }
 
     /*estilos*/

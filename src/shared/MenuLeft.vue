@@ -5,7 +5,7 @@
 
         <div id="slide-out" v-bind:class="{'active': showMenu}" class="side-nav fixed">
 
-            <left-menu-header :dadosUsuario="dadosUsuario"></left-menu-header>
+            <!--<left-menu-header :dadosUsuario="dadosUsuario"></left-menu-header>-->
 
             <div class="nav-links">
 

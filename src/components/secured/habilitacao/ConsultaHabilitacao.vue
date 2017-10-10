@@ -9,11 +9,7 @@
             <li class="breadcrumb-item active">Habilitação</li>
         </ol>
 
-        <div class="pagina-title">
-            <h1 class="title">Consulta Habilitação</h1>
-            <h2 class="subtitle">Consulta pontuacao habilitação</h2>
-        </div>
-
+        <titulo-pagina :title="'Consulta Habilitação'" :tipo="'primario'"></titulo-pagina>
 
         <div class="habilitacao-info">
             <form id="needs-validation" novalidate>
@@ -68,45 +64,48 @@
             </form>
         </div>
 
-        <div class="habilitacao-pontucao card card-padding">
 
-            <label>Dados da pontução</label>
-            <table class="table table-bordered text-center">
-                <thead>
-                <tr>
-                    <th>Grupo de Pontos</th>
-                    <th>Quantidade</th>
-                    <th>Pontos</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Grupo 1 - Level</td>
-                    <td> {{ dadosHabilitacao.dadosPontuacao.qtdMultasLeve }} </td>
-                    <td> {{ dadosHabilitacao.dadosPontuacao.qtdPontosLeve }} </td>
-                </tr>
-                <tr>
-                    <td>Grupo 2 - Média</td>
-                    <td> {{ dadosHabilitacao.dadosPontuacao.qtdMultasMedia }} </td>
-                    <td> {{ dadosHabilitacao.dadosPontuacao.qtdPontosMedia }} </td>
-                </tr>
-                <tr>
-                    <td>Grupo 3 - Grave</td>
-                    <td> {{ dadosHabilitacao.dadosPontuacao.qtdMultasGrave }}</td>
-                    <td> {{ dadosHabilitacao.dadosPontuacao.qtdPontosGrave }} </td>
-                </tr>
-                <tr>
-                    <td>Grupo 4 - Gravíssima</td>
-                    <td> {{ dadosHabilitacao.dadosPontuacao.qtdMultasGravissima }}</td>
-                    <td> {{ dadosHabilitacao.dadosPontuacao.qtdPontosGravissima }} </td>
-                </tr>
-                <tr class="total">
-                    <td colspan="2" class="label">Total</td>
-                    <td> {{ dadosHabilitacao.dadosPontuacao.pontos}}</td>
-                </tr>
-                </tbody>
-            </table>
+        <div class="habilitacao-pontucao">
+            <!--<label>Dados da pontução</label>-->
 
+            <titulo-pagina :title="'Dados da pontução'" :tipo="'secundario'"></titulo-pagina>
+            <div class="card card-padding">
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr>
+                        <th>Grupo de Pontos</th>
+                        <th>Quantidade</th>
+                        <th>Pontos</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Grupo 1 - Leve</td>
+                        <td>{{ dadosHabilitacao.dadosPontuacao.qtdMultasLeve }}</td>
+                        <td>{{ dadosHabilitacao.dadosPontuacao.qtdPontosLeve }}</td>
+                    </tr>
+                    <tr>
+                        <td>Grupo 2 - Média</td>
+                        <td>{{ dadosHabilitacao.dadosPontuacao.qtdMultasMedia }}</td>
+                        <td>{{ dadosHabilitacao.dadosPontuacao.qtdPontosMedia }}</td>
+                    </tr>
+                    <tr>
+                        <td>Grupo 3 - Grave</td>
+                        <td>{{ dadosHabilitacao.dadosPontuacao.qtdMultasGrave }}</td>
+                        <td>{{ dadosHabilitacao.dadosPontuacao.qtdPontosGrave }}</td>
+                    </tr>
+                    <tr>
+                        <td>Grupo 4 - Gravíssima</td>
+                        <td>{{ dadosHabilitacao.dadosPontuacao.qtdMultasGravissima }}</td>
+                        <td>{{ dadosHabilitacao.dadosPontuacao.qtdPontosGravissima }} </td>
+                    </tr>
+                    <tr class="total">
+                        <td colspan="2" class="label">Total</td>
+                        <td>{{ dadosHabilitacao.dadosPontuacao.pontos}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
     </section>
@@ -120,6 +119,7 @@
 
     import {usuarioStore} from '../../../store/usuarioStore.js';
     import {HabilitacaoService} from '../../../services/habilitacaoService';
+    import TituloPagina from '../../../shared/types/TituloPagina.vue';
 
     export default {
 
@@ -132,16 +132,16 @@
         },
         filters: {
             formatBR: function (value) {
-                if (!value) return ''
+                if (!value) return '';
                 let data = new Date(value);
                 let dia = data.getDate();
                 if (dia.toString().length === 1)
-                    dia = "0"+dia;
-                let mes = data.getMonth()+1;
+                    dia = "0" + dia;
+                let mes = data.getMonth() + 1;
                 if (mes.toString().length === 1)
-                    mes = "0"+mes;
+                    mes = "0" + mes;
                 let ano = data.getFullYear();
-                return dia+"/"+mes+"/"+ano;
+                return dia + "/" + mes + "/" + ano;
             }
         },
         computed: {
@@ -167,23 +167,24 @@
                         message: error.body.message
                     });
                 });
-
-
-        }
+        },
+        components: {
+            'titulo-pagina': TituloPagina
+        },
     }
 </script>
 
+
 <style scoped>
+
 
     label {
         font-weight: bold;
     }
 
-
     table th {
         text-align: center;
     }
-
 
     table .total {
         font-weight: bold;
