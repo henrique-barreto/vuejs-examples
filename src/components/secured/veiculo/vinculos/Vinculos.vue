@@ -81,7 +81,7 @@
 <script>
 
 
-    import VeiculoService from '../../../../services/veiculoService';
+    import {VeiculoService} from '../../../../services/veiculoService.js';
     import {usuarioStore} from '../../../../store/usuarioStore.js';
     import MeusVeiculos from './MeusVeiculos.vue';
     import TituloPagina from '../../../../shared/types/TituloPagina.vue';
@@ -125,7 +125,7 @@
 
                 this.loading = !this.loading;
                 this.resultadoVeiculo = null;
-                VeiculoService.findByPlaca(this.$http, this.placaBusca).then(
+                new VeiculoService(this.$http).findByPlaca(this.placaBusca).then(
                     res => {
                         this.resultadoVeiculo = res.body;
                         this.loading = !this.loading;

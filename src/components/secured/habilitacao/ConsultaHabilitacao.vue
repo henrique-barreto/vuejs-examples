@@ -109,9 +109,9 @@
         </div>
 
     </section>
-    <div v-else>
+    <section class="section" v-else>
         <div class="signal"></div>
-    </div>
+    </section>
 
 </template>
 

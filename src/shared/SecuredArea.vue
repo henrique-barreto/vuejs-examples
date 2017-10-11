@@ -38,7 +38,7 @@
             'menu-left': MenuLeft,
             'public-footer': PublicFooter
         },
-        created: function () {
+        mounted: function () {
             console.log('inicializando area segura');
             usuarioStore.dispatch('getDadosUsuarioLogado').then(
                 res => {

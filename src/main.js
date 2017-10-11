@@ -40,7 +40,10 @@ router.beforeEach((to, from, next) => {
     progressBar.start();
     console.log(authStore.getters.authorizationToken);
     if (to.matched.some(record => record.meta.requiresAuth)) {
-        if (!authStore.getters.authorizationToken) {
+        console.log('secured url');
+        let tokenObj = authStore.getters.authorizationToken;
+        if (!tokenObj) {
+            console.log('nao autorizado');
             next({
                 path: '/login',
             });
@@ -57,14 +60,21 @@ router.beforeEach((to, from, next) => {
 Vue.http.interceptors.push(function(request, next) {
 
     let token = authStore.getters.authorizationToken;
-    if (token)
+    console.log('interceptor: ');
+
+    if (token) {
+        console.log(token);
+        console.log('setting token');
         request.headers.set('Authorization', token);
+    } else{
+        console.log('sem token');
+    }
 
     next();
 });
 
 router.afterEach((to, from) => {
-    console.log('afterEach' + to.fullPath);
+    console.log('afterEach');
     progressBar.done();
 });
 

@@ -121,17 +121,16 @@
                     },
                     error => {
                         this.loading = false;
-                        if (error.status >= 400 || error.status <= 499) {
+                        if (error.status === 400) {
                             if (error.body.codigo === 'validacao.error') {
                                 Object.keys(error.body.errors).forEach(key => {
                                     this.erroValidacao = error.body.errors[key];
                                 });
                             } else {
-                                console.log('dfasdf');
                                 this.erroValidacao = error.body.message;
                             }
                         } else {
-                            this.erroValidacao = "Ocorreu um erro ao se conectar com o servidor";
+                            this.erroValidacao = "Ocorreu um erro ao se conectar com o servidor!";
                         }
 
                     });

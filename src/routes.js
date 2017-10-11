@@ -1,5 +1,6 @@
 import Login from './components/login/Login.vue';
 import RecuperarSenha from './components/login/RecuperarSenha.vue';
+import ResetarSenha from './components/login/ResetarSenha.vue';
 import Register from './components/register/Register.vue';
 import SecuredArea from './shared/SecuredArea.vue';
 import PublicArea from './shared/PublicArea.vue';
@@ -18,6 +19,7 @@ export const routes = [
             {path: '/login', alias: '', component: Login},
             {path: '/register', component: Register},
             {path: '/recuperar-senha', component: RecuperarSenha},
+            {path: '/resetar-senha', component: ResetarSenha},
             {path: '/404', component: NotFound}
         ]
     },

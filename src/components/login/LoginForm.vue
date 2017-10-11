@@ -56,8 +56,8 @@
         data() {
             return {
                 loading: false,
-                username: '037.028.051-25',
-                password: '123456',
+                username: '',
+                password: '',
                 usuarioSenhaInvalido: false,
                 erroServidor: false
             }

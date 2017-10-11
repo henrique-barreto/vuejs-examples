@@ -10,4 +10,12 @@ export class RegistroService {
         return this.http.post('reset-password', dados);
     }
 
+    findEmailByResetCode(code){
+        return this.http.get('email-reset-code?code=' + code);
+    }
+
+    setNewPassword(dados) {
+        return this.http.post('new-password', dados);
+    }
+
 }
