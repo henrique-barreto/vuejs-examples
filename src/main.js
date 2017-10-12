@@ -78,6 +78,7 @@ router.afterEach((to, from) => {
     progressBar.done();
 });
 
+
 export const eventHub = new Vue();
 
 export default new Vue({
@@ -85,5 +86,3 @@ export default new Vue({
     router: router,
     render: h => h(App)
 });
-
-

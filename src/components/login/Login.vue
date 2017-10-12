@@ -22,6 +22,18 @@
     export default {
         components: {
             'login-form': LoginForm
+        },
+        created: function () {
+//            console.log(process.env.NODE_ENV);
+//            console.log(process.env);
+//            console.log(NODE_ENV);
+
+//            console.log('hello');
+//            console.log(API_URL);
+
+            var isProduction = process.env.NODE_ENV === 'production';
+            console.log(isProduction);
+            console.log(process.env.NODE_ENV);
         }
     }
 
@@ -86,7 +98,6 @@
         height: 70px;
         width: 70px;
     }
-
 
 
 </style>
