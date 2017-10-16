@@ -57,7 +57,7 @@
 <style>
 
     body {
-        background-color: #f1f1f1;
+        background-color: #fafafa;
     }
 
     .container-conteudo {

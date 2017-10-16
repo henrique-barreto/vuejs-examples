@@ -50,7 +50,7 @@ export const usuarioStore = new Vuex.Store({
             placa = placa.split('-').join('');
             placa = placa.toUpperCase();
             return new Promise((resolve, reject) => {
-                Vue.http.post('area-segura/vinculoVeiculo', {placa: placa})
+                Vue.http.post('area-segura/vinculoVeiculo/' + placa, {})
                     .then(
                         response => {
                             context.commit('setVinculosVeiculo', response.body);

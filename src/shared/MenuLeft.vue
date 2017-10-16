@@ -5,7 +5,7 @@
 
         <div id="slide-out" v-bind:class="{'active': showMenu}" class="side-nav fixed">
 
-            <left-menu-header :dadosUsuario="dadosUsuario"></left-menu-header>
+            <!--<left-menu-header :dadosUsuario="dadosUsuario"></left-menu-header>-->
 
             <div class="nav-links">
 
@@ -17,23 +17,17 @@
                     <div class="nav-list">
                         <ul class="menu-list">
                             <li>
-                                <router-link @click.native="toggleMenu" to="/">Inicio Teste</router-link>
-                            </li>
-                            <li>
-                                <router-link @click.native="toggleMenu" to="/area-segura">Home</router-link>
-                            </li>
-                            <li>
                                 <router-link @click.native="toggleMenu" to="/area-segura/segunda-via-crlv">
-                                    Mudança de Endereço do Veículo
+                                    Solicitação de 2° via CRLV
                                 </router-link>
                             </li>
                             <li>
-                                <router-link @click.native="toggleMenu" to="/area-segura/segunda-via-crlv">
-                                    Solicitação de 2° via de CRLV
+                                <router-link @click.native="toggleMenu" to="/area-segura/segunda-via-crv">
+                                    Solicitação de 2° via CRV
                                 </router-link>
                             </li>
                             <li>
-                                <router-link @click.native="toggleMenu" to="/area-segura/segunda-via-crlv">
+                                <router-link @click.native="toggleMenu" to="/area-segura/transformar-na-np">
                                     Transformar Notificação de Autuação em Penalidade
                                 </router-link>
                             </li>
@@ -48,15 +42,16 @@
                 </div>
                 <!--./nav-group-->
 
+
                 <div class="nav-group">
                     <div class="nav-item-header">
-                        <span>Habilitacao</span>
+                        <span>Habilitação</span>
                     </div>
                     <!--./nav-item-header-->
                     <div class="nav-list">
                         <ul class="menu-list">
                             <li>
-                                <router-link @click.native="toggleMenu" to="/">Inicio</router-link>
+                                <router-link @click.native="toggleMenu" to="/area-segura/em-construcao">Mudança de Endereço da CNH/Permissão</router-link>
                             </li>
                             <li>
                                 <router-link @click.native="toggleMenu" to="/area-segura/habilitacao">
@@ -68,6 +63,7 @@
                     <!-- ./nav-list-->
                 </div>
                 <!--./nav-group-->
+
 
             </div>
             <!--./ nav-links -->
@@ -128,8 +124,9 @@
         height: calc(100% - 56px);
         height: -moz-calc(100% - 56px);
         padding-bottom: 60px;
-        background-color: #fff;
-        border-right: 1px solid #cac5c5;
+        /*background-color: #fff;*/
+        background-color: #f5f5f5;
+        /*border-right: 1px solid #cac5c5;*/
         z-index: 999;
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
@@ -147,6 +144,7 @@
         padding-left: 0px;
         margin: 10px 0 0;
         display: table;
+        width: 100%;
     }
 
     .side-nav li {
@@ -171,7 +169,7 @@
     }
 
     .side-nav li a:hover {
-        background-color: #f1f1f1;
+        background-color: #ededed;
     }
 
     .side-nav.fixed {

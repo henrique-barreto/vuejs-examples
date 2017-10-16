@@ -23,14 +23,20 @@
                 </div>
             </div>
 
-            <div class="my-navbar-item user-icon">
+            <div ref="dropdownUserMenu" class="my-navbar-item user-icon" @click="toggleUserMenu">
                 <div class="user-toggle-icon">
-                    <img class="rounded-circle"
-                         :src="dadosUsuario.imagem64" alt="imagem cnh">
+                    <img v-if="this.dadosUsuario.imagem64" class="rounded-circle" :src="getImagem" alt="imagem cnh">
+                    <img src="./../assets/img/user.png" class="rounded-circle" alt="imagem cnh" v-else>
                 </div>
             </div>
 
         </nav>
+
+        <div ref="menuUser" class="wrapper">
+            <left-menu-header :dadosUsuario="dadosUsuario" v-if="showUserMenu"></left-menu-header>
+        </div>
+
+
     </header>
 </template>
 
@@ -39,35 +45,63 @@
 
     import {eventHub} from '../main.js';
     import {MenuService} from '../services/menuService';
+    import LeftMenuHeader from './LeftMenuHeader.vue';
 
     export default {
-
         props: ['dadosUsuario'],
         data() {
             return {
-                showMenu: false
+                showMenu: false,
+                showUserMenu: false
+            }
+        },
+        components: {
+            'left-menu-header': LeftMenuHeader,
+        },
+        computed: {
+            getImagem: function () {
+                return this.dadosUsuario.imagem64;
             }
         },
         methods: {
             toggleMenu: function () {
                 MenuService.toggle();
             },
+            toggleUserMenu: function () {
+                this.showUserMenu = !this.showUserMenu;
+            },
             goToVeiculos() {
                 this.$router.push({path: '/area-segura/veiculos'});
             },
             goToHome() {
                 this.$router.push({path: '/area-segura/home'});
+            },
+            documentClick(e) {
+                console.log('chamou');
+                let el = this.$refs.dropdownUserMenu;
+                let target = e.target;
+                let el2 = this.$refs.menuUser;
+                if (el !== target && !el.contains(target) && (el2 && el2 !== target && !el2.contains(target)))
+                    this.showUserMenu = false;
             }
         },
         created: function () {
+
             eventHub.$on('toggleMenuEvent', (show) => {
                 this.showMenu = show;
             });
+
+            document.addEventListener('click', this.documentClick);
+        },
+        destroyed() {
+            document.removeEventListener('click', this.documentClick)
         }
+
     }
 </script>
 
 <style scoped>
+
 
     .my-navbar {
         background-color: #fff;
@@ -76,8 +110,8 @@
         overflow: hidden;
         display: table;
         width: 100%;
-        /*box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);*/
-        border-bottom: 1px solid #cac5c5;
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+        /*border-bottom: 1px solid #cac5c5;*/
     }
 
     .my-navbar .my-navbar-item {
@@ -145,6 +179,7 @@
             text-align: left;
         }
     }
+
     /* fim estrutura*/
 
     /*toggler*/
@@ -189,7 +224,6 @@
         position: relative;
     }
 
-
     .brand-middle-wrapper {
         width: 165px;
         cursor: pointer;
@@ -200,12 +234,12 @@
         .my-navbar-item.brand-middle {
             font-size: 1.5em;
         }
+
         .brand-middle-wrapper {
             width: 200px;
             margin: 0;
         }
     }
-
 
     /*fim middle-brand*/
 

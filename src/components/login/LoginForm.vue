@@ -3,6 +3,7 @@
         <div :class="{ 'form-group-invalid': isUsernameInvalid}" class="form-group">
             <label for="cpf" class="is-invalid">CPF</label>
             <input type="text"
+                   tabindex="1"
                    class="form-control"
                    id="cpf"
                    placeholder="Digite seu CPF"
@@ -19,6 +20,7 @@
             </div>
             <input type="password"
                    name="password"
+                   tabindex="2"
                    class="form-control"
                    id="password"
                    placeholder="Senha"

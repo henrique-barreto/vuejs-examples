@@ -43,8 +43,10 @@
         min-height: 80px;
         overflow: hidden;
         width: 100%;
-        background-color: #dedede;
-        border-top: 1px solid #bbb;
+        background-color: #fff;
+        /*border-top: 1px solid #bbb;*/
+        border-top: 1px solid #e2e2e2;
+
     }
 
     .footer-wrapper {

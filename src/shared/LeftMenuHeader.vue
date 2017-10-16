@@ -1,13 +1,13 @@
 <template>
-    <div class="menu-left-header">
-        <div class="row no-gutters">
-            <div class="col-5">
+    <div class="menu-left-header" ref="dropdownUserMenuChild">
+        <div class="row no-gutters user-info">
+            <div class="col-4">
                 <div class="imagem-usuario">
                     <img class="rounded-circle"
                          :src="dadosUsuario.imagem64" alt="imagem cnh">
                 </div>
             </div>
-            <div class="col-7 info-right">
+            <div class="col-8 info-right">
                 <div class="dadosInfo">
                     <div class="nome"> HENRIQUE GONCALVES BARRETO</div>
                     <div class="email"> henriquegbar@gmail.com</div>
@@ -47,7 +47,33 @@
 </script>
 
 <style scoped>
+    
 
+    /*new*/
+    .menu-left-header {
+        background-color: rgb(243, 243, 243);
+        float: right;
+        right: 0;
+        position: absolute;
+        margin-right: 5px;
+        top: 57px;
+        border: 1px solid #ccc;
+        border-color: rgba(0,0,0,.2);
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,.2);
+        z-index: 999999;
+
+        opacity: 1;
+        transition: opacity .25s ease-in-out;
+        -moz-transition: opacity .25s ease-in-out;
+        -webkit-transition: opacity .25s ease-in-out;
+    }
+
+    .user-info {
+        background-color: #fff;
+        padding-bottom: 8px;
+        border-radius: 4px;
+    }
     .no-gutters {
         margin-right: 0;
         margin-left: 0;
@@ -93,10 +119,14 @@
     }
 
     .acoes-header {
-        margin-top: 8px;
+        /*margin-top: 8px;*/
+        border-radius: 4px;
     }
 
     .acoes-header .encerrar {
+
+        border-radius: 4px;
+
         padding: 8px;
         border-top: 1px solid #cac5c5;
         border-bottom: 1px solid #cac5c5;
@@ -138,13 +168,20 @@
     }
 
     .dadosInfo {
-        text-align: center;
         margin-top: 5px;
         margin-bottom: 5px;
     }
 
     .dadosInfo .conta button {
         cursor: pointer;
+    }
+
+
+
+    @media (min-width: 435px) {
+        .menu-left-header {
+            width: 390px;
+        }
     }
 
 </style>

@@ -153,8 +153,7 @@
 
             this.loading = true;
             console.log('buscar dados habilitacao: ' + this.dadosUsuario.cpf);
-            let habilitacaoService = new HabilitacaoService(this.$http);
-            habilitacaoService.findHabilitacao().then(
+            new HabilitacaoService(this.$http).findHabilitacao().then(
                 response => {
                     console.log(response);
                     this.dadosHabilitacao = response.body;
