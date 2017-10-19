@@ -38,6 +38,14 @@
 
         {{ veiculoSelecionado }}
 
+
+        <h3>Infracoes</h3>
+        {{ infracoesNA }}
+
+
+
+
+
     </section>
 
 
@@ -53,7 +61,8 @@
         data() {
 
             return {
-                veiculoSelecionado: null
+                veiculoSelecionado: null,
+                infracoesNA: []
             }
         },
         computed: {
@@ -66,6 +75,7 @@
                 new VeiculoService(this.$http).findAutosNAElegiveisParaNP(placa).then(
                     response => {
                         console.log(response);
+                        this.infracoesNA = response.body;
                     },
                     error => {
                         console.log(error);
