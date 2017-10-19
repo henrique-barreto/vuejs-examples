@@ -1,6 +1,5 @@
 <template>
 
-
     <section class="section">
 
         <ol class="breadcrumb">
@@ -10,39 +9,35 @@
             <li class="breadcrumb-item active">Notificação de Autuação para Penalidade</li>
         </ol>
 
-
         <titulo-pagina :title="'Transformar Notificação de Autuação em Penalidade'" :tipo="'primario'"></titulo-pagina>
         <p>Transforme notificações de autuação em penalidade</p>
 
-
-        <table>
-            <tr v-for="vinculo in dadosUsuario.vinculos">
-                <td> {{ vinculo.placa }}</td>
-                <td> {{ vinculo.renavam }}</td>
-                <td>
-                    <button class="btn btn-success btn-sm"
-                            type="button"
-                            v-on:click="desvincular(vinculo.id, $event)">
-                        Desvincular
-                    </button>
-                </td>
-            </tr>
-        </table>
-
+        <label>Selecione o veículo</label>
         <select class="form-control"
-                name="purchase_order_number"
+                name="veiculoSelecionado"
                 id="purchase_order_number"
-                @change="changed"
+                @change="mudouSelecao"
                 v-model="veiculoSelecionado">
-            <!--<option value="">Select PO number</option>-->
-            <option v-for="(vinculos, index) in dadosUsuario.vinculos"
-                    :value="vinculos.placa">
-                {{ vinculos.placa }} {{ index }}
+            <option v-for="vinculo in dadosUsuario.vinculos"
+                    v-bind:value="vinculo">
+                {{ vinculo.placa + ' - ' + vinculo.marcaModelo}}
             </option>
-
         </select>
 
+        <label>Veículo selecionado</label>
+        <div v-if="veiculoSelecionado" class="veic-selecionado">
+
+            <div class="veiculo-selecionado">
+                <div class="item1"><strong>Placa </strong> {{ veiculoSelecionado.placa }}</div>
+                <div class="item2"><strong>Renavam </strong> {{ veiculoSelecionado.renavam }}</div>
+                <div class="item3"><strong>Marca/Modelo </strong> {{ veiculoSelecionado.marcaModelo }}</div>
+            </div>
+            <div class="clearfix"></div>
+
+        </div>
+
         {{ veiculoSelecionado }}
+
     </section>
 
 
@@ -51,33 +46,41 @@
 
     import TituloPagina from '../../../shared/types/TituloPagina.vue';
     import {usuarioStore} from '../../../store/usuarioStore.js';
+    import {VeiculoService} from "../../../services/veiculoService";
 
     export default {
 
         data() {
 
             return {
-                indexSelecionado: 0,
-                veiculoSelecionado: {}
+                veiculoSelecionado: null
             }
         },
         computed: {
             dadosUsuario: function () {
                 return usuarioStore.getters.dadosUsuarioLogado;
-            },
+            }
         },
         methods: {
-
-            changed: function () {
-                console.log('changed');
+            consultarInfracoes: function (placa) {
+                new VeiculoService(this.$http).findAutosNAElegiveisParaNP(placa).then(
+                    response => {
+                        console.log(response);
+                    },
+                    error => {
+                        console.log(error);
+                    }
+                );
+            },
+            mudouSelecao: function (event) {
+                this.consultarInfracoes(this.veiculoSelecionado.placa);
             }
         },
         components: {
             'titulo-pagina': TituloPagina
         },
         created: function () {
-
-
+            this.veiculoSelecionado = this.dadosUsuario.vinculos[0];
         }
 
 
@@ -87,6 +90,33 @@
 
 
 <style scoped>
+
+
+    .veiculo-selecionado {
+
+    }
+
+    @media (min-width: 992px) {
+
+        .veiculo-selecionado strong {
+            display: block;
+        }
+
+        .veiculo-selecionado .item1 {
+            float: left;
+            width: 10%;
+        }
+
+        .veiculo-selecionado .item2 {
+            float: left;
+            width: 20%;
+        }
+
+        .veiculo-selecionado .item3 {
+            float: left;
+            width: 70%;
+        }
+    }
 
 
 </style>

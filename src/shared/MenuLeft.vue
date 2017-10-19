@@ -5,13 +5,11 @@
 
         <div id="slide-out" v-bind:class="{'active': showMenu}" class="side-nav fixed">
 
-            <!--<left-menu-header :dadosUsuario="dadosUsuario"></left-menu-header>-->
-
             <div class="nav-links">
 
                 <div class="nav-group">
                     <div class="nav-item-header">
-                        <span>Veiculos</span>
+                        <span>Veículos</span>
                     </div>
                     <!--./nav-item-header-->
                     <div class="nav-list">
@@ -84,9 +82,6 @@
     export default {
 
         props: ['dadosUsuario'],
-        components: {
-            'left-menu-header': LeftMenuHeader,
-        },
         data() {
             return {
                 showMenu: false
@@ -111,7 +106,7 @@
     }
 </script>
 
-<style>
+<style scoped>
 
     .side-nav {
         transition: all 0.2s;
@@ -212,6 +207,12 @@
 
     #slide-out li {
         list-style: none;
+    }
+
+    .nav-item-header {
+        /*background-color: red;*/
+        padding: 6px;
+        font-weight: bold;
     }
 
 

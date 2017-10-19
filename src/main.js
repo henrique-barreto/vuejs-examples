@@ -7,6 +7,7 @@ import VueResource from 'vue-resource';
 import VeeValidate from 'vee-validate';
 import VueMask from 'v-mask'
 import {authStore} from './store/authStore.js';
+import {usuarioStore} from './store/usuarioStore.js';
 import CxltToastr from 'cxlt-vue2-toastr'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -35,20 +36,33 @@ const router = new VueRouter({
     mode: 'history'
 });
 
+function setTitle(to) {
+    document.title = to.meta.title ? 'Detran-DF - Portal - ' + to.meta.title : 'Detran-DF - Portal';
+}
+
+function temVeiculosVinculados() {
+    let usuarioLogado = usuarioStore.getters.dadosUsuarioLogado;
+    console.log('usuario logado');
+    console.log(usuarioLogado);
+    return usuarioLogado && usuarioLogado.vinculos && usuarioLogado.vinculos.length > 0;
+}
+
 router.beforeEach((to, from, next) => {
-    console.log('beforeEach', to.fullPath);
+
+    setTitle(to);
     progressBar.start();
-    console.log(authStore.getters.authorizationToken);
     if (to.matched.some(record => record.meta.requiresAuth)) {
-        console.log('secured url');
         let tokenObj = authStore.getters.authorizationToken;
         if (!tokenObj) {
-            console.log('nao autorizado');
-            next({
-                path: '/login',
-            });
+            next({path: '/login'});
+            progressBar.done();
         } else {
-            next();
+            //if (to.fullPath !== '/area-segura/veiculos' && !temVeiculosVinculados()) {
+            //    next({path: '/area-segura/veiculos'});
+            //    progressBar.done();
+            //} else {
+                next();
+            //}
         }
     } else {
         next();
@@ -57,18 +71,11 @@ router.beforeEach((to, from, next) => {
 });
 
 
-Vue.http.interceptors.push(function(request, next) {
+Vue.http.interceptors.push(function (request, next) {
 
     let token = authStore.getters.authorizationToken;
-    console.log('interceptor: ');
-
-    if (token) {
-        console.log(token);
-        console.log('setting token');
+    if (token)
         request.headers.set('Authorization', token);
-    } else{
-        console.log('sem token');
-    }
 
     next();
 });

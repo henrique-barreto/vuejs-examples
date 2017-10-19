@@ -7,7 +7,11 @@ export class VeiculoService {
     findByPlaca(placa) {
         placa = placa.split('-').join('');
         placa = placa.toUpperCase();
-        return this.http.get('http://localhost:8080/portal/area-segura/veiculo?placa=' + placa);
+        return this.http.get('area-segura/veiculo?placa=' + placa);
     }
 
+    findAutosNAElegiveisParaNP(placa) {
+        let uf = 'DF';
+        return this.http.get('area-segura/infracoes/na?placa=' + placa + '&uf=' + uf);
+    }
 }

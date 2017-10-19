@@ -120,23 +120,32 @@
         methods: {
             buscarVeiculo: function () {
 
-                if (this.loading)
-                    return;
+                this.$validator.validateAll().then((result) => {
+                    if (!result) {
+                        console.log('fomulario invalido');
+                        this.$validator.flag('placaBusca', {touched: true});
+                        return;
+                    }
 
-                this.loading = !this.loading;
-                this.resultadoVeiculo = null;
-                new VeiculoService(this.$http).findByPlaca(this.placaBusca).then(
-                    res => {
-                        this.resultadoVeiculo = res.body;
-                        this.loading = !this.loading;
-                    },
-                    error => {
-                        this.loading = !this.loading;
-                        this.$toast.error({
-                            title:'Erro ao consultar véiculo',
-                            message: error.body.message
+                    if (this.loading)
+                        return;
+
+                    this.loading = !this.loading;
+                    this.resultadoVeiculo = null;
+                    new VeiculoService(this.$http).findByPlaca(this.placaBusca).then(
+                        res => {
+                            this.resultadoVeiculo = res.body;
+                            this.loading = !this.loading;
+                        },
+                        error => {
+                            this.loading = !this.loading;
+                            this.$toast.error({
+                                title: 'Erro ao consultar veículo',
+                                message: error.body.message
+                            });
                         });
-                    });
+
+                });
             },
             vincular: function () {
 
@@ -149,7 +158,7 @@
                         this.loadingVinculo = false;
                         this.resultadoVeiculo = null;
                         this.$toast.success({
-                            title:'Veículo vinculado!',
+                            title: 'Veículo vinculado!',
                             message: 'Seu veículo foi vínculo com sucesso!'
                         });
                     },
@@ -157,11 +166,12 @@
                         this.loadingVinculo = false;
                         this.resultadoVeiculo = null;
                         this.$toast.error({
-                            title:'Erro ao vincular veículo!',
+                            title: 'Erro ao vincular veículo!',
                             message: error.body.message
                         });
                     }
                 );
+
             }
         }
     }
@@ -170,18 +180,6 @@
 
 
 <style scoped>
-
-
-    .breadcrumb {
-        padding-left: 0px;
-    }
-    .breadcrumb-item+.breadcrumb-item::before {
-        display: inline-block;
-        padding-right: .5rem;
-        padding-left: .5rem;
-        color: #FFC107;
-        content: " » ";
-    }
 
     /*validacao form*/
     .form-group.form-group-invalid label {
@@ -250,25 +248,6 @@
 
     label {
         font-weight: bold;
-    }
-
-    .breadcrumb {
-        background-color: #f1f1f1;
-        /*padding-left: 0px;*/
-    }
-
-    .title {
-        color: #363636;
-        font-size: 2rem;
-        font-weight: 600;
-        line-height: 1.125;
-    }
-
-    .subtitle {
-        color: #4a4a4a;
-        font-size: 1.25rem;
-        font-weight: 400;
-        line-height: 1.25;
     }
 
     @media (min-width: 992px) {

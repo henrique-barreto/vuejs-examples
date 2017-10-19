@@ -3,7 +3,7 @@
     <header>
         <nav class="my-navbar fixed-top">
 
-            <div class="my-navbar-item toggle-wrapper">
+            <div v-if="displayToggle" class="my-navbar-item toggle-wrapper">
                 <span v-bind:class="{'rotate-in': showMenu}" @click="toggleMenu()" class="my-navbar-toggle-icon">
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </span>
@@ -48,7 +48,7 @@
     import LeftMenuHeader from './LeftMenuHeader.vue';
 
     export default {
-        props: ['dadosUsuario'],
+        props: ['dadosUsuario', 'displayToggle'],
         data() {
             return {
                 showMenu: false,
@@ -77,7 +77,6 @@
                 this.$router.push({path: '/area-segura/home'});
             },
             documentClick(e) {
-                console.log('chamou');
                 let el = this.$refs.dropdownUserMenu;
                 let target = e.target;
                 let el2 = this.$refs.menuUser;

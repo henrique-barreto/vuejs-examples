@@ -1,9 +1,8 @@
 <template>
     <div class="wrapper" v-if="!loading">
-        <menu-left :dadosUsuario="dadosUsuario"></menu-left>
-        <secured-header :dadosUsuario="dadosUsuario" :displayToggle="true"></secured-header>
-        <main class="padding-side-nav">
-            <div class="container-conteudo">
+        <secured-header :dadosUsuario="dadosUsuario" :displayToggle="false"></secured-header>
+        <main>
+            <div class="container">
                 <router-view></router-view>
             </div>
         </main>
@@ -17,13 +16,11 @@
 <script>
 
     import SecuredHeader from './SecuredHeader.vue';
-    import MenuLeft from './MenuLeft.vue';
     import PublicFooter from './PublicFooter.vue';
     import {usuarioStore} from '../store/usuarioStore.js';
     import {UsuarioService} from "../services/usuarioService";
 
     export default {
-
         data() {
             return {
                 loading: true
@@ -36,11 +33,10 @@
         },
         components: {
             'secured-header': SecuredHeader,
-            'menu-left': MenuLeft,
             'public-footer': PublicFooter
         },
-        created: function () {
-            console.log('inicializando area segura');
+        mounted: function () {
+            console.log('inicializando area simples segura');
             new UsuarioService(this.$http).getDadosUsuarioLogado().then(
                 response => {
                     this.loading = false;
@@ -55,52 +51,24 @@
                         this.$toast.error({title: 'Erro ao conectar com servidor', message: 'Tente novamente mais tarde'});
                 }
             );
-
         }
     }
 
 </script>
 
-<style>
+<style scoped>
 
-    body {
+    .wrapper {
         background-color: #fafafa;
     }
 
-    .container-conteudo {
+    .container {
         margin-right: auto;
         margin-left: auto;
         padding-left: 6px;
         padding-right: 6px;
         padding-top: 56px;
         min-height: calc(100vh - 83px); /*footer-size*/
-    }
-
-    @media (min-width: 768px) {
-        .container-conteudo {
-            width: 732px;
-        }
-    }
-
-    @media (min-width: 992px) {
-        .container-conteudo {
-            min-width: 700px;
-            max-width: 1150px;
-            width: 80%;
-        }
-    }
-
-    @media (min-width: 1200px) {
-        .container-conteudo {
-            width: 80%;
-            max-width: 1150px;
-        }
-    }
-
-    @media (min-width: 993px) {
-        main.padding-side-nav, footer.padding-side-nav {
-            padding-left: 280px;
-        }
     }
 
 </style>

@@ -10,16 +10,16 @@
                     <thead>
                     <tr>
                         <th>Placa</th>
-                        <th>Renavam</th>
-                        <th>Ação</th>
+                        <th style="width: 100%;">Renavam</th>
+                        <th class="text-center" style="min-width: 135px;">Ação</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr v-for="vinculo in dadosUsuario.vinculos">
                         <td> {{ vinculo.placa }}</td>
                         <td> {{ vinculo.renavam }}</td>
-                        <td>
-                            <button class="btn btn-success btn-sm"
+                        <td class="text-center" style="padding-left: 0px; padding-right: 0px;">
+                            <button class="btn btn-success btn-outline-success"
                                     type="button"
                                     v-on:click="desvincular(vinculo.id, $event)">
                                 Desvincular
@@ -41,6 +41,7 @@
 
     import {usuarioStore} from '../../../../store/usuarioStore.js';
     import TituloPagina from '../../../../shared/types/TituloPagina.vue';
+    import {VinculoService} from "../../../../services/vinculoService";
 
     export default {
 
@@ -55,20 +56,15 @@
         methods: {
 
             desvincular: function (id, event) {
-
-//                let element = document.getElementById(id);
-//                target.innerHTML = 'Desvinculando <i class="fa fa-spinner fa-spin fa-1x fa-fw"></i>';
-//                target.disabled = true;
-                usuarioStore.dispatch('desvincularVeiculo', id).then(
-                    res => {
+                new VinculoService(this.$http).desvincularVeiculo(id).then(
+                    response => {
+                        usuarioStore.commit('setVinculosVeiculo', response.body);
                         this.$toast.success({
                             title: 'Veículo desvinculado!',
                             message: 'Veículo desvinculado com sucesso!'
                         });
                     },
                     error => {
-                        target.innerHTML = 'Desvincular';
-                        target.disabled = false;
                         this.$toast.error({
                             title: 'Erro ao desvincular veículo!',
                             message: error.body.message

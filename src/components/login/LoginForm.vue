@@ -51,7 +51,8 @@
 
 <script>
 
-    import  { authStore } from '../../store/authStore.js';
+    import {authStore} from '../../store/authStore.js';
+    import {UsuarioService} from "../../services/usuarioService";
 
     export default {
 
@@ -80,20 +81,27 @@
                     this.usuarioSenhaInvalido = false;
                     this.erroServidor = false;
 
-                    authStore.dispatch('login', {username: this.username.split('.').join("").split('-').join(""), password: this.password}).then(
-                        res => {
-                            this.$router.push({path: '/area-segura/home'});
+                    let loginData = {
+                        username: this.username.split('.').join("").split('-').join(""),
+                        password: this.password
+                    };
+
+                    new UsuarioService(this.$http).login(loginData).then(
+                        response => {
                             this.loading = !this.loading;
+                            let authToken = response.headers.get('authorization');
+                            authStore.commit('setAuthorizationToken', authToken);
+                            this.$router.push({path: '/area-segura/home'});
                         },
                         error => {
                             console.log(error);
-
                             if (error.status === 401 || error.status === 403)
                                 this.usuarioSenhaInvalido = true;
                             else
                                 this.erroServidor = true;
                             this.loading = !this.loading;
-                        });
+                        }
+                    );
 
                 });
             }
