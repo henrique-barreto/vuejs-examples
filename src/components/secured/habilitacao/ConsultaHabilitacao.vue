@@ -110,7 +110,7 @@
 
     </section>
     <section class="section" v-else>
-        <div class="signal"></div>
+        <spinner :tipo="'md'"></spinner>
     </section>
 
 </template>
@@ -120,6 +120,7 @@
     import {usuarioStore} from '../../../store/usuarioStore.js';
     import {HabilitacaoService} from '../../../services/habilitacaoService';
     import TituloPagina from '../../../shared/types/TituloPagina.vue';
+    import Spinner from '../../../shared/types/Spinner.vue';
 
     export default {
 
@@ -168,7 +169,8 @@
                 });
         },
         components: {
-            'titulo-pagina': TituloPagina
+            'titulo-pagina': TituloPagina,
+            'spinner': Spinner
         },
     }
 </script>

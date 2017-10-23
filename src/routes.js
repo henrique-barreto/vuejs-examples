@@ -6,14 +6,17 @@ import SecuredArea from './shared/SecuredArea.vue';
 import SimpleSecuredArea from './shared/SimpleSecuredArea.vue';
 import PublicArea from './shared/PublicArea.vue';
 import Home from './components/secured/home/Home.vue';
-import NotFound from './shared/NotFound.vue';
+import NotFound from './shared/erros/NotFound.vue';
 import SegundaViaCRLV from './components/secured/veiculo/SegungaViaCRLV.vue';
 import SegundaViaCRV from './components/secured/veiculo/SegungaViaCRV.vue';
-import TransformarNaNp from './components/secured/veiculo/TransformarNaNp.vue';
+import TransformarNaNp from './components/secured/veiculo/nanp/TransformarNaNp.vue';
+import ConfirmarNaNp from './components/secured/veiculo/nanp/ConfirmarNaNp.vue';
 import Vinculos from './components/secured/veiculo/vinculos/Vinculos.vue';
 import Veiculos from './components/secured/veiculo/vinculos/Veiculos.vue';
 import ConsultaHabilitacao from './components/secured/habilitacao/ConsultaHabilitacao.vue';
-import EmConstrucao from './shared/EmConstrucao.vue';
+import EmConstrucao from './shared/erros/EmConstrucao.vue';
+import ErroPage from './shared/erros/ErroPage.vue';
+import Teste from './components/Teste.vue';
 
 
 export const routes = [
@@ -25,7 +28,10 @@ export const routes = [
             {path: '/register', component: Register, meta: {title: 'Registre-se'}},
             {path: '/recuperar-senha', component: RecuperarSenha, meta: {title: 'Recuperar senha'}},
             {path: '/resetar-senha', component: ResetarSenha, meta: {title: 'Escolher senha'}},
-            {path: '/404', component: NotFound, meta: {title: 'Página não encontrada'}}
+            {path: '/404', component: NotFound, meta: {title: 'Página não encontrada'}},
+            {path: '/500', component: ErroPage, meta: {title: 'Erro!'}},
+            {path: '/em-construcao', component: EmConstrucao, meta: {title: 'Em construção'}},
+            {path: '/teste', component: Teste, meta: {title: 'TESTE'}}
         ]
     },
     {
@@ -37,7 +43,8 @@ export const routes = [
             {path: '/area-segura/segunda-via-crv', component: SegundaViaCRV, meta: {requiresAuth: true , title: '2° via CRV'}},
             {path: '/area-segura/habilitacao', component: ConsultaHabilitacao, meta: {requiresAuth: true, title: 'Habilitação'}},
             {path: '/area-segura/em-construcao', component: EmConstrucao, meta: {requiresAuth: true, title: 'Em construção'}},
-            {path: '/area-segura/transformar-na-np', component: TransformarNaNp, meta: {requiresAuth: true, title: 'Transforma Notificação em Penalidade'}}
+            {path: '/area-segura/transformar-na-np', component: TransformarNaNp, meta: {requiresAuth: true, title: 'Transforma Notificação em Penalidade'}},
+            {path: '/area-segura/transformar-na-np/confirmar', component: ConfirmarNaNp, meta: {requiresAuth: true, title: 'Confirmar Penalidades'}}
         ]
     },
     {

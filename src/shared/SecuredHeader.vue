@@ -143,6 +143,8 @@
         border-right: 1px solid #eee;
         display: none;
         cursor: pointer;
+
+        color: #a1a1a1;
     }
 
     .my-navbar .my-navbar-item.vinculos-icon:hover {
@@ -186,6 +188,7 @@
         font-size: 2em;
         position: relative;
         top: 1.5px;
+        color: #a1a1a1;
     }
 
     .my-navbar-toggle-icon {
@@ -249,7 +252,7 @@
     }
 
     .user-toggle-icon img {
-        border: 2px solid #333;
+        border: 2px solid #a1a1a1;
         max-height: 34px;
         width: 34px;
         max-width: 34px;

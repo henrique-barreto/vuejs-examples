@@ -14,4 +14,9 @@ export class VeiculoService {
         let uf = 'DF';
         return this.http.get('area-segura/infracoes/na?placa=' + placa + '&uf=' + uf);
     }
+
+    findInfracaoDetalhada(numeroAuto, sequencial, codigoOrgaoAutuador) {
+        let url = 'area-segura/infracoes/detalhada?numeroAuto=' + numeroAuto + '&sequencial=' + sequencial + '&codOrgaoAutuador=' + codigoOrgaoAutuador;
+        return this.http.get(url);
+    }
 }

@@ -49,7 +49,7 @@
                     <div class="nav-list">
                         <ul class="menu-list">
                             <li>
-                                <router-link @click.native="toggleMenu" to="/area-segura/em-construcao">Mudança de Endereço da CNH/Permissão</router-link>
+                                <router-link @click.native="toggleMenu" to="/em-construcao">Mudança de Endereço da CNH/Permissão</router-link>
                             </li>
                             <li>
                                 <router-link @click.native="toggleMenu" to="/area-segura/habilitacao">
