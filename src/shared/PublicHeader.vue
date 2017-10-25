@@ -4,7 +4,7 @@
         <nav class="my-navbar fixed-top">
 
             <div class="my-navbar-item brand-middle">
-                <div @click="goToLogin" class="brand-middle-wrapper">
+                <div @click="goToHome" class="brand-middle-wrapper">
                     <img src="./../assets/img/logo-detran.png" alt="logo" style="max-height: 40px;">
                     <span class="brand-titulo">DETRAN-DF</span>
                 </div>
@@ -19,8 +19,8 @@
 
     export default {
         methods: {
-            goToLogin() {
-                this.$router.push({path: '/'});
+            goToHome() {
+                this.$router.push({path: '/area-segura/home'});
             }
         }
     }

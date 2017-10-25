@@ -10,7 +10,9 @@ import NotFound from './shared/erros/NotFound.vue';
 import SegundaViaCRLV from './components/secured/veiculo/SegungaViaCRLV.vue';
 import SegundaViaCRV from './components/secured/veiculo/SegungaViaCRV.vue';
 import TransformarNaNp from './components/secured/veiculo/nanp/TransformarNaNp.vue';
+import TermoResponsabilidade from './components/secured/veiculo/nanp/TermoResponsabilidade.vue';
 import ConfirmarNaNp from './components/secured/veiculo/nanp/ConfirmarNaNp.vue';
+import GerarBoleto from './components/secured/veiculo/nanp/GerarBoleto.vue';
 import Vinculos from './components/secured/veiculo/vinculos/Vinculos.vue';
 import Veiculos from './components/secured/veiculo/vinculos/Veiculos.vue';
 import ConsultaHabilitacao from './components/secured/habilitacao/ConsultaHabilitacao.vue';
@@ -44,7 +46,9 @@ export const routes = [
             {path: '/area-segura/habilitacao', component: ConsultaHabilitacao, meta: {requiresAuth: true, title: 'Habilitação'}},
             {path: '/area-segura/em-construcao', component: EmConstrucao, meta: {requiresAuth: true, title: 'Em construção'}},
             {path: '/area-segura/transformar-na-np', component: TransformarNaNp, meta: {requiresAuth: true, title: 'Transforma Notificação em Penalidade'}},
-            {path: '/area-segura/transformar-na-np/confirmar', component: ConfirmarNaNp, meta: {requiresAuth: true, title: 'Confirmar Penalidades'}}
+            {path: '/area-segura/transformar-na-np/termo', component: TermoResponsabilidade, meta: {requiresAuth: true, title: 'Transforma Notificação em Penalidade'}},
+            {path: '/area-segura/transformar-na-np/confirmar', component: ConfirmarNaNp, meta: {requiresAuth: true, title: 'Confirmar Penalidades'}},
+            {path: '/area-segura/transformar-na-np/gerar-boleto', component: GerarBoleto, meta: {requiresAuth: true, title: 'Gerar Boletos'}}
         ]
     },
     {

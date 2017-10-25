@@ -54,6 +54,7 @@ router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
         let tokenObj = authStore.getters.authorizationToken;
         if (!tokenObj) {
+            console.log('nao tem token');
             next({path: '/login'});
             progressBar.done();
         } else {
@@ -74,8 +75,12 @@ router.beforeEach((to, from, next) => {
 Vue.http.interceptors.push(function (request, next) {
 
     let token = authStore.getters.authorizationToken;
-    if (token)
+    if (token) {
+        console.log('colocando token no header: ' + token);
         request.headers.set('Authorization', token);
+    } else {
+        console.log('nao possui token');
+    }
 
     next();
 });

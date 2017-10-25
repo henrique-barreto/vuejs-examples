@@ -184,8 +184,8 @@
             <!--fim autos-list-->
 
             <div class="btns-form" v-if="infracoesNA.length > 0">
-                <button class="btn btn-outline-secondary" @click="continuar">Marcar todos</button>
-                <button class="btn btn-success" @click="continuar">Continuar</button>
+                <button type="button" class="btn btn-outline-secondary" @click="continuar">Marcar todos</button>
+                <button type="button" class="btn btn-success" @click="continuar">Continuar</button>
             </div>
             <!--fim btns-form-->
 
@@ -264,9 +264,7 @@
                 this.$forceUpdate();
                 new VeiculoService(this.$http).findInfracaoDetalhada(infracao.numeroAuto, infracao.numeroSequencial, infracao.codigoOrgaoAutuador).then(
                     response => {
-                        console.log(response);
                         infracao.detalhada = response.body;
-                        console.log(infracao);
                         infracao.loading = false;
                         this.$forceUpdate();
                     },
@@ -284,8 +282,8 @@
                     return
                 }
 
-                this.nanpStore.addAutos(this.autosMarcados);
-                this.$router.push({path: '/area-segura/transformar-na-np/confirmar'})
+                nanpStore.addAutos(this.veiculoSelecionado, this.autosMarcados);
+                this.$router.push({path: '/area-segura/transformar-na-np/confirmar'});
             }
         },
         components: {

@@ -10,7 +10,7 @@
         <public-footer></public-footer>
     </div>
     <div v-else>
-        <div class="signal"></div>
+        <spinner :tipo="'lg'"></spinner>
     </div>
 </template>
 
@@ -21,6 +21,7 @@
     import PublicFooter from './PublicFooter.vue';
     import {usuarioStore} from '../store/usuarioStore.js';
     import {UsuarioService} from "../services/usuarioService";
+    import Spinner from "../shared/types/Spinner.vue";
 
     export default {
 
@@ -37,7 +38,8 @@
         components: {
             'secured-header': SecuredHeader,
             'menu-left': MenuLeft,
-            'public-footer': PublicFooter
+            'public-footer': PublicFooter,
+            'spinner': Spinner
         },
         created: function () {
             console.log('inicializando area segura');

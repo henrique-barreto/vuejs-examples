@@ -19,4 +19,9 @@ export class VeiculoService {
         let url = 'area-segura/infracoes/detalhada?numeroAuto=' + numeroAuto + '&sequencial=' + sequencial + '&codOrgaoAutuador=' + codigoOrgaoAutuador;
         return this.http.get(url);
     }
+
+    transformarNaNp(data) {
+        let url = 'area-segura/infracoes/transformar/nanp';
+        return this.http.post(url, data);
+    }
 }

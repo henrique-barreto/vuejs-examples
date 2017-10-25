@@ -9,33 +9,13 @@
                 </li>
                 <li class="breadcrumb-item active">Notificação de Autuação para Penalidade</li>
             </ol>
-            <titulo-pagina :title="'Confirmar Notificações Selecionadas'"
-                           :tipo="'primario'"></titulo-pagina>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium cum, dolor dolorum eius illum inventore iusto mollitia pariatur provident, recusandae soluta totam voluptas voluptatibus! Consequatur odio quae qui quia voluptatem.</p>
+            <titulo-pagina :title="'Notificações de Penalidade'" :tipo="'primario'"></titulo-pagina>
+            <p>Infrações em penalidade</p>
         </div>
         <!--fim page-info-->
 
-
-        <div class="confirmacao">
-
-            <strong>Veículo</strong>
-            <div class="veiculo-info">
-                <div class="row">
-                    <div class="col-6 col-md-3">
-                        <strong>Placa </strong> {{ veiculo.placa }}
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <strong>Renavam </strong> {{ veiculo.renavam }}
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <strong>Marca/modelo </strong> {{ veiculo.marcaModelo }}
-                    </div>
-                </div>
-            </div>
-
+        <div class="notificacoes-penalidade" v-if="loading === true">
             <div class="autos-list">
-
                 <table class="table table-striped">
                     <thead>
                     <tr>
@@ -50,17 +30,15 @@
                     </tr>
                     </tbody>
                 </table>
+            </div>
+            <div class="notificacoes-erros">
 
             </div>
-
-            <div class="btns-form">
-                <button class="btn btn-outline-secondary" @click="continuar">Voltar</button>
-                <button class="btn btn-success" @click="continuar">Continuar</button>
-            </div>
-
+            <!--notificacoes-erros-->
         </div>
-
-
+        <div v-else>
+            <spinner :tipo="'md'"></spinner>
+        </div>
     </section>
     <!--fim section-->
 
@@ -69,13 +47,20 @@
 <script>
 
     import TituloPagina from '../../../../shared/types/TituloPagina.vue';
+    import {usuarioStore} from '../../../../store/usuarioStore.js';
+    import {VeiculoService} from "../../../../services/veiculoService";
     import Spinner from "../../../../shared/types/Spinner.vue";
     import {nanpStore} from "./nanpStore.js";
-    import {VeiculoService} from "../../../../services/veiculoService";
 
     export default {
         components: {
-            'titulo-pagina': TituloPagina
+            'titulo-pagina': TituloPagina,
+            'spinner': Spinner,
+        },
+        data() {
+            return {
+                loading: true
+            }
         },
         computed: {
             autosSelecionados: function () {
@@ -87,17 +72,44 @@
         },
         methods: {
 
-            continuar: function () {
-                console.log('continuar');
-                this.$router.push({path: '/area-segura/transformar-na-np/termo'});
+            confirmar: function () {
+
+            },
+
+            buildRequest: function () {
+                let request = {placa: this.veiculo.placa, infracoes: []};
+                for (let obj of this.autosSelecionados) {
+                    request.infracoes.push({
+                        numeroAuto: obj.numeroAuto,
+                        numeroSequencial: obj.numeroSequencial,
+                        codigoOrgaoAutuador: obj.codigoOrgaoAutuador
+                    });
+                }
+                return request;
             }
         },
-        mounted: function () {
+        created: function () {
             if (!this.autosSelecionados ||
                 this.autosSelecionados.length === 0 ||
                 !this.veiculo) {
                 this.$router.push({path: '/area-segura/transformar-na-np'});
             }
+            this.loading = true;
+            let request = this.buildRequest();
+            new VeiculoService(this.$http).transformarNaNp(request).then(
+                response => {
+                    this.loading = false;
+                    console.log(response);
+                    nanpStore.setBorderos(response.body);
+                    this.$forceUpdate();
+                },
+                error => {
+                    console.log(error);
+                    this.loading = false;
+                    alert('Erro ao gerar penalidades');
+                    this.$forceUpdate();
+                }
+            );
         }
     }
 
@@ -105,10 +117,6 @@
 
 
 <style scoped>
-
-    .veiculo-info strong {
-        display: block;
-    }
 
     .autos-list {
         margin-top: 20px;
@@ -118,8 +126,5 @@
         padding-left: 4px;
     }
 
-    .btns-form {
-        margin-top: 20px;
-        text-align: center;
-    }
+
 </style>

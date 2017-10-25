@@ -9,7 +9,7 @@
                 </li>
                 <li class="breadcrumb-item active">Notificação de Autuação para Penalidade</li>
             </ol>
-            <titulo-pagina :title="'Confirmar Notificações Selecionadas'"
+            <titulo-pagina :title="'Termo Responsabilidade'"
                            :tipo="'primario'"></titulo-pagina>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium cum, dolor dolorum eius illum inventore iusto mollitia pariatur provident, recusandae soluta totam voluptas voluptatibus! Consequatur odio quae qui quia voluptatem.</p>
@@ -19,43 +19,15 @@
 
         <div class="confirmacao">
 
-            <strong>Veículo</strong>
-            <div class="veiculo-info">
-                <div class="row">
-                    <div class="col-6 col-md-3">
-                        <strong>Placa </strong> {{ veiculo.placa }}
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <strong>Renavam </strong> {{ veiculo.renavam }}
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <strong>Marca/modelo </strong> {{ veiculo.marcaModelo }}
-                    </div>
-                </div>
-            </div>
-
-            <div class="autos-list">
-
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th scope="col">Nº Auto de Infração</th>
-                        <th scope="col">Infração</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for="auto in autosSelecionados">
-                        <td>{{ auto.numeroAuto }}</td>
-                        <td>{{ auto.descInfracao }}</td>
-                    </tr>
-                    </tbody>
-                </table>
-
-            </div>
+            <strong>Termo de responsabilidade</strong>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam possimus quod ullam voluptatem voluptatum! Adipisci eius explicabo fugiat inventore, natus nesciunt nihil nulla odit, quod recusandae repudiandae sunt ut, voluptate!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam possimus quod ullam voluptatem voluptatum! Adipisci eius explicabo fugiat inventore, natus nesciunt nihil nulla odit, quod recusandae repudiandae sunt ut, voluptate!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam possimus quod ullam voluptatem voluptatum! Adipisci eius explicabo fugiat inventore, natus nesciunt nihil nulla odit, quod recusandae repudiandae sunt ut, voluptate!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam possimus quod ullam voluptatem voluptatum! Adipisci eius explicabo fugiat inventore, natus nesciunt nihil nulla odit, quod recusandae repudiandae sunt ut, voluptate!</p>
 
             <div class="btns-form">
-                <button class="btn btn-outline-secondary" @click="continuar">Voltar</button>
-                <button class="btn btn-success" @click="continuar">Continuar</button>
+                <button class="btn btn-outline-secondary" @click="confirmar">Voltar</button>
+                <button class="btn btn-success" @click="confirmar">Confirmar</button>
             </div>
 
         </div>
@@ -64,8 +36,8 @@
     </section>
     <!--fim section-->
 
-
 </template>
+
 <script>
 
     import TituloPagina from '../../../../shared/types/TituloPagina.vue';
@@ -86,10 +58,9 @@
             }
         },
         methods: {
-
-            continuar: function () {
-                console.log('continuar');
-                this.$router.push({path: '/area-segura/transformar-na-np/termo'});
+            confirmar: function () {
+                console.log('confirmar');
+                this.$router.push({path: '/area-segura/transformar-na-np/gerar-boleto'});
             }
         },
         mounted: function () {
@@ -100,26 +71,14 @@
             }
         }
     }
-
 </script>
 
 
 <style scoped>
 
-    .veiculo-info strong {
-        display: block;
-    }
-
-    .autos-list {
-        margin-top: 20px;
-    }
-
-    .autos-list .table th, .autos-list .table td {
-        padding-left: 4px;
-    }
-
     .btns-form {
         margin-top: 20px;
         text-align: center;
     }
+
 </style>

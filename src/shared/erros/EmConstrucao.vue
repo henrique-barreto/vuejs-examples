@@ -9,7 +9,7 @@
                         <h2>Página em construção!</h2>
 
                         <p>
-                            Esta funcionalidade é em desenvolvimento!
+                            Esta funcionalidade está em desenvolvimento!
                         </p>
 
                         <p>
