@@ -9,6 +9,7 @@ import VueMask from 'v-mask'
 import {authStore} from './store/authStore.js';
 import {usuarioStore} from './store/usuarioStore.js';
 import CxltToastr from 'cxlt-vue2-toastr'
+import VueBarcode from '@xkeshi/vue-barcode';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/spinner.css';
@@ -17,6 +18,8 @@ import './assets/css/style.css';
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
+console.log(VueBarcode);
+Vue.component('barcode', VueBarcode);
 
 var toastrConfigs = {
     position: 'top right',

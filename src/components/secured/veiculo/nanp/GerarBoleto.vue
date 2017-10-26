@@ -14,27 +14,72 @@
         </div>
         <!--fim page-info-->
 
-        <div class="notificacoes-penalidade" v-if="loading === true">
-            <div class="autos-list">
+        <div class="conteudo-bordero" v-if="!loading">
+            <div class="lista-borderos">
+
+                <div class="borderos" v-if="borderos && borderos.length > 0">
+                    <table class="table table-striped table-responsive">
+                        <thead>
+                        <tr>
+                            <th class="text-center" colspan="2">Nº Auto de Infração</th>
+                            <th scope="col">Data Cometimento</th>
+                            <th scope="col">Descrição</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="bordero in borderos">
+                            <td class="text-center">
+                                <label class="form-check-label">
+                                    <input type="checkbox"
+                                           class="form-check-input"
+                                           :value="bordero"
+                                           v-model="borderosSelecionados"
+                                           :checked="true">
+                                </label>
+                            </td>
+                            <td>{{ bordero.numeroAuto }}</td>
+                            <td>{{ bordero.dataCometimento }}</td>
+                            <td>{{ bordero.infracaoDescricao }}</td>
+                            <!--<td>{{ bordero }}</td>-->
+                        </tr>
+                        </tbody>
+                    </table>
+                    {{ borderosSelecionados }}
+                    <div class="btns-boleto">
+                        <button class="btn btn-success" @click="gerarBoletos">Gerar Boletos</button>
+                    </div>
+
+                </div>
+                <!--borderos-->
+
+            </div>
+            <!-- lista-borderos -->
+
+            <div class="lista-erros" v-if="erros && erros.length > 0">
+
+                <div class="alert alert-danger">
+                    <strong>Erros</strong>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adiimi culpa ipsam, iure magni, nemo quaerat quasi quisquam reprehenderit, tempore vero!</p>
+                </div>
+
                 <table class="table table-striped">
                     <thead>
                     <tr>
                         <th scope="col">Nº Auto de Infração</th>
-                        <th scope="col">Infração</th>
+                        <th scope="col">Erro</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="auto in autosSelecionados">
-                        <td>{{ auto.numeroAuto }}</td>
-                        <td>{{ auto.descInfracao }}</td>
+                    <tr v-for="erro in erros">
+                        <td>{{ erro.numeroAuto }}</td>
+                        <td>{{ erro.observacao }}</td>
                     </tr>
                     </tbody>
                 </table>
-            </div>
-            <div class="notificacoes-erros">
 
             </div>
-            <!--notificacoes-erros-->
+            <!--lista-erros-->
         </div>
         <div v-else>
             <spinner :tipo="'md'"></spinner>
@@ -59,18 +104,31 @@
         },
         data() {
             return {
-                loading: true
+                loading: true,
+                borderosSelecionados: []
             }
         },
         computed: {
             autosSelecionados: function () {
-                return nanpStore.getAutos();
+                return nanpStore.getters.autosSelecionados;
             },
             veiculo: function () {
-                return nanpStore.getVeiculo();
+                return nanpStore.getters.veiculo;
+            },
+            borderos: function () {
+                return nanpStore.getters.borderos;
+            },
+            erros: function () {
+                return nanpStore.getters.autosErros;
             }
         },
         methods: {
+
+
+            gerarBoletos: function() {
+                nanpStore.commit('setBorderosSelecionados', this.borderosSelecionados);
+                this.$router.push({path: '/area-segura/transformar-na-np/boleto'});
+            },
 
             confirmar: function () {
 
@@ -78,13 +136,13 @@
 
             buildRequest: function () {
                 let request = {placa: this.veiculo.placa, infracoes: []};
-                for (let obj of this.autosSelecionados) {
+                this.autosSelecionados.forEach(function (value) {
                     request.infracoes.push({
-                        numeroAuto: obj.numeroAuto,
-                        numeroSequencial: obj.numeroSequencial,
-                        codigoOrgaoAutuador: obj.codigoOrgaoAutuador
+                        numeroAuto: value.numeroAuto,
+                        numeroSequencial: value.numeroSequencial,
+                        codigoOrgaoAutuador: value.codigoOrgaoAutuador
                     });
-                }
+                });
                 return request;
             }
         },
@@ -100,14 +158,13 @@
                 response => {
                     this.loading = false;
                     console.log(response);
-                    nanpStore.setBorderos(response.body);
-                    this.$forceUpdate();
+                    nanpStore.commit('setBorderos', response.body.borderos);
+                    nanpStore.commit('setAutosErros', response.body.erros);
                 },
                 error => {
                     console.log(error);
                     this.loading = false;
                     alert('Erro ao gerar penalidades');
-                    this.$forceUpdate();
                 }
             );
         }
@@ -118,13 +175,17 @@
 
 <style scoped>
 
-    .autos-list {
-        margin-top: 20px;
-    }
+    /*.autos-list {*/
+        /*margin-top: 20px;*/
+    /*}*/
 
-    .autos-list .table th, .autos-list .table td {
-        padding-left: 4px;
-    }
+    /*.autos-list .table th, .autos-list .table td {*/
+        /*padding-left: 4px;*/
+    /*}*/
 
+    .btns-boleto {
+        text-align: center;
+        margin-top: 10px;
+    }
 
 </style>

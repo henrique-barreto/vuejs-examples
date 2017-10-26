@@ -282,7 +282,10 @@
                     return
                 }
 
-                nanpStore.addAutos(this.veiculoSelecionado, this.autosMarcados);
+//                nanpStore.addAutos(this.veiculoSelecionado, this.autosMarcados);
+
+                nanpStore.commit('setVeiculo', this.veiculoSelecionado);
+                nanpStore.commit('setAutos', this.autosMarcados);
                 this.$router.push({path: '/area-segura/transformar-na-np/confirmar'});
             }
         },

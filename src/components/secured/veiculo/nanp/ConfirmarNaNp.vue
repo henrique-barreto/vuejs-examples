@@ -79,10 +79,10 @@
         },
         computed: {
             autosSelecionados: function () {
-                return nanpStore.getAutos();
+                return nanpStore.getters.autosSelecionados;
             },
             veiculo: function () {
-                return nanpStore.getVeiculo();
+                return nanpStore.getters.veiculo;
             }
         },
         methods: {

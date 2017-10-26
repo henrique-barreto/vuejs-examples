@@ -12,6 +12,12 @@
                             Ocorreu um erro ao processar a sua requisição.
                         </p>
 
+
+                        <div style="width: 300px;">
+                            <img :src="bordero.imagem64CodigoBarras" alt="">
+                        </div>
+
+
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, alias corporis deserunt ducimus expedita facilis illum libero magnam maxime mollitia nulla obcaecati odio officia, provident quasi sed suscipit tempora veniam!
                         </p>
