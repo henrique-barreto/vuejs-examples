@@ -1,6 +1,6 @@
 <template>
 
-    <section class="section" v-if="!loading && dadosHabilitacao.cpf">
+    <section class="section" v-if="!loading">
 
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -11,103 +11,114 @@
 
         <titulo-pagina :title="'Consulta Habilitação'" :tipo="'primario'"></titulo-pagina>
 
-        <div class="habilitacao-info">
-            <form id="needs-validation" novalidate>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label>Renach</label>
-                        <input type="text"
-                               readonly
-                               class="form-control-plaintext"
-                               :value="dadosHabilitacao.renach">
+        <div class="habilitacao-wrapper" v-if="habilitado">
+
+            <div class="habilitacao-info">
+                <form id="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label>Renach</label>
+                            <input type="text"
+                                   readonly
+                                   class="form-control-plaintext"
+                                   :value="dadosHabilitacao.renach">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label>Data de Nascimento</label>
+                            <input type="text"
+                                   readonly
+                                   class="form-control-plaintext"
+                                   :value="dadosHabilitacao.dataNascimento | formatBR">
+                        </div>
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <label>Data de Nascimento</label>
-                        <input type="text"
-                               readonly
-                               class="form-control-plaintext"
-                               :value="dadosHabilitacao.dataNascimento | formatBR">
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label>Nome</label>
+                            <input type="text"
+                                   readonly
+                                   class="form-control-plaintext"
+                                   :value="dadosHabilitacao.nomeCNH">
+                        </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label>Categoria</label>
+                            <input type="text"
+                                   readonly
+                                   class="form-control-plaintext"
+                                   :value="dadosHabilitacao.categoriaCNH">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label>Validade</label>
+                            <input type="text"
+                                   readonly
+                                   class="form-control-plaintext"
+                                   :value="dadosHabilitacao.validadeCNH | formatBR">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label>Tipo</label>
+                            <input type="text"
+                                   readonly
+                                   class="form-control-plaintext"
+                                   :value="dadosHabilitacao.tipo">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="habilitacao-pontucao">
+                <!--<label>Dados da pontução</label>-->
+
+                <titulo-pagina :title="'Dados da pontução'" :tipo="'secundario'"></titulo-pagina>
+                <div class="card card-padding">
+                    <table class="table table-bordered text-center">
+                        <thead>
+                        <tr>
+                            <th>Grupo de Pontos</th>
+                            <th>Quantidade</th>
+                            <th>Pontos</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Grupo 1 - Leve</td>
+                            <td>{{ dadosHabilitacao.dadosPontuacao.qtdMultasLeve }}</td>
+                            <td>{{ dadosHabilitacao.dadosPontuacao.qtdPontosLeve }}</td>
+                        </tr>
+                        <tr>
+                            <td>Grupo 2 - Média</td>
+                            <td>{{ dadosHabilitacao.dadosPontuacao.qtdMultasMedia }}</td>
+                            <td>{{ dadosHabilitacao.dadosPontuacao.qtdPontosMedia }}</td>
+                        </tr>
+                        <tr>
+                            <td>Grupo 3 - Grave</td>
+                            <td>{{ dadosHabilitacao.dadosPontuacao.qtdMultasGrave }}</td>
+                            <td>{{ dadosHabilitacao.dadosPontuacao.qtdPontosGrave }}</td>
+                        </tr>
+                        <tr>
+                            <td>Grupo 4 - Gravíssima</td>
+                            <td>{{ dadosHabilitacao.dadosPontuacao.qtdMultasGravissima }}</td>
+                            <td>{{ dadosHabilitacao.dadosPontuacao.qtdPontosGravissima }} </td>
+                        </tr>
+                        <tr class="total">
+                            <td colspan="2" class="label">Total</td>
+                            <td>{{ dadosHabilitacao.dadosPontuacao.pontos}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="row">
-                    <div class="col-md-12 mb-3">
-                        <label>Nome</label>
-                        <input type="text"
-                               readonly
-                               class="form-control-plaintext"
-                               :value="dadosHabilitacao.nomeCNH">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <label>Categoria</label>
-                        <input type="text"
-                               readonly
-                               class="form-control-plaintext"
-                               :value="dadosHabilitacao.categoriaCNH">
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label>Validade</label>
-                        <input type="text"
-                               readonly
-                               class="form-control-plaintext"
-                               :value="dadosHabilitacao.validadeCNH | formatBR">
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label>Tipo</label>
-                        <input type="text"
-                               readonly
-                               class="form-control-plaintext"
-                               :value="dadosHabilitacao.tipo">
-                    </div>
-                </div>
-            </form>
+            </div>
+
+
         </div>
 
+        <div v-else>
 
-        <div class="habilitacao-pontucao">
-            <!--<label>Dados da pontução</label>-->
-
-            <titulo-pagina :title="'Dados da pontução'" :tipo="'secundario'"></titulo-pagina>
-            <div class="card card-padding">
-                <table class="table table-bordered text-center">
-                    <thead>
-                    <tr>
-                        <th>Grupo de Pontos</th>
-                        <th>Quantidade</th>
-                        <th>Pontos</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Grupo 1 - Leve</td>
-                        <td>{{ dadosHabilitacao.dadosPontuacao.qtdMultasLeve }}</td>
-                        <td>{{ dadosHabilitacao.dadosPontuacao.qtdPontosLeve }}</td>
-                    </tr>
-                    <tr>
-                        <td>Grupo 2 - Média</td>
-                        <td>{{ dadosHabilitacao.dadosPontuacao.qtdMultasMedia }}</td>
-                        <td>{{ dadosHabilitacao.dadosPontuacao.qtdPontosMedia }}</td>
-                    </tr>
-                    <tr>
-                        <td>Grupo 3 - Grave</td>
-                        <td>{{ dadosHabilitacao.dadosPontuacao.qtdMultasGrave }}</td>
-                        <td>{{ dadosHabilitacao.dadosPontuacao.qtdPontosGrave }}</td>
-                    </tr>
-                    <tr>
-                        <td>Grupo 4 - Gravíssima</td>
-                        <td>{{ dadosHabilitacao.dadosPontuacao.qtdMultasGravissima }}</td>
-                        <td>{{ dadosHabilitacao.dadosPontuacao.qtdPontosGravissima }} </td>
-                    </tr>
-                    <tr class="total">
-                        <td colspan="2" class="label">Total</td>
-                        <td>{{ dadosHabilitacao.dadosPontuacao.pontos}}</td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div class="alert alert-danger">
+                {{ naoHabilitadoMsg }}
             </div>
         </div>
-
     </section>
     <section class="section" v-else>
         <spinner :tipo="'md'"></spinner>
@@ -128,6 +139,8 @@
         data() {
             return {
                 dadosHabilitacao: {},
+                habilitado: true,
+                naoHabilitadoMsg: '',
                 loading: true
             }
         },
@@ -161,11 +174,17 @@
                     this.loading = false;
                 },
                 error => {
+                    console.log('Erro ao consultar dados da habilitação');
                     console.log(error);
-                    this.$toast.error({
-                        title: 'Erro ao consultar habilitacao',
-                        message: error.body.message
-                    });
+                    this.loading = false;
+                    if (error.status === 400) {
+                        if (error.body.codigo === 'habilitacao.cpf.notfound') {
+                            this.habilitado = false;
+                            this.naoHabilitadoMsg = error.body.message;
+                        }
+                    } else {
+                        this.$router.push({path: '/500'});
+                    }
                 });
         },
         components: {

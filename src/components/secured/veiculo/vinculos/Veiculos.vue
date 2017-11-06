@@ -53,7 +53,8 @@
                     </div>
                 </div>
                 <div class="info-btn">
-                    <button @click="vincular" class="btn btn-success btn-block">
+                    <button @click="vincular" class="btn btn-success btn-block"
+                            v-bind:class="{'disabled': loadingVinculo}">
                         <span v-html="vincularMsg"></span>
                     </button>
                 </div>
@@ -107,7 +108,7 @@
                 return 'Buscando <i class="fa fa-spinner fa-spin fa-1x fa-fw"></i>';
             },
             vincularMsg: function () {
-                if (!this.loading)
+                if (!this.loadingVinculo)
                     return 'Vincular <i class="fa fa-chain"></i>';
                 return 'Vinculando <i class="fa fa-spinner fa-spin fa-1x fa-fw"></i>';
             }

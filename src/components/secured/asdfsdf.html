@@ -8,6 +8,31 @@
     <!--<link href="/sgm/design/tabela.css" rel="stylesheet" type="text/css">-->
     <!--<link href="/sgm/design/estilobordero.css" rel="stylesheet" type="text/css">-->
     <style type="text/css">
+
+
+        @media print {
+
+            body * {
+                visibility: hidden;
+            }
+
+            #print.borderos, #print.borderos * {
+                visibility: visible;
+            }
+
+            #print.borderos {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+
+            .borderos {
+                width: 710px;
+                margin: 0 auto;
+            }
+
+        }
+
         <!--
         @page {
             size: 29.7cm 21cm;
@@ -23,13 +48,12 @@
 
         /* CSS Document */
 
-
         .impressao {
             display: none !important;
         }
 
         .cabecalho {
-            display:table;
+            display: table;
         }
 
         .fonte10 {
@@ -39,12 +63,12 @@
             color: #000000;
         }
 
-
         .sobase {
             border-bottom-width: 1px;
             border-bottom-style: solid;
             border-bottom-color: #000000;
         }
+
         .cxtexto {
             font-family: Arial, Helvetica, sans-serif;
             font-size: 11px;
@@ -63,6 +87,7 @@
         .textos {
             display: none;
         }
+
         .fundotitulos {
             font-family: Verdana, Arial, Helvetica, sans-serif;
             font-size: 9px;
@@ -73,18 +98,21 @@
             text-align: center;
             text-transform: uppercase;
         }
+
         .fontedados {
             font-family: Tahoma;
             font-size: 11px;
             font-weight: normal;
             background-color: #FFFFFF;
         }
+
         .fontedados2 {
             font-family: Tahoma;
             font-size: 11px;
             font-weight: normal;
             background-color: #E8E8E8;
         }
+
         .titulos {
             font-family: Arial;
             font-size: 16px;
@@ -93,7 +121,8 @@
             font-weight: bold;
             filter: blur(add=5, direction=200, strength=8);
         }
-        .semimagem{
+
+        .semimagem {
             display: none !important;
         }
 
@@ -102,6 +131,7 @@
             font-size: 9px;
             font-weight: normal;
         }
+
         .fundotitulosclaro {
             font-family: Verdana, Arial, Helvetica, sans-serif;
             font-size: 9px;
@@ -112,6 +142,7 @@
             text-transform: none;
             background-color: #FFFFFF;
         }
+
         .fonteletras0 {
             font-family: Verdana, Arial, Helvetica, sans-serif;
             font-size: 9px;
@@ -119,12 +150,14 @@
             color: #000000;
 
         }
+
         .fundodados {
             font-family: Verdana, Arial, Helvetica, sans-serif;
             font-size: 9px;
             font-weight: normal;
             color: #000000;
         }
+
         .fundofiltro {
             font-family: Verdana, Arial, Helvetica, sans-serif;
             font-size: 9px;
@@ -138,7 +171,7 @@
             border-bottom-color: #888888;
         }
 
-        .fonte8{
+        .fonte8 {
             font-family: Verdana, Arial, Helvetica, sans-serif;
             font-size: 8px;
             font-weight: normal;
@@ -150,6 +183,7 @@
             border-left-style: solid;
             border-left-color: #000000;
         }
+
         .tabela {
             border-right-width: 2px;
             border-left-width: 2px;
@@ -158,11 +192,13 @@
             border-right-color: #000000;
             border-left-color: #000000;
         }
+
         .font1 {
             font-family: Verdana, Arial, Helvetica, sans-serif;
             font-size: 9px;
             font-weight: bolder;
         }
+
         .fonte2 {
             font-family: Verdana, Arial, Helvetica, sans-serif;
             font-size: 11px;
@@ -170,22 +206,26 @@
             color: #000066;
 
         }
+
         .font0 {
             font-family: Verdana, Arial, Helvetica, sans-serif;
             font-size: 9px;
             font-weight: normal;
 
         }
+
         .tabentre {
             border-bottom-width: 2px;
             border-bottom-style: solid;
             border-bottom-color: #000000;
         }
+
         .fontmin {
             font-family: Verdana, Arial, Helvetica, sans-serif;
             font-size: 7px;
             font-weight: normal;
         }
+
         .ladodireitoesques {
             border-right-width: 2px;
             border-left-width: 2px;
@@ -194,7 +234,11 @@
             border-right-color: #000000;
             border-left-color: #000000;
         }
-        br.break { page-break-after: always }
+
+        br.break {
+            page-break-after: always
+        }
+
         .tabelasmbaixo {
             border-top-width: 1px;
             border-right-width: 1px;
@@ -207,6 +251,7 @@
             border-right-color: #000000;
             border-left-color: #000000;
         }
+
         .ladobaixo {
             border-bottom-width: 1px;
             border-bottom-style: solid;
@@ -215,16 +260,19 @@
             border-left-style: solid;
             border-left-color: #000000;
         }
+
         .baixo {
             border-bottom-width: 1px;
             border-bottom-style: solid;
             border-bottom-color: #000000;
         }
+
         .lado0 {
             border-left-width: 1px;
             border-left-style: solid;
             border-left-color: #000000;
         }
+
         .basecima {
             border-top-width: 1px;
             border-bottom-width: 1px;
@@ -233,6 +281,7 @@
             border-top-color: #000000;
             border-bottom-color: #000000;
         }
+
         .baseesqcima {
             border-top-width: 1px;
             border-bottom-width: 1px;
@@ -245,8 +294,6 @@
             border-left-style: solid;
             border-left-color: #000000;
         }
-
-
 
         .bordacimalados {
             border-top-width: 1px;
@@ -261,11 +308,13 @@
             border-bottom-color: #000000;
 
         }
+
         .fonteletras {
             font-family: Verdana, Arial, Helvetica, sans-serif;
             font-size: 9px;
             font-weight: bold;
         }
+
         .fonteletras0 {
             font-family: Verdana, Arial, Helvetica, sans-serif;
             font-size: 9px;
@@ -273,22 +322,27 @@
             color: #000000;
 
         }
+
         .fonteletratitulo {
             font-family: Verdana, Arial, Helvetica, sans-serif;
             font-size: 14px;
             font-weight: bold;
         }
+
         .lateralr {
             border-right-width: 2px;
             border-right-style: solid;
             border-right-color: #000000;
         }
+
         .voltainteira {
             border: 2px solid #CCCCCC;
         }
+
         .voltainteira0 {
             border: 1px solid #000000;
         }
+
         .fonte2 {
             font-family: Verdana, Arial, Helvetica, sans-serif;
             font-size: 12px;
@@ -296,22 +350,26 @@
             color: #000066;
 
         }
+
         a:link {
             font-family: Verdana, Arial, Helvetica, sans-serif;
             font-size: 9px;
             font-weight: bold;
             color: #003333;
         }
+
         a:visited {
             font-family: Verdana, Arial, Helvetica, sans-serif;
             font-size: 9px;
             font-weight: bolder;
             color: #666666;
         }
+
         .box {
             font-family: Verdana, Arial, Helvetica, sans-serif;
             font-size: 8px;
         }
+
         .tabelatop {
             border-right-width: 1px;
             border-bottom-width: 1px;
@@ -323,6 +381,7 @@
             border-bottom-color: #000000;
             border-left-color: #000000;
         }
+
         .tabelabaixo {
             border-top-width: 1px;
             border-right-width: 1px;
@@ -334,24 +393,28 @@
             border-right-color: #000000;
             border-left-color: #000000;
         }
+
         .lateral-1 {
             border-right-width: 1px;
             border-right-style: solid;
             border-right-color: #000000;
         }
+
         .sobase {
             border-bottom-width: 1px;
             border-bottom-style: solid;
             border-bottom-color: #000000;
         }
+
         .fundo1 {
             background-color: #333333;
         }
+
         .fundo2 {
             background-color: #EEEEEE;
 
-
         }
+
         .fontebranca {
             font-family: Verdana, Arial, Helvetica, sans-serif;
             font-size: 9px;
@@ -359,17 +422,20 @@
             font-weight: bold;
             vertical-align: middle;
 
-
         }
+
         .fundo3 {
             background-image: url(imagens/fundo_menu.gif);
         }
+
         .fundobranco {
             background-color: #FFFFFF;
         }
+
         .fundorosa {
             background-color: #F2F2F2;
         }
+
         .tabelalados {
             border-right-width: 1px;
             border-right-style: solid;
@@ -378,6 +444,7 @@
             border-left-style: solid;
             border-left-color: #000000;
         }
+
         .ladoesqbaixo {
             border-bottom-width: 1px;
             border-bottom-style: solid;
@@ -386,6 +453,7 @@
             border-left-style: solid;
             border-left-color: #000000;
         }
+
         .voltainteirasembaixo {
             border-top-width: 1px;
             border-right-width: 1px;
@@ -397,30 +465,31 @@
             border-right-color: #000000;
             border-left-color: #000000;
         }
+
         .ladodireito {
             border-left-width: 1px;
             border-left-style: solid;
             border-left-color: #000000;
         }
+
         .fonte1 {
             font-family: Verdana, Arial, Helvetica, sans-serif;
             font-size: 9px;
             font-weight: bold;
         }
+
         .fonte0 {
             font-family: Verdana, Arial, Helvetica, sans-serif;
             font-size: 9px;
             font-weight: normal;
         }
+
         .fonte3 {
             font-family: Verdana, Arial, Helvetica, sans-serif;
             font-size: 12px;
             font-weight: bolder;
             color: #000000;
         }
-
-
-
 
         -->
     </style>
@@ -431,100 +500,103 @@
 <div align="center">
 
 
-    <br><br>
-    <table width="710" border="0" align="center" cellpadding="0" cellspacing="0"> <!-- tabela geral -->
-        <tr> <!-- linha 1 da tabela geral -->
-            <td> <!-- coluna 1.1 da tabela geral -->
-                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="voltainteirasembaixo">
-                    <!-- tabela dos dados sem via banco -->
-                    <tr> <!-- linha 1 da tabela dos dados sem via banco -->
-                        <td> <!-- coluna 1.1 da tabela dos dados sem via banco -->
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="sobase">
-                                <!-- tabela dados identificatorios -->
-                                <tr> <!-- linha 1 da tabela dados identificatorios -->
-                                    <td width="70%" rowspan="3" align="center">
-                                        <!-- coluna 1.1 da tabela dados identificatorios -->
-                                        <table width="100%">
-                                            <tr>
-                                                <td width="20%" align="center" valign="middle" rowspan="4">
+    <button onclick="window.print();"> Print</button>
+    <div id="print" class="borderos">
+        <br><br>
+        <table width="710" border="0" align="center" cellpadding="0" cellspacing="0"> <!-- tabela geral -->
+            <tr> <!-- linha 1 da tabela geral -->
+                <td> <!-- coluna 1.1 da tabela geral -->
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="voltainteirasembaixo">
+                        <!-- tabela dos dados sem via banco -->
+                        <tr> <!-- linha 1 da tabela dos dados sem via banco -->
+                            <td> <!-- coluna 1.1 da tabela dos dados sem via banco -->
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="sobase">
+                                    <!-- tabela dados identificatorios -->
+                                    <tr> <!-- linha 1 da tabela dados identificatorios -->
+                                        <td width="70%" rowspan="3" align="center">
+                                            <!-- coluna 1.1 da tabela dados identificatorios -->
+                                            <table width="100%">
+                                                <tr>
+                                                    <td width="20%" align="center" valign="middle" rowspan="4">
 
-                                                    <img src="../../assets/img/logo-detran-df.gif"
-                                                         alt="Logotipo Detran DF">
+                                                        <img src="../../assets/img/logo-detran-df.gif"
+                                                             alt="Logotipo Detran DF">
 
-                                                </td>
-                                                <td width="75%" class="fonte1">
+                                                    </td>
+                                                    <td width="75%" class="fonte1">
 
-                                                    Governo do Distrito Federal
+                                                        Governo do Distrito Federal
 
-                                                </td>
-                                            </tr>
-
-
-                                            <tr>
-                                                <td class="fonte1">
-                                                    Secretaria de Estado de Seguran&ccedil;a P&uacute;blica
-                                                </td>
-                                            </tr>
+                                                    </td>
+                                                </tr>
 
 
-                                            <tr>
-                                                <td class="fonte1">
-
-                                                    Departamento de Tr&acirc;nsito do Distrito Federal
-
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="fonte1">
-                                                    Documento de Arrecada&ccedil;&atilde;o de Multa
-                                                </td>
-                                            </tr>
-                                        </table>
+                                                <tr>
+                                                    <td class="fonte1">
+                                                        Secretaria de Estado de Seguran&ccedil;a P&uacute;blica
+                                                    </td>
+                                                </tr>
 
 
-                                    </td> <!-- fim coluna 1.1 tabela dados identificatorios -->
-                                    <td width="30%" colspan="5" class="ladoesqbaixo style1">&nbsp;
-                                        <!-- coluna 1.2 tabela dados identificatorios -->
-                                        <div align="center"><span
-                                                class="fonte1">NOTIFICAÇÃO DE IMPOSIÇÃO DE PENALIDADE</span></div>
-                                    </td>
-                                    <!-- fim coluna 1.2 tabela dados identificatorios -->
-                                </tr> <!-- fim linha 1 tabela dados identificatorios -->
+                                                <tr>
+                                                    <td class="fonte1">
 
-                                <!-- fim linha 3 tabela dados identificatorios -->
-                            </table>
-                            <!-- fim tabela dados identificatorios -->
-                        </td>
-                        <!-- fim da coluna 1.1 da tabela dados sem via banco -->
-                    </tr> <!-- fim da linha 1 da tabela dados sem via banco -->
-                    <tr> <!-- linha 2 da tabela dados sem via banco -->
-                        <td> <!-- coluna 2.1 da tabela dados sem via banco -->
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="sobase">
-                                <!-- tabela titulo dados veiculo -->
-                                <tr>
-                                    <td height="25" align="center" class="style1"><span class="fonte1">&nbsp;</span>
-                                    </td>
-                                </tr>
-                            </table> <!-- fim tabela titulo dados veiculo -->
-                        </td> <!-- fim da coluna 2.1 da tabela dados sem via banco -->
-                    </tr> <!-- fim da linha 2 da tabela dados sem via banco -->
+                                                        Departamento de Tr&acirc;nsito do Distrito Federal
 
-                    <tr> <!-- linha 2 da tabela dados sem via banco -->
-                        <td> <!-- coluna 2.1 da tabela dados sem via banco -->
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fonte1">
+                                                        Documento de Arrecada&ccedil;&atilde;o de Multa
+                                                    </td>
+                                                </tr>
+                                            </table>
 
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="sobase">
-                                <!-- tabela titulo dados veiculo -->
-                                <tr>
-                                    <td width="15%" class="style1 fonte1">
-                                        <span class="fonte1">&nbsp;Órgão Autuador &nbsp;</span></td>
-                                    <td width="85%" class="ladodireito style1 fonte1 ">
-                                        <span class="fonte1">&nbsp;XXXXXXXXXX&nbsp;&nbsp;XXXXXXXXXX &nbsp;</span></td>
-                                </tr>
-                            </table>
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="sobase">
-                                <tr>
-                                    <br>
-                                    <td class="style1"><span class="fonte1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pelo presente, fica V.S.ª notificado que lhe foi imposto a penalidade de MULTA em decorrência
+
+                                        </td> <!-- fim coluna 1.1 tabela dados identificatorios -->
+                                        <td width="30%" colspan="5" class="ladoesqbaixo style1">&nbsp;
+                                            <!-- coluna 1.2 tabela dados identificatorios -->
+                                            <div align="center"><span
+                                                    class="fonte1">NOTIFICAÇÃO DE IMPOSIÇÃO DE PENALIDADE</span></div>
+                                        </td>
+                                        <!-- fim coluna 1.2 tabela dados identificatorios -->
+                                    </tr> <!-- fim linha 1 tabela dados identificatorios -->
+
+                                    <!-- fim linha 3 tabela dados identificatorios -->
+                                </table>
+                                <!-- fim tabela dados identificatorios -->
+                            </td>
+                            <!-- fim da coluna 1.1 da tabela dados sem via banco -->
+                        </tr> <!-- fim da linha 1 da tabela dados sem via banco -->
+                        <tr> <!-- linha 2 da tabela dados sem via banco -->
+                            <td> <!-- coluna 2.1 da tabela dados sem via banco -->
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="sobase">
+                                    <!-- tabela titulo dados veiculo -->
+                                    <tr>
+                                        <td height="25" align="center" class="style1"><span class="fonte1">&nbsp;</span>
+                                        </td>
+                                    </tr>
+                                </table> <!-- fim tabela titulo dados veiculo -->
+                            </td> <!-- fim da coluna 2.1 da tabela dados sem via banco -->
+                        </tr> <!-- fim da linha 2 da tabela dados sem via banco -->
+
+                        <tr> <!-- linha 2 da tabela dados sem via banco -->
+                            <td> <!-- coluna 2.1 da tabela dados sem via banco -->
+
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="sobase">
+                                    <!-- tabela titulo dados veiculo -->
+                                    <tr>
+                                        <td width="15%" class="style1 fonte1">
+                                            <span class="fonte1">&nbsp;Órgão Autuador &nbsp;</span></td>
+                                        <td width="85%" class="ladodireito style1 fonte1 ">
+                                            <span class="fonte1">&nbsp;XXXXXXXXXX&nbsp;&nbsp;XXXXXXXXXX &nbsp;</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="sobase">
+                                    <tr>
+                                        <br>
+                                        <td class="style1"><span class="fonte1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pelo presente, fica V.S.ª notificado que lhe foi imposto a penalidade de MULTA em decorrência
                 do cometimento de infração <br>&nbsp;de trânsito oriundo do Auto de Infração lavrado na data e circunstâncias abaixo discriminadas. Informo que até a
                 data abaixo &nbsp;indicada poderá ser efetuado o pagamento com desconto de 20% (Vinte por Cento) ou interpor RECURSO perante a junta &nbsp;Administrativa
                 de Recursos de Infrações.(OBS. Tratando-se de veículo registrado em nome de "Pessoa Jurídica" será &nbsp;obrigatória &nbsp;a indicação do "CONDUTOR INFRATOR".
@@ -532,437 +604,442 @@
                 <br>
                 &nbsp;&nbsp;&nbsp;Data Limite para pagamento com desconto de 20%: &nbsp;XXXXXXXXXX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DIRETOR GERAL DO&nbsp;&nbsp; DETRAN - DF
                 </span><br><br></td>
-                                </tr>
-                            </table>
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="sobase">
-                                <!-- tabela titulo dados veiculo -->
-                                <tr>
-                                    <td height="25" align="center" class="style1"><span class="fonte1">Dados do Veículo/Proprietário</span>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td> <!-- fim da coluna 2.1 da tabela dados sem via banco -->
-                    </tr> <!-- fim da linha 2 da tabela dados sem via banco -->
-                    <tr> <!-- linha 3 tabela dados sem via banco -->
-                        <td colspan="3"> <!-- coluna 3.1 tabela dados sem via banco -->
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="sobase">
-                                <!-- tabela dados veiculo 1 -->
-                                <tr>
-                                    <td width="16%" class="style1 fonte1">
-                                        <span class="fonte1">&nbsp;Placa :&nbsp;</span>
-                                        <span class="fonte0">XXXXXXXXXX</span></td>
-                                    <td width="20%" class="ladodireito style1 fonte1 ">
-                                        <span class="fonte1">&nbsp;Renavam :&nbsp;</span>
-                                        <span class="fonte0 ">XXXXXXXXXX</span></td>
-                                    <td width="39%" class="ladodireito style fonte1 ">
-                                        <span class="fonte1">&nbsp;Marca/Mod :&nbsp;</span>
-                                        <span class="fonte0 ">XXXXXXXXXX</span></td>
-                                    <td width="25%" class="ladodireito style1 fonte1 ">
-                                        <span class="fonte1">&nbsp;Cor :&nbsp;</span>
-                                        <span class="fonte0 ">XXXXXXXXXX</span></td>
-                                </tr>
-                            </table> <!-- fim tabela dados veiculo 1 -->
-                        </td>
-                        <!-- fim coluna 3.1 tabela dados sem via banco -->
-                    </tr> <!-- fim linha 3 tabela dados sem via banco -->
-                    <tr> <!-- linha 4 tabela dados sem via banco -->
-                        <td colspan="3"> <!-- coluna 4.1 tabela dados sem via banco -->
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="sobase">
-                                <!-- tabela dados veiculo 2 -->
-                                <tr>
-                                    <td width="47%" class="style1">
-                                        <span class="fonte1">&nbsp;Propriet&aacute;rio :&nbsp;</span>
-                                        <span class="fonte0">XXXXXXXXXX</span>
-                                    </td>
-                                    <td width="28%" class="ladodireito style1">
-                                        <span class="fonte1">&nbsp;CPF :&nbsp;</span>
-                                        <span class="fonte0">XXXXXXXXXX</span>
-                                    </td>
-                                    <td width="25%" class="ladodireito style1">
-                                        <span class="fonte1">&nbsp;Espécie :&nbsp;</span>
-                                        <span class="fonte0"> XXXXXXXXXX</span>
-                                    </td>
-                                </tr>
-                            </table>
-                            <!-- fim tabela dados veiculo 2 -->
-                        </td>
-                        <!-- fim coluna 4.1 da tabela dados sem via banco -->
-                    </tr> <!-- fim coluna 4 da tabela dados sem via banco -->
-                    <tr> <!-- linha 5 tabela dados sem via banco -->
-                        <td>
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="sobase">
-                                <!-- tabela titulo dados condutor -->
-                                <tr>
-                                    <td height="25" align="center" class="style1"><span class="fonte1">Dados do Infrator/Infração</span>
-                                    </td>
-                                </tr>
-                            </table> <!-- fim tabela titulo dados condutor -->
-                        </td>
-                    </tr> <!-- fim linha 5 tabela dados sem via banco -->
-                    <tr> <!-- linha 6 tabela dados sem via banco -->
-                        <td colspan="3"> <!-- coluna 6.1 tabela dados sem via banco -->
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="sobase">
-                                <!-- tabela dados veiculo 2 -->
-                                <tr>
-                                    <td width="75%" class="style1">
-                                        <span class="fonte1">&nbsp;Nome do Infrator :&nbsp;</span>
-                                        <span class="fonte0">-</span>
-                                    </td>
-                                    <td width="25%" class="ladodireito style1">
-                                        <span class="fonte1">&nbsp;CNH :&nbsp;</span>
-                                        <span class="fonte0">xxx</span>
-                                    </td>
-                                </tr>
-                            </table>
-                            <!-- fim tabela dados veiculo 2 -->
-                        </td> <!-- fim coluna 6.1 da tabela dados sem via banco -->
-                    </tr> <!-- fim coluna 6 da tabela dados sem via banco -->
-                    <tr> <!-- linha 7 tabela dados sem via banco -->
-                        <td class="fonte0"> <!-- coluna 7.1 tabela dados sem via banco -->
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0"> <!-- tabela valores -->
-                                <tr> <!-- linha 1 tabela valores -->
-                                    <td colspan="4" align="center">
-                                        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="sobase">
-                                            <!-- tabela titulo via usuario -->
-                                            <tr>
-                                                <td width="25%" align="center" class="style1"><span class="fonte1">&nbsp;Via do Usu&aacute;rio</span>
-                                                </td>
-                                                <td width="50%" class="ladodireito style1">
-                                                    <span class="fonte1">&nbsp;Org&atilde;o Autuador :&nbsp;</span>
-                                                    <span class="fonte0">XXXXXXXXXX&nbsp;&nbsp;XXXXXXXXXX</span>
-                                                </td>
-                                                <td width="25%" class="ladodireito style1">
-                                                    <span class="fonte1">&nbsp;Controle :&nbsp;</span>
-                                                    <span class="fonte0 ">XXXXXXXXXX</span>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                        <!-- fim da tabela titulo via usuario -->
-                                    </td> <!-- fim da coluna 1.1 da tabela valores -->
-                                </tr> <!-- fim da linha 1 da tabela valores -->
-                                <tr> <!-- linha 2 da tabela valores -->
-                                    <td> <!-- coluna 2.1 tabela valores -->
-                                        <table width="100%"> <!-- tabela primeira linha -->
-                                            <tr>
-                                                <!-- linha 1 tabela primeira linha -->
-                                                <td width="29%" class="style1">
-                                                    <span class="fonte1">&nbsp;Auto de Infra&ccedil;&atilde;o :&nbsp;</span>
-                                                    <span class="fonte0">XXXXXXXXXX</span>
-                                                </td>
-                                                <td width="14%" class="style1">
-                                                    <span class="fonte1">&nbsp;Sequencial :&nbsp;</span>
-                                                    <span class="fonte0">XXXXX</span>
-                                                </td>
-                                                <td width="32%" class="style1">
-                                                    <span class="fonte1">&nbsp;Cometimento :&nbsp;</span>
-                                                    <span class="fonte0">XXXXXXXXXX&nbsp;&agrave;s&nbsp;XXXXXXXXXX</span>
-                                                </td>
-                                            </tr> <!-- fim linha 1 tabela primeira linha -->
-                                            <tr> <!-- linha 6 tabela valores -->
+                                    </tr>
+                                </table>
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="sobase">
+                                    <!-- tabela titulo dados veiculo -->
+                                    <tr>
+                                        <td height="25" align="center" class="style1"><span class="fonte1">Dados do Veículo/Proprietário</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td> <!-- fim da coluna 2.1 da tabela dados sem via banco -->
+                        </tr> <!-- fim da linha 2 da tabela dados sem via banco -->
+                        <tr> <!-- linha 3 tabela dados sem via banco -->
+                            <td colspan="3"> <!-- coluna 3.1 tabela dados sem via banco -->
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="sobase">
+                                    <!-- tabela dados veiculo 1 -->
+                                    <tr>
+                                        <td width="16%" class="style1 fonte1">
+                                            <span class="fonte1">&nbsp;Placa :&nbsp;</span>
+                                            <span class="fonte0">XXXXXXXXXX</span></td>
+                                        <td width="20%" class="ladodireito style1 fonte1 ">
+                                            <span class="fonte1">&nbsp;Renavam :&nbsp;</span>
+                                            <span class="fonte0 ">XXXXXXXXXX</span></td>
+                                        <td width="39%" class="ladodireito style fonte1 ">
+                                            <span class="fonte1">&nbsp;Marca/Mod :&nbsp;</span>
+                                            <span class="fonte0 ">XXXXXXXXXX</span></td>
+                                        <td width="25%" class="ladodireito style1 fonte1 ">
+                                            <span class="fonte1">&nbsp;Cor :&nbsp;</span>
+                                            <span class="fonte0 ">XXXXXXXXXX</span></td>
+                                    </tr>
+                                </table> <!-- fim tabela dados veiculo 1 -->
+                            </td>
+                            <!-- fim coluna 3.1 tabela dados sem via banco -->
+                        </tr> <!-- fim linha 3 tabela dados sem via banco -->
+                        <tr> <!-- linha 4 tabela dados sem via banco -->
+                            <td colspan="3"> <!-- coluna 4.1 tabela dados sem via banco -->
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="sobase">
+                                    <!-- tabela dados veiculo 2 -->
+                                    <tr>
+                                        <td width="47%" class="style1">
+                                            <span class="fonte1">&nbsp;Propriet&aacute;rio :&nbsp;</span>
+                                            <span class="fonte0">XXXXXXXXXX</span>
+                                        </td>
+                                        <td width="28%" class="ladodireito style1">
+                                            <span class="fonte1">&nbsp;CPF :&nbsp;</span>
+                                            <span class="fonte0">XXXXXXXXXX</span>
+                                        </td>
+                                        <td width="25%" class="ladodireito style1">
+                                            <span class="fonte1">&nbsp;Espécie :&nbsp;</span>
+                                            <span class="fonte0"> XXXXXXXXXX</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!-- fim tabela dados veiculo 2 -->
+                            </td>
+                            <!-- fim coluna 4.1 da tabela dados sem via banco -->
+                        </tr> <!-- fim coluna 4 da tabela dados sem via banco -->
+                        <tr> <!-- linha 5 tabela dados sem via banco -->
+                            <td>
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="sobase">
+                                    <!-- tabela titulo dados condutor -->
+                                    <tr>
+                                        <td height="25" align="center" class="style1"><span class="fonte1">Dados do Infrator/Infração</span>
+                                        </td>
+                                    </tr>
+                                </table> <!-- fim tabela titulo dados condutor -->
+                            </td>
+                        </tr> <!-- fim linha 5 tabela dados sem via banco -->
+                        <tr> <!-- linha 6 tabela dados sem via banco -->
+                            <td colspan="3"> <!-- coluna 6.1 tabela dados sem via banco -->
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="sobase">
+                                    <!-- tabela dados veiculo 2 -->
+                                    <tr>
+                                        <td width="75%" class="style1">
+                                            <span class="fonte1">&nbsp;Nome do Infrator :&nbsp;</span>
+                                            <span class="fonte0">-</span>
+                                        </td>
+                                        <td width="25%" class="ladodireito style1">
+                                            <span class="fonte1">&nbsp;CNH :&nbsp;</span>
+                                            <span class="fonte0">xxx</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!-- fim tabela dados veiculo 2 -->
+                            </td> <!-- fim coluna 6.1 da tabela dados sem via banco -->
+                        </tr> <!-- fim coluna 6 da tabela dados sem via banco -->
+                        <tr> <!-- linha 7 tabela dados sem via banco -->
+                            <td class="fonte0"> <!-- coluna 7.1 tabela dados sem via banco -->
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0"> <!-- tabela valores -->
+                                    <tr> <!-- linha 1 tabela valores -->
+                                        <td colspan="4" align="center">
+                                            <table width="100%" border="0" cellpadding="0" cellspacing="0"
+                                                   class="sobase">
+                                                <!-- tabela titulo via usuario -->
+                                                <tr>
+                                                    <td width="25%" align="center" class="style1"><span class="fonte1">&nbsp;Via do Usu&aacute;rio</span>
+                                                    </td>
+                                                    <td width="50%" class="ladodireito style1">
+                                                        <span class="fonte1">&nbsp;Org&atilde;o Autuador :&nbsp;</span>
+                                                        <span class="fonte0">XXXXXXXXXX&nbsp;&nbsp;XXXXXXXXXX</span>
+                                                    </td>
+                                                    <td width="25%" class="ladodireito style1">
+                                                        <span class="fonte1">&nbsp;Controle :&nbsp;</span>
+                                                        <span class="fonte0 ">XXXXXXXXXX</span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <!-- fim da tabela titulo via usuario -->
+                                        </td> <!-- fim da coluna 1.1 da tabela valores -->
+                                    </tr> <!-- fim da linha 1 da tabela valores -->
+                                    <tr> <!-- linha 2 da tabela valores -->
+                                        <td> <!-- coluna 2.1 tabela valores -->
+                                            <table width="100%"> <!-- tabela primeira linha -->
+                                                <tr>
+                                                    <!-- linha 1 tabela primeira linha -->
+                                                    <td width="29%" class="style1">
+                                                        <span class="fonte1">&nbsp;Auto de Infra&ccedil;&atilde;o :&nbsp;</span>
+                                                        <span class="fonte0">XXXXXXXXXX</span>
+                                                    </td>
+                                                    <td width="14%" class="style1">
+                                                        <span class="fonte1">&nbsp;Sequencial :&nbsp;</span>
+                                                        <span class="fonte0">XXXXX</span>
+                                                    </td>
+                                                    <td width="32%" class="style1">
+                                                        <span class="fonte1">&nbsp;Cometimento :&nbsp;</span>
+                                                        <span class="fonte0">XXXXXXXXXX&nbsp;&agrave;s&nbsp;XXXXXXXXXX</span>
+                                                    </td>
+                                                </tr> <!-- fim linha 1 tabela primeira linha -->
+                                                <tr> <!-- linha 6 tabela valores -->
 
-                                                <td width="25%" class="style1">
-                                                    <span class="fonte1">&nbsp;Grupo :&nbsp;</span>
+                                                    <td width="25%" class="style1">
+                                                        <span class="fonte1">&nbsp;Grupo :&nbsp;</span>
+                                                        <span class="fonte0">XXXXXXXXXX</span>
+                                                    </td>
+                                                    <td width="15%" class="style1">
+                                                        <span class="fonte1">&nbsp;Pontos :&nbsp;</span>
+                                                        <span class="fonte0">XXXXXXXXXX</span>
+                                                    </td>
+
+                                                </tr> <!-- fim linha 7 tabela valores -->
+
+                                            </table>
+                                            <!-- fim tabela primeira linha -->
+                                    </tr> <!-- fim linha 2 tabela valores -->
+                                    <tr> <!-- linha 4 tabela valores -->
+                                        <td>
+                                            <table width="100%"> <!-- tabela terceira linha -->
+                                                <tr> <!-- linha 1 tabela terceira linha -->
+                                                    <td width="70%" class="style1">
+                                                        <span class="fonte1">&nbsp;Infra&ccedil;&atilde;o :&nbsp;</span>
+                                                        <span class="fonte0">XXXXX</span>
+                                                        <span class="fonte1">&nbsp;Desdobramento :&nbsp;</span>
+                                                        <span class="fonte0">XXXXXXXXXX</span>
+                                                    </td>
+                                                    <td width="30%" class="style1">
+                                                        <span class="fonte1">&nbsp;Artigo :&nbsp;</span>
+                                                        <span class="fonte0">XXXXXXXXXX</span>
+                                                    </td>
+                                                </tr> <!-- fim linha 1 tabela terceira linha -->
+                                            </table>
+                                            <!-- fim tabela terceira linha -->
+                                        </td>
+                                    </tr> <!-- fim linha 4 tabela valores -->
+                                    <tr>
+                                        <td>
+                                            <table width="100%">
+                                                <td width="22%" class="style1">
+                                                    <span class="fonte1">&nbsp;Agente :&nbsp;</span>
                                                     <span class="fonte0">XXXXXXXXXX</span>
                                                 </td>
-                                                <td width="15%" class="style1">
-                                                    <span class="fonte1">&nbsp;Pontos :&nbsp;</span>
-                                                    <span class="fonte0">XXXXXXXXXX</span>
-                                                </td>
-
-                                            </tr> <!-- fim linha 7 tabela valores -->
-
-                                        </table>
-                                        <!-- fim tabela primeira linha -->
-                                </tr> <!-- fim linha 2 tabela valores -->
-                                <tr> <!-- linha 4 tabela valores -->
-                                    <td>
-                                        <table width="100%"> <!-- tabela terceira linha -->
-                                            <tr> <!-- linha 1 tabela terceira linha -->
-                                                <td width="70%" class="style1">
-                                                    <span class="fonte1">&nbsp;Infra&ccedil;&atilde;o :&nbsp;</span>
-                                                    <span class="fonte0">XXXXX</span>
-                                                    <span class="fonte1">&nbsp;Desdobramento :&nbsp;</span>
-                                                    <span class="fonte0">XXXXXXXXXX</span>
+                                                <td width="52%" class="style1">
+                                                    <span class="fonte1">&nbsp;Medi&ccedil;&atilde;o Permitida / Aferida / Considerada :&nbsp;</span>
+                                                    <span class="fonte0">-/ -/ -</span>
                                                 </td>
                                                 <td width="30%" class="style1">
-                                                    <span class="fonte1">&nbsp;Artigo :&nbsp;</span>
-                                                    <span class="fonte0">XXXXXXXXXX</span>
+                                                    <span class="fonte1">&nbsp;Unidade de Medida :&nbsp;</span>
+                                                    <span class="fonte0">-</span>
                                                 </td>
-                                            </tr> <!-- fim linha 1 tabela terceira linha -->
-                                        </table>
-                                        <!-- fim tabela terceira linha -->
-                                    </td>
-                                </tr> <!-- fim linha 4 tabela valores -->
-                                <tr>
-                                    <td>
-                                        <table width="100%">
-                                            <td width="22%" class="style1">
-                                                <span class="fonte1">&nbsp;Agente :&nbsp;</span>
-                                                <span class="fonte0">XXXXXXXXXX</span>
-                                            </td>
-                                            <td width="52%" class="style1">
-                                                <span class="fonte1">&nbsp;Medi&ccedil;&atilde;o Permitida / Aferida / Considerada :&nbsp;</span>
-                                                <span class="fonte0">-/ -/ -</span>
-                                            </td>
-                                            <td width="30%" class="style1">
-                                                <span class="fonte1">&nbsp;Unidade de Medida :&nbsp;</span>
-                                                <span class="fonte0">-</span>
-                                            </td>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr> <!-- linha 3 tabela valores -->
-                                    <td>
-                                        <table width="100%"> <!-- tabela segunda linha -->
-                                            <tr> <!-- linha 1 tabela segunda linha -->
-                                                <td class="style1">
-                                                    <span class="fonte1">&nbsp;N&ordm;&nbsp;Notifica&ccedil;&atilde;o :</span>
-                                                    <span class="fonte0">XXXXXXXXXX</span>
-                                                </td>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr> <!-- linha 3 tabela valores -->
+                                        <td>
+                                            <table width="100%"> <!-- tabela segunda linha -->
+                                                <tr> <!-- linha 1 tabela segunda linha -->
+                                                    <td class="style1">
+                                                        <span class="fonte1">&nbsp;N&ordm;&nbsp;Notifica&ccedil;&atilde;o :</span>
+                                                        <span class="fonte0">XXXXXXXXXX</span>
+                                                    </td>
 
-                                                <td class="style1">
-                                                    <span class="fonte1">C&oacute;d. INFRAEST : </span>
-                                                    <span class="fonte0"></span>
-                                                </td>
+                                                    <td class="style1">
+                                                        <span class="fonte1">C&oacute;d. INFRAEST : </span>
+                                                        <span class="fonte0"></span>
+                                                    </td>
 
-                                                <td class="style1">
-                                                    <span class="fonte1">Data Notif. Penalidade :&nbsp;</span>
-                                                    <span class="fonte0">XXXXXXXXXX</span>
-                                                </td>
-                                                <td class="style1">
-                                                    <span class="fonte1">&nbsp;Data Notif. Autua&ccedil;&atilde;o :&nbsp;</span>
-                                                    <span class="fonte0">XXXXXXXXXX</span>
-                                                </td>
-                                            </tr> <!-- fim linha 1 tabela segunda linha -->
-                                        </table>
-                                        <!-- fim tabela segunda linha -->
-                                    </td>
-                                </tr> <!-- fim linha 3 tabela de valores -->
+                                                    <td class="style1">
+                                                        <span class="fonte1">Data Notif. Penalidade :&nbsp;</span>
+                                                        <span class="fonte0">XXXXXXXXXX</span>
+                                                    </td>
+                                                    <td class="style1">
+                                                        <span class="fonte1">&nbsp;Data Notif. Autua&ccedil;&atilde;o :&nbsp;</span>
+                                                        <span class="fonte0">XXXXXXXXXX</span>
+                                                    </td>
+                                                </tr> <!-- fim linha 1 tabela segunda linha -->
+                                            </table>
+                                            <!-- fim tabela segunda linha -->
+                                        </td>
+                                    </tr> <!-- fim linha 3 tabela de valores -->
 
-                                <tr> <!-- linha 3 tabela valores -->
-                                    <td>
-                                        <table width="100%"> <!-- tabela segunda linha -->
-                                            <tr> <!-- linha 1 tabela segunda linha -->
-                                                <td width="50%" class="style1">
-                                                    <span class="fonte1">&nbsp;Local :</span>
-                                                    <span class="fonte0">XXXXXXXXXX</span>
-                                                </td>
+                                    <tr> <!-- linha 3 tabela valores -->
+                                        <td>
+                                            <table width="100%"> <!-- tabela segunda linha -->
+                                                <tr> <!-- linha 1 tabela segunda linha -->
+                                                    <td width="50%" class="style1">
+                                                        <span class="fonte1">&nbsp;Local :</span>
+                                                        <span class="fonte0">XXXXXXXXXX</span>
+                                                    </td>
 
-                                            </tr> <!-- fim linha 1 tabela segunda linha -->
-                                        </table>
-                                        <!-- fim tabela segunda linha -->
-                                    </td>
-                                </tr> <!-- fim linha 3 tabela de valores -->
+                                                </tr> <!-- fim linha 1 tabela segunda linha -->
+                                            </table>
+                                            <!-- fim tabela segunda linha -->
+                                        </td>
+                                    </tr> <!-- fim linha 3 tabela de valores -->
 
-                                <tr> <!-- linha 5 tabela valores -->
-                                    <td>
-                                        <!-- fim tabela quarta linha --></td>
-                                </tr> <!-- fim linha 5 tabela valores -->
-                                <tr> <!-- linha 6 tabela valores -->
-                                    <td>
-                                        <table width="100%" cellspacing="0" cellpadding="0" class="sobase">
-                                            <!-- tabela sexta linha -->
-                                            <tr> <!-- linha 1 tabela sexta linha -->
-                                                <td width="35%" class="style1">
-                                                    <span class="fonte1">&nbsp;&nbsp;Municipio :&nbsp;</span>
-                                                    <span class="fonte0">XXXXXXXXXX</span>
-                                                </td>
-                                                <td width="15%" class="style1">
-                                                    <span class="fonte1">&nbsp;UF :&nbsp;</span>
-                                                    <span class="fonte0">xxx</span>
-                                                </td>
-                                                <td width="20%" class="style1 ">
-                                                    <span class="fonte1">&nbsp;Valor (R$) :&nbsp;</span>
-                                                    <span class="fonte0 ">XXXXXXXXXX</span>
-                                                </td>
-                                                <td width="30%" class="style1">
-                                                    <span class="fonte1">&nbsp;Valor c/ Desc. (R$) :&nbsp;</span>
-                                                    <span class="fonte0 ">XXXXXXXXXX</span>
-                                                </td>
-                                            </tr> <!-- fim linha 1 tabela sexta linha -->
+                                    <tr> <!-- linha 5 tabela valores -->
+                                        <td>
+                                            <!-- fim tabela quarta linha --></td>
+                                    </tr> <!-- fim linha 5 tabela valores -->
+                                    <tr> <!-- linha 6 tabela valores -->
+                                        <td>
+                                            <table width="100%" cellspacing="0" cellpadding="0" class="sobase">
+                                                <!-- tabela sexta linha -->
+                                                <tr> <!-- linha 1 tabela sexta linha -->
+                                                    <td width="35%" class="style1">
+                                                        <span class="fonte1">&nbsp;&nbsp;Municipio :&nbsp;</span>
+                                                        <span class="fonte0">XXXXXXXXXX</span>
+                                                    </td>
+                                                    <td width="15%" class="style1">
+                                                        <span class="fonte1">&nbsp;UF :&nbsp;</span>
+                                                        <span class="fonte0">xxx</span>
+                                                    </td>
+                                                    <td width="20%" class="style1 ">
+                                                        <span class="fonte1">&nbsp;Valor (R$) :&nbsp;</span>
+                                                        <span class="fonte0 ">XXXXXXXXXX</span>
+                                                    </td>
+                                                    <td width="30%" class="style1">
+                                                        <span class="fonte1">&nbsp;Valor c/ Desc. (R$) :&nbsp;</span>
+                                                        <span class="fonte0 ">XXXXXXXXXX</span>
+                                                    </td>
+                                                </tr> <!-- fim linha 1 tabela sexta linha -->
 
-                                        </table>
-                                        <!-- fim tabela sexta linha -->
-                                    </td>
-                                </tr> <!-- fim linha 7 tabela valores -->
-                                <tr>
-                                    <td style="font-size:6px">&nbsp;</td>
-                                </tr><!-- espacamento -->
-                                <tr>
-                                    <td style="font-size:6px">&nbsp;</td>
-                                </tr><!-- espacamento -->
-                                <tr>
-                                    <td style="font-size:6px">&nbsp;</td>
-                                </tr><!-- espacamento -->
-                            </table> <!-- fim tabela valores -->
-                        </td> <!-- fim coluna 7.1 tabela dados sem via banco -->
-                    </tr> <!-- fim linha 7 tabela dados sem via banco -->
-                    <tr> <!-- linha 8 tabela dados sem via banco -->
-                        <td> <!-- coluna 8.1 tabela dados sem via banco -->
+                                            </table>
+                                            <!-- fim tabela sexta linha -->
+                                        </td>
+                                    </tr> <!-- fim linha 7 tabela valores -->
+                                    <tr>
+                                        <td style="font-size:6px">&nbsp;</td>
+                                    </tr><!-- espacamento -->
+                                    <tr>
+                                        <td style="font-size:6px">&nbsp;</td>
+                                    </tr><!-- espacamento -->
+                                    <tr>
+                                        <td style="font-size:6px">&nbsp;</td>
+                                    </tr><!-- espacamento -->
+                                </table> <!-- fim tabela valores -->
+                            </td> <!-- fim coluna 7.1 tabela dados sem via banco -->
+                        </tr> <!-- fim linha 7 tabela dados sem via banco -->
+                        <tr> <!-- linha 8 tabela dados sem via banco -->
+                            <td> <!-- coluna 8.1 tabela dados sem via banco -->
 
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="basecima">
-                                <!-- tabela observacoes -->
-                                <tr>
-                                    <td width="70%" class="style1"><span class="fonte0">&nbsp;<font color="#FF0000">Observa&ccedil;&otilde;es:</font>&nbsp;&nbsp;** Nao tem validade como nada consta **&nbsp;<br>
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="basecima">
+                                    <!-- tabela observacoes -->
+                                    <tr>
+                                        <td width="70%" class="style1"><span class="fonte0">&nbsp;<font color="#FF0000">Observa&ccedil;&otilde;es:</font>&nbsp;&nbsp;** Nao tem validade como nada consta **&nbsp;<br>
 					&nbsp;Ressalvando o direito da cobran&ccedil;a de multas porventura em processamento e n&atilde;o cadastradas.</span>
-                                    </td>
-                                    <!--Inclusão do termo : "Pagavel no Banco do Brasil, BRB ou Caixa economica" em todos os boletos dos serviços/taxas receita Detran DF e Renainf -->
+                                        </td>
+                                        <!--Inclusão do termo : "Pagavel no Banco do Brasil, BRB ou Caixa economica" em todos os boletos dos serviços/taxas receita Detran DF e Renainf -->
 
-                                    <td width="30%" class="style1">
-                                        <span class="fonte1">Pagável no BRB, CAIXA ECONÔMICA. NO BANCO DO BRASIL S/A SOMENTE NOS TERMINAIS DE AUTO-ATENDIMENTO E INTERNET.</span>
-                                    </td>
+                                        <td width="30%" class="style1">
+                                            <span class="fonte1">Pagável no BRB, CAIXA ECONÔMICA. NO BANCO DO BRASIL S/A SOMENTE NOS TERMINAIS DE AUTO-ATENDIMENTO E INTERNET.</span>
+                                        </td>
 
-                                </tr>
-                            </table> <!-- fim tabela observacoes -->
-
-
-                        </td> <!-- fim coluna 8.1 tabela dados sem via banco -->
-                    </tr> <!-- fim linha 8 tabela dados sem via banco -->
-
-                </table> <!-- fim tabela dados sem via banco -->   </td> <!-- fim da coluna 1.1 da tabela geral -->
-        </tr> <!-- fim da linha 1 tabela geral -->
-    </table> <!-- fim da tabela geral -->
-    <table width="100%" border="0" cellpadding="0" cellspacing="0">
-        <!-- tabela titulo dados veiculo -->
-        <tr>
-            <td height="0" align="center" class="style1"><span class="fonte1">AUTENTICAÇÃO MECÂNICA</span></td>
-        </tr>
-        <tr>
-            <td align="center" class="style1">&nbsp;
-
-            </td>
-        </tr>
-        <tr>
-            <td align="center" class="style1">
-                ---------------------------------------------------------------
-                <img src="/sgm/design/imagens/tesoura_p.gif" alt="Marca corte">
-                --------------------------------------------------------------
-            </td>
-        </tr>
-    </table>
-    <!-- fim tabela picote -->
-    <table width="710" border="0" align="center" cellpadding="0" cellspacing="0">
-        <!-- tabela via banco -->
-        <tr>
-            <!-- linha 1 tabela via banco -->
-            <td>
-                <!-- coluna 1.1 tabela via banco -->
-                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="voltainteira0">
-                    <!-- tabela dados banco -->
-                    <tr>
-                        <!-- linha 1 tabela dados banco -->
-                        <td colspan="4">
-                            <!-- coluna 1.1 tabela dados banco -->
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0">
-                                <!-- ultima tabela -->
-                                <tr>
-                                    <!-- linha 1 ultima tabela -->
-                                    <td>
-                                        <table>
-                                            <tr>
-                                                <td width="123" align="center" class="style1"><span class="fonte1">Via do Banco</span>
-                                                </td>
-                                                <td width="270" class="ladodireito style1">
-                                                    <span class="fonte1">&nbsp;&nbsp;&nbsp;Org&atilde;o Autuador:&nbsp;</span>
-                                                    <span class="fonte0">107100&nbsp;&nbsp;DETRAN - DF</span>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                    <td colspan="2" align="center" class="ladodireito style1">
-                                        <span class="fonte1">Placa:&nbsp;</span>
-                                        <span class="fonte0">XXXXXXXXXX</span>
-                                    </td>
-                                    <td colspan="2" align="center" class="ladodireito style1">
-                                        <span class="fonte1">N&ordm; da Via:</span>
-                                        <span class="fonte0">XXXXXXXXXX</span>
-                                    </td>
-                                </tr>
-                                <!-- fim linha 1 ultima tabela-->
-                                <tr>
-                                    <!-- linha 2 ultima tabela -->
-                                    <td width="470" class="basecima style1">
-                                        <span class="fonte1">&nbsp;Propriet&aacute;rio :&nbsp;</span>
-                                        <span class="fonte0 ">XXXXXXXXXX</span>
-                                    </td>
-                                    <td width="115" class="baseesqcima style1"><span class="fonte1">&nbsp;Notifica&ccedil;&atilde;o :</span>
-                                    </td>
-                                    <td width="143" align="center" class="baseesqcima style1">
-                                        <span class="fonte0">XXXXXXXXXX</span>
-                                    </td>
-                                    <td width="133" class="baseesqcima style1"><span class="fonte1">&nbsp;Emiss&atilde;o :</span>
-                                    </td>
-                                    <td width="93" align="center" class="baseesqcima style1">
-                                        <span class="fonte0">XXXXXXXXXX</span>
-                                    </td>
-                                </tr>
-
-                                <!-- fim linha 2 ultima tabela -->
-
-                                <tr>
-
-                                    <!-- linha 3 ultima tabela -->
-                                    <td width="470" height="110" align="center" rowspan="4" class="style1">
-                                        <img src="../../../util/interleaved.jsp?barra=856000000013041399122419117171081856881680100008"/>
-
-                                    </td>
+                                    </tr>
+                                </table> <!-- fim tabela observacoes -->
 
 
-                                    <td width="115" rowspan="2" height="20" class="ladoesqbaixo style1"><span
-                                            class="fonte1">&nbsp;Controle :</span></td>
-                                    <td width="143" rowspan="2" align="center" class="ladoesqbaixo style1">
-                                        <span class="fonte0">XXXXXXXXXX</span>
-                                    </td>
-                                    <td class="ladoesqbaixo style1">
-                                        <span class="fonte1"> &nbsp;Vencimento :</span>
-                                    </td>
-                                    <td align="center" class="ladoesqbaixo style1">
-                                        <span class="fonte0">XXXXXXXXXX</span>
-                                    </td>
+                            </td> <!-- fim coluna 8.1 tabela dados sem via banco -->
+                        </tr> <!-- fim linha 8 tabela dados sem via banco -->
 
-                                </tr>
-                                <tr>
-                                    <td class="ladoesqbaixo style1">
-                                        <span class="fonte1"> &nbsp;Validade :</span>
-                                    </td>
-                                    <td align="center" class="ladoesqbaixo style1">
-                                        <span class="fonte0">XXXXXXXXXX</span>
-                                    </td>
+                    </table> <!-- fim tabela dados sem via banco -->   </td> <!-- fim da coluna 1.1 da tabela geral -->
+            </tr> <!-- fim da linha 1 tabela geral -->
+        </table> <!-- fim da tabela geral -->
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <!-- tabela titulo dados veiculo -->
+            <tr>
+                <td height="0" align="center" class="style1"><span class="fonte1">AUTENTICAÇÃO MECÂNICA</span></td>
+            </tr>
+            <tr>
+                <td align="center" class="style1">&nbsp;
 
-                                </tr>
-                                <!-- fim linha 3 ultima tabela -->
-                                <tr>
-                                    <!-- linha 4 ultima tabela -->
-                                    <td class="ladodirbaixo ladodireito ladoesquerdo sobase style1 fonte1" colspan="2">
-                                        <span class="fonte1">&nbsp;Valor (R$) :</span></td>
-                                    <td align="center" class="ladoesquerdo ladodireito sobase style1 fonte0"
-                                        colspan="2">
-                                        <span class="fonte0">XXXXXXXXXX</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <!-- linha 5 ultima tabela -->
-                                    <td class="ladodirbaixo ladodireito ladoesquerdo style1 fonte1" colspan="2"><span
-                                            class="fonte1">&nbsp;Valor com Desconto (R$) :</span></td>
-                                    <td align="center" class="ladoesquerdo ladodireito style1 fonte0" colspan="2">
-                                        <span class="fonte0">XXXXXXXXXX</span>
-                                    </td>
-                                </tr>
-                                <!-- fim linha 4 ultima tabela -->
-                            </table>
-                            <!-- fim ultima tabela -->
-                        </td>
-                        <!-- fim coluna 1.1 tabela dados banco -->
-                    </tr>
-                    <!-- fim linha 1 tabela dados banco -->
-                </table>
-                <!-- fim tabela dados banco -->
-            </td>
-            <!-- fim coluna 1.1 tabela via banco -->
-        </tr>
-        <!-- fim linha 1 tabela via banco -->
-    </table>
-    <br><br>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" class="style1">
+                    ---------------------------------------------------------------
+                    <img src="/sgm/design/imagens/tesoura_p.gif" alt="Marca corte">
+                    --------------------------------------------------------------
+                </td>
+            </tr>
+        </table>
+        <!-- fim tabela picote -->
+        <table width="710" border="0" align="center" cellpadding="0" cellspacing="0">
+            <!-- tabela via banco -->
+            <tr>
+                <!-- linha 1 tabela via banco -->
+                <td>
+                    <!-- coluna 1.1 tabela via banco -->
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="voltainteira0">
+                        <!-- tabela dados banco -->
+                        <tr>
+                            <!-- linha 1 tabela dados banco -->
+                            <td colspan="4">
+                                <!-- coluna 1.1 tabela dados banco -->
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                    <!-- ultima tabela -->
+                                    <tr>
+                                        <!-- linha 1 ultima tabela -->
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <td width="123" align="center" class="style1"><span class="fonte1">Via do Banco</span>
+                                                    </td>
+                                                    <td width="270" class="ladodireito style1">
+                                                        <span class="fonte1">&nbsp;&nbsp;&nbsp;Org&atilde;o Autuador:&nbsp;</span>
+                                                        <span class="fonte0">107100&nbsp;&nbsp;DETRAN - DF</span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td colspan="2" align="center" class="ladodireito style1">
+                                            <span class="fonte1">Placa:&nbsp;</span>
+                                            <span class="fonte0">XXXXXXXXXX</span>
+                                        </td>
+                                        <td colspan="2" align="center" class="ladodireito style1">
+                                            <span class="fonte1">N&ordm; da Via:</span>
+                                            <span class="fonte0">XXXXXXXXXX</span>
+                                        </td>
+                                    </tr>
+                                    <!-- fim linha 1 ultima tabela-->
+                                    <tr>
+                                        <!-- linha 2 ultima tabela -->
+                                        <td width="470" class="basecima style1">
+                                            <span class="fonte1">&nbsp;Propriet&aacute;rio :&nbsp;</span>
+                                            <span class="fonte0 ">XXXXXXXXXX</span>
+                                        </td>
+                                        <td width="115" class="baseesqcima style1"><span class="fonte1">&nbsp;Notifica&ccedil;&atilde;o :</span>
+                                        </td>
+                                        <td width="143" align="center" class="baseesqcima style1">
+                                            <span class="fonte0">XXXXXXXXXX</span>
+                                        </td>
+                                        <td width="133" class="baseesqcima style1"><span class="fonte1">&nbsp;Emiss&atilde;o :</span>
+                                        </td>
+                                        <td width="93" align="center" class="baseesqcima style1">
+                                            <span class="fonte0">XXXXXXXXXX</span>
+                                        </td>
+                                    </tr>
+
+                                    <!-- fim linha 2 ultima tabela -->
+
+                                    <tr>
+
+                                        <!-- linha 3 ultima tabela -->
+                                        <td width="470" height="110" align="center" rowspan="4" class="style1">
+                                            <img src="../../../util/interleaved.jsp?barra=856000000013041399122419117171081856881680100008"/>
+
+                                        </td>
+
+
+                                        <td width="115" rowspan="2" height="20" class="ladoesqbaixo style1"><span
+                                                class="fonte1">&nbsp;Controle :</span></td>
+                                        <td width="143" rowspan="2" align="center" class="ladoesqbaixo style1">
+                                            <span class="fonte0">XXXXXXXXXX</span>
+                                        </td>
+                                        <td class="ladoesqbaixo style1">
+                                            <span class="fonte1"> &nbsp;Vencimento :</span>
+                                        </td>
+                                        <td align="center" class="ladoesqbaixo style1">
+                                            <span class="fonte0">XXXXXXXXXX</span>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td class="ladoesqbaixo style1">
+                                            <span class="fonte1"> &nbsp;Validade :</span>
+                                        </td>
+                                        <td align="center" class="ladoesqbaixo style1">
+                                            <span class="fonte0">XXXXXXXXXX</span>
+                                        </td>
+
+                                    </tr>
+                                    <!-- fim linha 3 ultima tabela -->
+                                    <tr>
+                                        <!-- linha 4 ultima tabela -->
+                                        <td class="ladodirbaixo ladodireito ladoesquerdo sobase style1 fonte1"
+                                            colspan="2">
+                                            <span class="fonte1">&nbsp;Valor (R$) :</span></td>
+                                        <td align="center" class="ladoesquerdo ladodireito sobase style1 fonte0"
+                                            colspan="2">
+                                            <span class="fonte0">XXXXXXXXXX</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <!-- linha 5 ultima tabela -->
+                                        <td class="ladodirbaixo ladodireito ladoesquerdo style1 fonte1"
+                                            colspan="2"><span
+                                                class="fonte1">&nbsp;Valor com Desconto (R$) :</span></td>
+                                        <td align="center" class="ladoesquerdo ladodireito style1 fonte0" colspan="2">
+                                            <span class="fonte0">XXXXXXXXXX</span>
+                                        </td>
+                                    </tr>
+                                    <!-- fim linha 4 ultima tabela -->
+                                </table>
+                                <!-- fim ultima tabela -->
+                            </td>
+                            <!-- fim coluna 1.1 tabela dados banco -->
+                        </tr>
+                        <!-- fim linha 1 tabela dados banco -->
+                    </table>
+                    <!-- fim tabela dados banco -->
+                </td>
+                <!-- fim coluna 1.1 tabela via banco -->
+            </tr>
+            <!-- fim linha 1 tabela via banco -->
+        </table>
+        <br><br>
+
+    </div>
 
 </div>
 </body>

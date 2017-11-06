@@ -21,6 +21,7 @@
                         <td class="text-center" style="padding-left: 0px; padding-right: 0px;">
                             <button class="btn btn-success btn-outline-success"
                                     type="button"
+                                    :id="vinculo.id"
                                     v-on:click="desvincular(vinculo.id, $event)">
                                 Desvincular
                             </button>
@@ -56,6 +57,14 @@
         methods: {
 
             desvincular: function (id, event) {
+                console.log(id);
+                console.log(event);
+
+
+                let target = document.getElementById(id);
+                target.innerHTML = 'Desvinculando <i class="fa fa-spinner fa-spin fa-1x fa-fw"></i>';
+                target.className += " disabled";
+                console.log(target);
                 new VinculoService(this.$http).desvincularVeiculo(id).then(
                     response => {
                         usuarioStore.commit('setVinculosVeiculo', response.body);
@@ -63,12 +72,19 @@
                             title: 'Veículo desvinculado!',
                             message: 'Veículo desvinculado com sucesso!'
                         });
+
+                        target.innerHTML = 'Desvincular';
+                        target.classList.remove('disabled');
+                        this.$forceUpdate();
                     },
                     error => {
                         this.$toast.error({
                             title: 'Erro ao desvincular veículo!',
                             message: error.body.message
                         });
+                        target.innerHTML = 'Desvincular';
+                        target.classList.remove('disabled');
+                        this.$forceUpdate();
                     }
                 );
             }

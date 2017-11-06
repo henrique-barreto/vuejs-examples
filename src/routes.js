@@ -7,7 +7,9 @@ import SimpleSecuredArea from './shared/SimpleSecuredArea.vue';
 import PublicArea from './shared/PublicArea.vue';
 import Home from './components/secured/home/Home.vue';
 import NotFound from './shared/erros/NotFound.vue';
-import SegundaViaCRLV from './components/secured/veiculo/SegungaViaCRLV.vue';
+import SegundaViaCRLV from './components/secured/veiculo/crlv-2via/SegungaViaCRLV.vue';
+import TermoSegundaViaCRLV from './components/secured/veiculo/crlv-2via/TermoSegundaViaCRLV.vue';
+import Bordero2ViaCRLV from './components/secured/veiculo/crlv-2via/Bordero2ViaCRLV.vue';
 import SegundaViaCRV from './components/secured/veiculo/SegungaViaCRV.vue';
 import TransformarNaNp from './components/secured/veiculo/nanp/TransformarNaNp.vue';
 import TermoResponsabilidade from './components/secured/veiculo/nanp/TermoResponsabilidade.vue';
@@ -21,6 +23,7 @@ import EmConstrucao from './shared/erros/EmConstrucao.vue';
 import ErroPage from './shared/erros/ErroPage.vue';
 import Teste from './components/Teste.vue';
 
+import VueRouter from 'vue-router';
 
 export const routes = [
 
@@ -43,6 +46,8 @@ export const routes = [
             {path: '/area-segura/home', alias: '/area-segura', component: Home, meta: {requiresAuth: true, title: 'Home'}},
             // {path: '/area-segura/veiculos', component: Vinculos, meta: {requiresAuth: true, title: 'Veículos'}},
             {path: '/area-segura/segunda-via-crlv', component: SegundaViaCRLV, meta: {requiresAuth: true, title: '2° via CRLV' }},
+            {path: '/area-segura/segunda-via-crlv/termo', component: TermoSegundaViaCRLV, meta: {requiresAuth: true, title: '2° via CRLV' }},
+            {path: '/area-segura/segunda-via-crlv/boleto', component: Bordero2ViaCRLV, meta: {requiresAuth: true, title: '2° via CRLV' }},
             {path: '/area-segura/segunda-via-crv', component: SegundaViaCRV, meta: {requiresAuth: true , title: '2° via CRV'}},
             {path: '/area-segura/habilitacao', component: ConsultaHabilitacao, meta: {requiresAuth: true, title: 'Habilitação'}},
             {path: '/area-segura/em-construcao', component: EmConstrucao, meta: {requiresAuth: true, title: 'Em construção'}},
@@ -62,3 +67,69 @@ export const routes = [
     {path: '*', redirect: '/404', meta: {title: 'Página não encontrada'}}
 
 ];
+
+
+import {authStore} from './store/authStore.js';
+import {progressBar} from './services/progressBar.js';
+import {usuarioStore} from "./store/usuarioStore";
+
+export const router = new VueRouter({
+    routes: routes,
+    mode: 'history'
+});
+
+router.afterEach((to, from) => {
+    console.log('afterEach');
+    progressBar.done();
+});
+
+function setTitle(to) {
+    document.title = to.meta.title ? 'Detran-DF - Portal - ' + to.meta.title : 'Detran-DF - Portal';
+}
+
+function temVeiculosVinculados() {
+    let usuarioLogado = usuarioStore.getters.dadosUsuarioLogado;
+    console.log('usuario logado');
+    console.log(usuarioLogado);
+    return usuarioLogado && usuarioLogado.vinculos && usuarioLogado.vinculos.length > 0;
+}
+
+router.beforeEach((to, from, next) => {
+
+    setTitle(to);
+    progressBar.start();
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        let tokenObj = authStore.getters.authorizationToken;
+        if (!tokenObj) {
+            console.log('nao tem token');
+            next({path: '/login'});
+            progressBar.done();
+        } else {
+            if (to.fullPath !== '/area-segura/veiculos' && !temVeiculosVinculados()) {
+               next({path: '/area-segura/veiculos'});
+               progressBar.done();
+            } else {
+            next();
+            }
+        }
+    } else {
+        next();
+    }
+
+});
+
+export const authTokenInterceptor = function (request, next) {
+
+    let token = authStore.getters.authorizationToken;
+    if (token) {
+        console.log('colocando token no header: ' + token);
+        request.headers.set('Authorization', token);
+    } else {
+        console.log('nao possui token');
+    }
+
+    next();
+};
+
+
+

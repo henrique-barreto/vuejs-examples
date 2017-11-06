@@ -8,14 +8,16 @@
                     <div class="card card-padding">
                         <h2>Ocorreu um erro</h2>
 
-                        <p>
+
+                        <button class="btn btn-success" @click="print">Print</button>
+                        <p id="print" class="borderos">
+                            Ocorreu um erro ao processar a sua requisição.
+                            Ocorreu um erro ao processar a sua requisição.
+                            Ocorreu um erro ao processar a sua requisição.
                             Ocorreu um erro ao processar a sua requisição.
                         </p>
 
-
-                        <div style="width: 300px;">
-                            <img :src="bordero.imagem64CodigoBarras" alt="">
-                        </div>
+                        <p>{{placa | placaFilter }}</p>
 
 
                         <p>
@@ -44,6 +46,18 @@
 
     export default {
 
+
+        methods: {
+
+            print: function() {
+                window.print();
+            }
+        },
+        data() {
+            return {
+                placa: 'JHA5151'
+            }
+        },
         components: {
             'spinner': Spinner,
             'public-header': PublicHeader,
@@ -54,7 +68,33 @@
 
 </script>
 
-<style scoped>
+<style>
+
+    @page {
+        size: auto;
+        margin: 0;
+    }
+
+
+    @media print {
+
+        body * {
+            visibility: hidden;
+            margin: 0;
+
+        }
+
+        #print.borderos, #print.borderos * {
+            visibility: visible;
+        }
+
+        #print.borderos {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+    }
 
     .wrapper {
         height: 100%;

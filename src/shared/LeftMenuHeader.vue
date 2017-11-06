@@ -3,8 +3,8 @@
         <div class="row no-gutters user-info">
             <div class="col-4">
                 <div class="imagem-usuario">
-                    <img class="rounded-circle"
-                         :src="dadosUsuario.imagem64" alt="imagem cnh">
+                    <img v-if="this.dadosUsuario.imagem64" class="rounded-circle" :src="dadosUsuario.imagem64" alt="imagem cnh">
+                    <img src="./../assets/img/user.png" class="rounded-circle" alt="imagem cnh" v-else>
                 </div>
             </div>
             <div class="col-8 info-right">

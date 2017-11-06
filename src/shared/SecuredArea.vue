@@ -51,10 +51,8 @@
                 },
                 error => {
                     console.log('securedArea: pegando dados usuario logado ERROR');
-                    if (error.status === 400)
-                        this.$toast.error({title: 'Erro!', message: error.body.message});
-                    else
-                        this.$toast.error({title: 'Erro ao conectar com servidor', message: 'Tente novamente mais tarde'});
+                    console.log(error);
+                    this.$router.push({path: '/500'});
                 }
             );
 

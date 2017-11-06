@@ -7,9 +7,9 @@
                 <li class="breadcrumb-item">
                     <router-link to="/area-segura/home">Home</router-link>
                 </li>
-                <li class="breadcrumb-item active">Notificação de Autuação para Penalidade</li>
+                <li class="breadcrumb-item active">Solicitação de 2° via CRLV</li>
             </ol>
-            <titulo-pagina :title="'Termo Responsabilidade'"
+            <titulo-pagina :title="'Solicitação de 2° via CRLV'"
                            :tipo="'primario'"></titulo-pagina>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium cum, dolor dolorum eius illum inventore iusto mollitia pariatur provident, recusandae soluta totam voluptas voluptatibus! Consequatur odio quae qui quia voluptatem.</p>
@@ -20,10 +20,14 @@
         <div class="confirmacao">
 
             <strong>Termo de responsabilidade</strong>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam possimus quod ullam voluptatem voluptatum! Adipisci eius explicabo fugiat inventore, natus nesciunt nihil nulla odit, quod recusandae repudiandae sunt ut, voluptate!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam possimus quod ullam voluptatem voluptatum! Adipisci eius explicabo fugiat inventore, natus nesciunt nihil nulla odit, quod recusandae repudiandae sunt ut, voluptate!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam possimus quod ullam voluptatem voluptatum! Adipisci eius explicabo fugiat inventore, natus nesciunt nihil nulla odit, quod recusandae repudiandae sunt ut, voluptate!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam possimus quod ullam voluptatem voluptatum! Adipisci eius explicabo fugiat inventore, natus nesciunt nihil nulla odit, quod recusandae repudiandae sunt ut, voluptate!</p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam possimus quod ullam voluptatem voluptatum! Adipisci eius explicabo fugiat inventore, natus nesciunt nihil nulla odit, quod recusandae repudiandae sunt ut, voluptate!</p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam possimus quod ullam voluptatem voluptatum! Adipisci eius explicabo fugiat inventore, natus nesciunt nihil nulla odit, quod recusandae repudiandae sunt ut, voluptate!</p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam possimus quod ullam voluptatem voluptatum! Adipisci eius explicabo fugiat inventore, natus nesciunt nihil nulla odit, quod recusandae repudiandae sunt ut, voluptate!</p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam possimus quod ullam voluptatem voluptatum! Adipisci eius explicabo fugiat inventore, natus nesciunt nihil nulla odit, quod recusandae repudiandae sunt ut, voluptate!</p>
 
 
             <form>
@@ -47,32 +51,25 @@
     </section>
     <!--fim section-->
 
+
 </template>
 
 <script>
 
     import TituloPagina from '../../../../shared/types/TituloPagina.vue';
     import Spinner from "../../../../shared/types/Spinner.vue";
-    import {nanpStore} from "./nanpStore.js";
+    import {crlv2ViaStore} from './crlv2ViaStore.js';
     import {VeiculoService} from "../../../../services/veiculoService";
 
     export default {
-
         data() {
             return {
                 checked: false
             }
         },
         components: {
-            'titulo-pagina': TituloPagina
-        },
-        computed: {
-            autosSelecionados: function () {
-                return nanpStore.getters.autosSelecionados;
-            },
-            veiculo: function () {
-                return nanpStore.getters.veiculo;
-            }
+            'titulo-pagina': TituloPagina,
+            'spinner': Spinner
         },
         methods: {
             confirmar: function () {
@@ -85,21 +82,13 @@
                     return;
                 }
 
-
                 console.log('confirmar');
-                this.$router.push({path: '/area-segura/transformar-na-np/gerar-boleto'});
-            }
-        },
-        mounted: function () {
-            if (!this.autosSelecionados ||
-                this.autosSelecionados.length === 0 ||
-                !this.veiculo) {
-                this.$router.push({path: '/area-segura/transformar-na-np'});
+                this.$router.push({path: '/area-segura/segunda-via-crlv/boleto'});
             }
         }
     }
-</script>
 
+</script>
 
 <style scoped>
 

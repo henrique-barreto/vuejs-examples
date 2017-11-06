@@ -235,8 +235,10 @@
                         this.loadingInfracoes = false;
                     },
                     error => {
+                        console.log('Erro ao consultar infrações');
                         console.log(error);
                         this.loadingInfracoes = false;
+                        this.$router.push({path: '/500'});
                     }
                 );
             },
@@ -271,6 +273,7 @@
                     error => {
                         infracao.loading = false;
                         console.log(error);
+                        this.$router.push({path: '/500'});
                     }
                 );
             },
