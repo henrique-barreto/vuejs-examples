@@ -9,8 +9,8 @@
             </div>
             <div class="col-8 info-right">
                 <div class="dadosInfo">
-                    <div class="nome"> HENRIQUE GONCALVES BARRETO</div>
-                    <div class="email"> henriquegbar@gmail.com</div>
+                    <div class="nome"> {{ dadosUsuario.nome }}</div>
+                    <div class="email"> {{ dadosUsuario.email }}</div>
                 </div>
                 <div class="btn-acc">
                     <button class="btn btn-primary btn-sm">Minha conta</button>

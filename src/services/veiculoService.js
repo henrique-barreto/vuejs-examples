@@ -39,4 +39,20 @@ export class VeiculoService {
         let url = 'area-segura/veiculo/crlv/reemitirBordero2Via?chassi=' + chassi;
         return this.http.get(url);
     }
+
+    findSolicitacoesCrv() {
+        let url = 'area-segura/veiculo/crv/solicitacao';
+        return this.http.get(url);
+    }
+
+    emitir2ViaCrv(chassi) {
+        let url = 'area-segura/veiculo/crv/emiteBordero2Via?chassi=' + chassi;
+        return this.http.put(url, {});
+    }
+
+    reemitir2ViaCrv(chassi) {
+        let url = 'area-segura/veiculo/crv/reemitirBordero2Via?chassi=' + chassi;
+        return this.http.get(url);
+    }
+
 }

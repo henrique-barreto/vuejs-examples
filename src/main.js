@@ -5,14 +5,14 @@ import VueResource from 'vue-resource';
 import VeeValidate from 'vee-validate';
 import VueMask from 'v-mask'
 import {authStore} from './store/authStore.js';
-import CxltToastr from 'cxlt-vue2-toastr'
+import CxltToastr from 'cxlt-vue2-toastr';
 import {cpfFilter, horaFilter, placaFilter, yyyymmddFilter} from "./filters";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/spinner.css';
 import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css'
 import './assets/css/style.css';
-import {authTokenInterceptor, router} from "./routes";
+import {router} from "./routes";
 import {enviroment} from "./portal.config";
 
 
@@ -37,7 +37,6 @@ Vue.filter('horaFilter', horaFilter);
 Vue.filter('placaFilter', placaFilter);
 
 Vue.http.interceptors.push(function (request, next) {
-
     let token = authStore.getters.authorizationToken;
     if (token) {
         console.log('colocando token no header: ' + token);
@@ -45,17 +44,9 @@ Vue.http.interceptors.push(function (request, next) {
     } else {
         console.log('nao possui token');
     }
-
     next();
 });
 
-// Vue.http.interceptor.push(authTokenInterceptor(request, next));
-
-console.log(process.env.NODE_ENV);
-console.log(process.env.NODE_ENV);
-console.log(process.env.NODE_ENV);
-console.log(process.env.NODE_ENV);
-console.log(process.env.NODE_ENV);
 
 export const eventHub = new Vue();
 

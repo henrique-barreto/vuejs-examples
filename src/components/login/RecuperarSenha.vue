@@ -93,8 +93,8 @@
         data() {
             return {
                 loading: false,
-                cpf: '037.028.051-25',
-                email: 'henrique@gmail.com',
+                cpf: '',
+                email: '',
                 erroValidacao: null,
                 successMessage: null
             }

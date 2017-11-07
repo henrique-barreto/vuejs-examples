@@ -10,13 +10,14 @@ import NotFound from './shared/erros/NotFound.vue';
 import SegundaViaCRLV from './components/secured/veiculo/crlv-2via/SegungaViaCRLV.vue';
 import TermoSegundaViaCRLV from './components/secured/veiculo/crlv-2via/TermoSegundaViaCRLV.vue';
 import Bordero2ViaCRLV from './components/secured/veiculo/crlv-2via/Bordero2ViaCRLV.vue';
-import SegundaViaCRV from './components/secured/veiculo/SegungaViaCRV.vue';
+import SegundaViaCRV from './components/secured/veiculo/crv-2via/SegungaViaCRV.vue';
+import TermoSegundaViaCRV from './components/secured/veiculo/crv-2via/TermoSegundaViaCRV.vue';
+import Bordero2ViaCRV from './components/secured/veiculo/crv-2via/Bordero2ViaCRV.vue';
 import TransformarNaNp from './components/secured/veiculo/nanp/TransformarNaNp.vue';
 import TermoResponsabilidade from './components/secured/veiculo/nanp/TermoResponsabilidade.vue';
 import ConfirmarNaNp from './components/secured/veiculo/nanp/ConfirmarNaNp.vue';
 import GerarBoleto from './components/secured/veiculo/nanp/GerarBoleto.vue';
 import BorderoNANP from './components/secured/veiculo/nanp/BorderoNANP.vue';
-import Vinculos from './components/secured/veiculo/vinculos/Vinculos.vue';
 import Veiculos from './components/secured/veiculo/vinculos/Veiculos.vue';
 import ConsultaHabilitacao from './components/secured/habilitacao/ConsultaHabilitacao.vue';
 import EmConstrucao from './shared/erros/EmConstrucao.vue';
@@ -43,19 +44,80 @@ export const routes = [
     {
         path: '', component: SecuredArea,
         children: [
-            {path: '/area-segura/home', alias: '/area-segura', component: Home, meta: {requiresAuth: true, title: 'Home'}},
+            {
+                path: '/area-segura/home',
+                alias: '/area-segura',
+                component: Home,
+                meta: {requiresAuth: true, title: 'Home'}
+            },
             // {path: '/area-segura/veiculos', component: Vinculos, meta: {requiresAuth: true, title: 'Veículos'}},
-            {path: '/area-segura/segunda-via-crlv', component: SegundaViaCRLV, meta: {requiresAuth: true, title: '2° via CRLV' }},
-            {path: '/area-segura/segunda-via-crlv/termo', component: TermoSegundaViaCRLV, meta: {requiresAuth: true, title: '2° via CRLV' }},
-            {path: '/area-segura/segunda-via-crlv/boleto', component: Bordero2ViaCRLV, meta: {requiresAuth: true, title: '2° via CRLV' }},
-            {path: '/area-segura/segunda-via-crv', component: SegundaViaCRV, meta: {requiresAuth: true , title: '2° via CRV'}},
-            {path: '/area-segura/habilitacao', component: ConsultaHabilitacao, meta: {requiresAuth: true, title: 'Habilitação'}},
-            {path: '/area-segura/em-construcao', component: EmConstrucao, meta: {requiresAuth: true, title: 'Em construção'}},
-            {path: '/area-segura/transformar-na-np', component: TransformarNaNp, meta: {requiresAuth: true, title: 'Transforma Notificação em Penalidade'}},
-            {path: '/area-segura/transformar-na-np/termo', component: TermoResponsabilidade, meta: {requiresAuth: true, title: 'Transforma Notificação em Penalidade'}},
-            {path: '/area-segura/transformar-na-np/confirmar', component: ConfirmarNaNp, meta: {requiresAuth: true, title: 'Confirmar Penalidades'}},
-            {path: '/area-segura/transformar-na-np/gerar-boleto', component: GerarBoleto, meta: {requiresAuth: true, title: 'Gerar Boletos'}},
-            {path: '/area-segura/transformar-na-np/boleto', component: BorderoNANP, meta: {requiresAuth: true, title: 'Boleto'}}
+            {
+                path: '/area-segura/segunda-via-crlv',
+                component: SegundaViaCRLV,
+                meta: {requiresAuth: true, title: '2° via CRLV'}
+            },
+            {
+                path: '/area-segura/segunda-via-crlv/termo',
+                component: TermoSegundaViaCRLV,
+                meta: {requiresAuth: true, title: '2° via CRLV'}
+            },
+            {
+                path: '/area-segura/segunda-via-crlv/boleto',
+                component: Bordero2ViaCRLV,
+                meta: {requiresAuth: true, title: '2° via CRLV'}
+            },
+
+            {
+                path: '/area-segura/segunda-via-crv',
+                component: SegundaViaCRV,
+                meta: {requiresAuth: true, title: '2° via CRV'}
+            },
+            {
+                path: '/area-segura/segunda-via-crv/termo',
+                component: TermoSegundaViaCRV,
+                meta: {requiresAuth: true, title: '2° via CRV'}
+            },
+            {
+                path: '/area-segura/segunda-via-crv/boleto',
+                component: Bordero2ViaCRV,
+                meta: {requiresAuth: true, title: '2° via CRV'}
+            },
+
+            {
+                path: '/area-segura/habilitacao',
+                component: ConsultaHabilitacao,
+                meta: {requiresAuth: true, title: 'Habilitação'}
+            },
+            {
+                path: '/area-segura/em-construcao',
+                component: EmConstrucao,
+                meta: {requiresAuth: true, title: 'Em construção'}
+            },
+            {
+                path: '/area-segura/transformar-na-np',
+                component: TransformarNaNp,
+                meta: {requiresAuth: true, title: 'Transforma Notificação em Penalidade'}
+            },
+            {
+                path: '/area-segura/transformar-na-np/termo',
+                component: TermoResponsabilidade,
+                meta: {requiresAuth: true, title: 'Transforma Notificação em Penalidade'}
+            },
+            {
+                path: '/area-segura/transformar-na-np/confirmar',
+                component: ConfirmarNaNp,
+                meta: {requiresAuth: true, title: 'Confirmar Penalidades'}
+            },
+            {
+                path: '/area-segura/transformar-na-np/gerar-boleto',
+                component: GerarBoleto,
+                meta: {requiresAuth: true, title: 'Gerar Boletos'}
+            },
+            {
+                path: '/area-segura/transformar-na-np/boleto',
+                component: BorderoNANP,
+                meta: {requiresAuth: true, title: 'Boleto'}
+            }
         ]
     },
     {
@@ -106,10 +168,10 @@ router.beforeEach((to, from, next) => {
             progressBar.done();
         } else {
             if (to.fullPath !== '/area-segura/veiculos' && !temVeiculosVinculados()) {
-               next({path: '/area-segura/veiculos'});
-               progressBar.done();
+                next({path: '/area-segura/veiculos'});
+                progressBar.done();
             } else {
-            next();
+                next();
             }
         }
     } else {
@@ -117,19 +179,4 @@ router.beforeEach((to, from, next) => {
     }
 
 });
-
-export const authTokenInterceptor = function (request, next) {
-
-    let token = authStore.getters.authorizationToken;
-    if (token) {
-        console.log('colocando token no header: ' + token);
-        request.headers.set('Authorization', token);
-    } else {
-        console.log('nao possui token');
-    }
-
-    next();
-};
-
-
 

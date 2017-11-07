@@ -10,14 +10,14 @@
                     <thead>
                     <tr>
                         <th>Placa</th>
-                        <th style="width: 100%;">Renavam</th>
+                        <th style="width: 100%;">Marca/Modelo</th>
                         <th class="text-center" style="min-width: 135px;">Ação</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr v-for="vinculo in dadosUsuario.vinculos">
-                        <td> {{ vinculo.placa }}</td>
-                        <td> {{ vinculo.renavam }}</td>
+                        <td> {{ vinculo.placa}}</td>
+                        <td> {{ vinculo.marcaModelo }}</td>
                         <td class="text-center" style="padding-left: 0px; padding-right: 0px;">
                             <button class="btn btn-success btn-outline-success"
                                     type="button"
