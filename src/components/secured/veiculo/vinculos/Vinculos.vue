@@ -122,7 +122,6 @@
 
                 this.$validator.validateAll().then((result) => {
                     if (!result) {
-                        console.log('fomulario invalido');
                         this.$validator.flag('placaBusca', {touched: true});
                         return;
                     }

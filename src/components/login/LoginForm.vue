@@ -69,7 +69,6 @@
             entrar: function () {
                 this.$validator.validateAll().then((result) => {
                     if (!result) {
-                        console.log('fomulario invalido');
                         this.$validator.flag('username', {touched: true});
                         this.$validator.flag('password', {touched: true});
                         return;
@@ -94,7 +93,6 @@
                             this.$router.push({path: '/area-segura/home'});
                         },
                         error => {
-                            console.log(error);
                             if (error.status === 401 || error.status === 403)
                                 this.usuarioSenhaInvalido = true;
                             else

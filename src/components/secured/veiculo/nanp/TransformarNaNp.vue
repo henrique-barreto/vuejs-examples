@@ -230,15 +230,13 @@
                 this.loadingInfracoes = true;
                 new VeiculoService(this.$http).findAutosNAElegiveisParaNP(placa).then(
                     response => {
-                        console.log(response);
                         this.infracoesNA = response.body;
                         this.loadingInfracoes = false;
                     },
                     error => {
-                        console.log('Erro ao consultar infrações');
-                        console.log(error);
                         this.loadingInfracoes = false;
-                        this.$router.push({path: '/500'});
+                        if (error.status === 500)
+                            this.$router.push({path: '/500'});
                     }
                 );
             },
@@ -259,7 +257,6 @@
                     return;
                 }
 
-                console.log('detalharInfracao');
                 infracao.loading = true;
                 infracao.show = true;
                 infracao.detalhada = {};
@@ -272,21 +269,16 @@
                     },
                     error => {
                         infracao.loading = false;
-                        console.log(error);
-                        this.$router.push({path: '/500'});
+                        if (error.status === 500)
+                            this.$router.push({path: '/500'});
                     }
                 );
             },
             continuar: function () {
-
-                console.log('continuar');
                 if (this.autosMarcados.length === 0) {
                     alert('selecione pelo um auto para transformar em penalidade');
                     return
                 }
-
-//                nanpStore.addAutos(this.veiculoSelecionado, this.autosMarcados);
-
                 nanpStore.commit('setVeiculo', this.veiculoSelecionado);
                 nanpStore.commit('setAutos', this.autosMarcados);
                 this.$router.push({path: '/area-segura/transformar-na-np/confirmar'});

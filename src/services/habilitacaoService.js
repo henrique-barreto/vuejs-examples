@@ -10,4 +10,8 @@ export class HabilitacaoService {
         return this.http.get('area-segura/habilitacao');
     }
 
+    findHabilitacaoResumida() {
+        return this.http.get('area-segura/habilitacao/resumo');
+    }
+
 }

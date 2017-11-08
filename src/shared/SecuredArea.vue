@@ -8,6 +8,7 @@
             </div>
         </main>
         <public-footer></public-footer>
+
     </div>
     <div v-else>
         <spinner :tipo="'lg'"></spinner>
@@ -27,7 +28,8 @@
 
         data() {
             return {
-                loading: true
+                loading: true,
+                sessaoExpirou: false
             }
         },
         computed: {
@@ -42,17 +44,15 @@
             'spinner': Spinner
         },
         created: function () {
-            console.log('inicializando area segura');
             new UsuarioService(this.$http).getDadosUsuarioLogado().then(
                 response => {
                     this.loading = false;
-                    console.log('securedArea: pegando dados usuario logado');
                     usuarioStore.commit('setDadosUsuario', response.body);
                 },
                 error => {
-                    console.log('securedArea: pegando dados usuario logado ERROR');
-                    console.log(error);
-                    this.$router.push({path: '/500'});
+                    this.loading = false;
+                    if (error.status === 500)
+                        this.$router.push({path: '/500'});
                 }
             );
 
@@ -103,4 +103,21 @@
         }
     }
 
+    .sessao-expirou {
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        /*background-color: red;*/
+        z-index: 99999999;
+
+        background-color: rgba(0, 0, 0, 0.5);
+        will-change: opacity;
+    }
+
+    .card-sessao {
+        width: 300px;
+        margin: 30px auto;
+    }
 </style>

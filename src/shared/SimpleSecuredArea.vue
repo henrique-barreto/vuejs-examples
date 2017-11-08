@@ -38,17 +38,14 @@
             'spinner': Spinner
         },
         mounted: function () {
-            console.log('inicializando area simples segura');
             new UsuarioService(this.$http).getDadosUsuarioLogado().then(
                 response => {
                     this.loading = false;
-                    console.log('securedArea: pegando dados usuario logado');
                     usuarioStore.commit('setDadosUsuario', response.body);
                 },
                 error => {
-                    console.log('securedArea: pegando dados usuario logado ERROR');
-                    console.log(error);
-                    this.$router.push({path: '/500'});
+                    if (error.status === 500)
+                        this.$router.push({path: '/500'});
                 }
             );
         }

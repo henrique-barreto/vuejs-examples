@@ -68,8 +68,14 @@
                                 {{ codigoInvalidoMsg }}
                             </div>
                         </form>
-                        <div class="alert alert-danger msg" role="alert" v-else>
-                            <p> {{ codigoInvalidoMsg }}</p>
+                        <div v-else>
+                            <div class="alert alert-danger msg" role="alert">
+                                <p> {{ codigoInvalidoMsg }}</p>
+                            </div>
+
+                            <p class="text-center">
+                                <button class="btn btn-success" @click="goToLogin">Ir para página principal</button>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -127,7 +133,6 @@
                     },
                     error => {
                         this.loading = false;
-                        console.log(error);
                         this.codigoInvalidoMsg = error.body.message;
                     });
             },
@@ -137,20 +142,15 @@
 
         },
         created: function () {
-
             let code = this.$route.query.code;
             this.reset.code = code;
-            console.log(code);
-
 
             if (this.reset.code) {
                 new RegistroService(this.$http).findEmailByResetCode(this.reset.code).then(
                     response => {
-                        console.log(response);
                         this.reset.email = response.body.message;
                     },
                     error => {
-                        console.log(error);
                         this.codigoInvalidoMsg = error.body.message;
                     }
                 );

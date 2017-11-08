@@ -20,7 +20,7 @@
 
 
             <div class="emitir-2-via" v-if="vinculosSemSolicitacoes && vinculosSemSolicitacoes.length > 0">
-                <table class="table">
+                <table class="table table-responsive">
                     <thead>
                     <tr>
                         <th scope="col">Placa</th>
@@ -46,7 +46,7 @@
 
             <div class="solicitacoes">
                 <strong>Solicitações</strong>
-                <table class="table">
+                <table class="table table-responsive">
                     <thead>
                     <tr>
                         <th scope="col">Placa</th>
@@ -133,15 +133,14 @@
         created: function () {
             new VeiculoService(this.$http).findSolicitacoesCrv().then(
                 response => {
-                    console.log(response);
                     this.solicitacoes = response.body;
                     this.loading = false;
                     this.$forceUpdate();
                 },
                 error => {
-                    console.log(error);
                     this.loading = false;
-                    this.$router.push({path: '/500'});
+                    if (error.status === 500)
+                        this.$router.push({path: '/500'});
                 }
             );
         },

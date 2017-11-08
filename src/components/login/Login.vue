@@ -7,6 +7,9 @@
                     DETRAN-DF
                 </div>
                 <div class="login-forms">
+                    <div class="alert alert-danger" v-if="sessaoExpirou">
+                        Sua sessão expirou! Faça login novamente.
+                    </div>
                     <login-form></login-form>
                 </div>
             </div>
@@ -23,17 +26,17 @@
         components: {
             'login-form': LoginForm
         },
+        data() {
+
+            return {
+                sessaoExpirou: false
+            }
+        },
         created: function () {
-//            console.log(process.env.NODE_ENV);
-//            console.log(process.env);
-//            console.log(NODE_ENV);
-
-//            console.log('hello');
-//            console.log(API_URL);
-
-            var isProduction = process.env.NODE_ENV === 'production';
-            console.log(isProduction);
-            console.log(process.env.NODE_ENV);
+            let erro = this.$route.query.erro;
+            if (erro && erro === 'sessaoExpirada') {
+                this.sessaoExpirou = true;
+            }
         }
     }
 

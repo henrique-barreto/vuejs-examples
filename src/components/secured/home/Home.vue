@@ -12,19 +12,13 @@
         <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam animi at dolorum eaque ex, facere incidunt ipsa iure minus neque numquam omnis porro quas quidem sit soluta velit vero vitae.</p>
 
-        <titulo-pagina :title="'Veiculos'" :tipo="'secundario'"></titulo-pagina>
-        <div v-for="veiculo in dadosUsuario.vinculos">
-            <span> {{ veiculo.placa }}</span>
-        </div>
+        <titulo-pagina :title="'Veículos'" :tipo="'secundario'"></titulo-pagina>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquid assumenda consectetur corporis ducimus earum enim excepturi illum, labore libero minima modi nemo perferendis quisquam reiciendis tenetur ullam veritatis voluptates.</p>
+        <home-veiculos></home-veiculos>
 
-        <br>
-        <br>
-        <br>
-
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, pariatur, quo! Ab aspernatur at error eum, magnam mollitia nesciunt numquam perferendis rem repellendus, reprehenderit tempore tenetur totam, velit vero voluptatem!</p>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem natus nihil quam sit unde? Dignissimos est facilis hic voluptatibus voluptatum! Cumque doloremque est eveniet optio quae quod reiciendis repellendus. Magnam!</p>
+        <titulo-pagina :title="'Habilitação'" :tipo="'secundario'"></titulo-pagina>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut dicta ea earum facilis fugit illo odio rem, velit? Atque error illo ipsam iste odio officia optio repellendus sequi similique veritatis.</p>
+        <home-habilitacao></home-habilitacao>
 
     </section>
 
@@ -34,6 +28,8 @@
 <script>
     //    import AuthService from '../../../services/authService.js';
     import TituloPagina from '../../../shared/types/TituloPagina.vue';
+    import HomeVeiculos from './HomeVeiculos.vue';
+    import HomeHabilitacao from './HomeHabilitacao.vue';
     import {usuarioStore} from "../../../store/usuarioStore";
 
     export default {
@@ -45,18 +41,9 @@
             }
         },
         components: {
-            'titulo-pagina': TituloPagina
-        },
-        created: function () {
-//            console.log('inicializando area segura');
-//            AuthService.getDadosUsuario(this.$http).then(
-//                res => {
-//                    this.dadosUsuario = res;
-//                },
-//                error => {
-//                    console.log('response usuario logado: ');
-//                    console.log(error);
-//                });
+            'titulo-pagina': TituloPagina,
+            'home-veiculos': HomeVeiculos,
+            'home-habilitacao': HomeHabilitacao
         }
     }
 

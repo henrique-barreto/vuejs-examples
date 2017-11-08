@@ -6,6 +6,8 @@ import SecuredArea from './shared/SecuredArea.vue';
 import SimpleSecuredArea from './shared/SimpleSecuredArea.vue';
 import PublicArea from './shared/PublicArea.vue';
 import Home from './components/secured/home/Home.vue';
+import MinhaConta from './components/secured/conta/MinhaConta.vue';
+import AlterarSenha from './components/secured/conta/AlterarSenha.vue';
 import NotFound from './shared/erros/NotFound.vue';
 import SegundaViaCRLV from './components/secured/veiculo/crlv-2via/SegungaViaCRLV.vue';
 import TermoSegundaViaCRLV from './components/secured/veiculo/crlv-2via/TermoSegundaViaCRLV.vue';
@@ -48,82 +50,91 @@ export const routes = [
                 path: '/area-segura/home',
                 alias: '/area-segura',
                 component: Home,
-                meta: {requiresAuth: true, title: 'Home'}
+                meta: {title: 'Home'}
             },
-            // {path: '/area-segura/veiculos', component: Vinculos, meta: {requiresAuth: true, title: 'Veículos'}},
+            {
+                path: '/area-segura/minha-conta',
+                component: MinhaConta,
+                meta: {title: 'Minha Conta'}
+            },
+            {
+                path: '/area-segura/minha-conta/alterar-senha',
+                component: AlterarSenha,
+                meta: {title: 'Alterar Senha'}
+            },
             {
                 path: '/area-segura/segunda-via-crlv',
                 component: SegundaViaCRLV,
-                meta: {requiresAuth: true, title: '2° via CRLV'}
+                meta: {title: '2° via CRLV'}
             },
             {
                 path: '/area-segura/segunda-via-crlv/termo',
                 component: TermoSegundaViaCRLV,
-                meta: {requiresAuth: true, title: '2° via CRLV'}
+                meta: {title: '2° via CRLV'}
             },
             {
                 path: '/area-segura/segunda-via-crlv/boleto',
                 component: Bordero2ViaCRLV,
-                meta: {requiresAuth: true, title: '2° via CRLV'}
+                meta: {title: '2° via CRLV'}
             },
 
             {
                 path: '/area-segura/segunda-via-crv',
                 component: SegundaViaCRV,
-                meta: {requiresAuth: true, title: '2° via CRV'}
+                meta: {title: '2° via CRV'}
             },
             {
                 path: '/area-segura/segunda-via-crv/termo',
                 component: TermoSegundaViaCRV,
-                meta: {requiresAuth: true, title: '2° via CRV'}
+                meta: {title: '2° via CRV'}
             },
             {
                 path: '/area-segura/segunda-via-crv/boleto',
                 component: Bordero2ViaCRV,
-                meta: {requiresAuth: true, title: '2° via CRV'}
+                meta: {title: '2° via CRV'}
             },
 
             {
                 path: '/area-segura/habilitacao',
                 component: ConsultaHabilitacao,
-                meta: {requiresAuth: true, title: 'Habilitação'}
+                meta: {title: 'Habilitação'}
             },
             {
                 path: '/area-segura/em-construcao',
                 component: EmConstrucao,
-                meta: {requiresAuth: true, title: 'Em construção'}
+                meta: {title: 'Em construção'}
             },
             {
                 path: '/area-segura/transformar-na-np',
                 component: TransformarNaNp,
-                meta: {requiresAuth: true, title: 'Transforma Notificação em Penalidade'}
+                meta: {title: 'Transforma Notificação em Penalidade'}
             },
             {
                 path: '/area-segura/transformar-na-np/termo',
                 component: TermoResponsabilidade,
-                meta: {requiresAuth: true, title: 'Transforma Notificação em Penalidade'}
+                meta: {title: 'Transforma Notificação em Penalidade'}
             },
             {
                 path: '/area-segura/transformar-na-np/confirmar',
                 component: ConfirmarNaNp,
-                meta: {requiresAuth: true, title: 'Confirmar Penalidades'}
+                meta: {title: 'Confirmar Penalidades'}
             },
             {
                 path: '/area-segura/transformar-na-np/gerar-boleto',
                 component: GerarBoleto,
-                meta: {requiresAuth: true, title: 'Gerar Boletos'}
+                meta: {title: 'Gerar Boletos'}
             },
             {
                 path: '/area-segura/transformar-na-np/boleto',
                 component: BorderoNANP,
-                meta: {requiresAuth: true, title: 'Boleto'}
+                meta: {title: 'Boleto'}
             }
         ]
     },
     {
         path: '', component: SimpleSecuredArea,
         children: [
-            {path: '/area-segura/veiculos', component: Veiculos, meta: {requiresAuth: true, title: 'Veículos'}},
+            {path: '/area-segura/veiculos', component: Veiculos, meta: {title: 'Veículos'}},
         ]
     },
     {path: '*', redirect: '/404', meta: {title: 'Página não encontrada'}}
@@ -141,7 +152,6 @@ export const router = new VueRouter({
 });
 
 router.afterEach((to, from) => {
-    console.log('afterEach');
     progressBar.done();
 });
 
@@ -151,32 +161,31 @@ function setTitle(to) {
 
 function temVeiculosVinculados() {
     let usuarioLogado = usuarioStore.getters.dadosUsuarioLogado;
-    console.log('usuario logado');
-    console.log(usuarioLogado);
     return usuarioLogado && usuarioLogado.vinculos && usuarioLogado.vinculos.length > 0;
 }
 
 router.beforeEach((to, from, next) => {
-
     setTitle(to);
     progressBar.start();
-    if (to.matched.some(record => record.meta.requiresAuth)) {
-        let tokenObj = authStore.getters.authorizationToken;
-        if (!tokenObj) {
-            console.log('nao tem token');
+
+    if (to.path.includes('area-segura')) {
+        if (!authStore.getters.authorizationToken) {
             next({path: '/login'});
             progressBar.done();
-        } else {
-            if (to.fullPath !== '/area-segura/veiculos' && !temVeiculosVinculados()) {
-                next({path: '/area-segura/veiculos'});
-                progressBar.done();
-            } else {
-                next();
-            }
+            return;
         }
+
+        if (to.fullPath !== '/area-segura/veiculos' && !temVeiculosVinculados()) {
+            next({path: '/area-segura/veiculos'});
+            progressBar.done();
+        } else {
+            next();
+        }
+
     } else {
         next();
     }
+
 
 });
 

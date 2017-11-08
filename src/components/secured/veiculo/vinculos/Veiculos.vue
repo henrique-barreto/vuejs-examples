@@ -118,7 +118,6 @@
 
                 this.$validator.validateAll().then((result) => {
                     if (!result) {
-                        console.log('fomulario invalido');
                         this.$validator.flag('placaBusca', {touched: true});
                         return;
                     }
@@ -147,7 +146,6 @@
                 this.loadingVinculo = true;
                 new VinculoService(this.$http).vincularVeiculo(this.resultadoVeiculo.placa).then(
                     response => {
-                        console.log(response.body);
                         usuarioStore.commit('setVinculosVeiculo', response.body);
                         this.loadingVinculo = false;
                         this.resultadoVeiculo = null;

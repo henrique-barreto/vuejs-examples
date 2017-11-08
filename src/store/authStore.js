@@ -18,7 +18,6 @@ export const authStore = new Vuex.Store({
     },
     mutations: {
         setAuthorizationToken: (state, payload) => {
-            console.log('setAuthorizationToken() token ' + payload);
             state.authorizationToken = payload;
         },
         clearCredentials: state => {

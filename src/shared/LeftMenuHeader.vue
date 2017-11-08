@@ -13,7 +13,7 @@
                     <div class="email"> {{ dadosUsuario.email }}</div>
                 </div>
                 <div class="btn-acc">
-                    <button class="btn btn-primary btn-sm">Minha conta</button>
+                    <button class="btn btn-primary btn-sm" @click="goMinhaConta">Minha conta</button>
                 </div>
             </div>
         </div>
@@ -28,6 +28,7 @@
 <script>
 
     import {authStore} from '../store/authStore.js';
+    import {eventHub} from '../main.js';
 
     export default {
         props: ['dadosUsuario'],
@@ -38,9 +39,13 @@
                     res => {
                         this.$router.push({path: '/'});
                     }, error => {
-                        console.log(error);
                         this.$router.push({path: '/'});
                     });
+            },
+
+            goMinhaConta: function() {
+                eventHub.$emit('toggleUsuarioHeader', true);
+                this.$router.push({path: '/area-segura/minha-conta'});
             }
         }
     }
@@ -51,10 +56,12 @@
 
     /*new*/
     .menu-left-header {
+        width: 290px;
+
         background-color: rgb(243, 243, 243);
-        float: right;
+        /*float: right;*/
         right: 0;
-        position: absolute;
+        position: fixed;
         margin-right: 5px;
         top: 57px;
         border: 1px solid #ccc;
@@ -91,6 +98,7 @@
     .imagem-usuario {
         text-align: center;
         margin-top: 8px;
+        padding-left: 5px;
     }
 
     .imagem-usuario img {
@@ -103,6 +111,7 @@
         margin-top: 8px;
         word-break: break-all;
         overflow: hidden;
+        padding-left: 5px;
     }
 
     .col-7.info-right {

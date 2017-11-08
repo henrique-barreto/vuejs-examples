@@ -85,8 +85,6 @@
                     return;
                 }
 
-
-                console.log('confirmar');
                 this.$router.push({path: '/area-segura/transformar-na-np/gerar-boleto'});
             }
         },

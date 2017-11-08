@@ -82,7 +82,6 @@
                     return;
                 }
 
-                console.log('confirmar');
                 this.$router.push({path: '/area-segura/segunda-via-crv/boleto'});
             }
         }

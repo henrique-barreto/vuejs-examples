@@ -18,4 +18,8 @@ export class RegistroService {
         return this.http.post('new-password', dados);
     }
 
+    changePassword(requestBody) {
+        return this.http.post('area-segura/change-password', requestBody);
+    }
+
 }

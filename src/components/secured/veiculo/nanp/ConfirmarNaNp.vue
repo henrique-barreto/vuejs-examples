@@ -36,7 +36,7 @@
 
             <div class="autos-list">
 
-                <table class="table table-striped">
+                <table class="table table-responsive table-striped">
                     <thead>
                     <tr>
                         <th scope="col">Nº Auto de Infração</th>
@@ -88,7 +88,6 @@
         methods: {
 
             continuar: function () {
-                console.log('continuar');
                 this.$router.push({path: '/area-segura/transformar-na-np/termo'});
             }
         },

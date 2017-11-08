@@ -213,25 +213,21 @@
             if (crlv2ViaStore.getters.reemitir) {
                 new VeiculoService(this.$http).reemitir2ViaCrlv(crlv2ViaStore.getters.chassi).then(
                     response => {
-                        console.log(response);
                         crlv2ViaStore.commit('setBordero', response.body);
                         this.loading = false;
                     },
                     error => {
                         this.loading = false;
-                        console.log(error);
                     }
                 );
             } else {
                 new VeiculoService(this.$http).emitir2ViaCrlv(crlv2ViaStore.getters.chassi).then(
                     response => {
-                        console.log(response);
                         crlv2ViaStore.commit('setBordero', response.body);
                         this.loading = false;
                     },
                     error => {
                         this.loading = false;
-                        console.log(error);
                     }
                 );
             }

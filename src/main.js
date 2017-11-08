@@ -39,12 +39,17 @@ Vue.filter('placaFilter', placaFilter);
 Vue.http.interceptors.push(function (request, next) {
     let token = authStore.getters.authorizationToken;
     if (token) {
-        console.log('colocando token no header: ' + token);
         request.headers.set('Authorization', token);
-    } else {
-        console.log('nao possui token');
     }
-    next();
+    next(res => {
+        if (res.status === 401) {
+            if (res.body.code && res.body.code === 'token.expired') {
+                authStore.commit('clearCredentials');
+                router.push('/login?erro=sessaoExpirada');
+            }
+        }
+
+    });
 });
 
 
@@ -52,7 +57,6 @@ export const eventHub = new Vue();
 
 export default new Vue({
     el: '#app',
-    // router: router,
     router: router,
     render: h => h(App)
 });

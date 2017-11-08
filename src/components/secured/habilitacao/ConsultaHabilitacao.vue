@@ -67,12 +67,12 @@
             </div>
 
 
-            <div class="habilitacao-pontucao">
+            <div class="habilitacao-pontucao" style="padding-right: 10px;">
                 <!--<label>Dados da pontução</label>-->
 
                 <titulo-pagina :title="'Dados da pontução'" :tipo="'secundario'"></titulo-pagina>
                 <div class="card card-padding">
-                    <table class="table table-bordered text-center">
+                    <table class="table table-responsive table-bordered text-center">
                         <thead>
                         <tr>
                             <th>Grupo de Pontos</th>
@@ -166,16 +166,12 @@
         created: function () {
 
             this.loading = true;
-            console.log('buscar dados habilitacao: ' + this.dadosUsuario.cpf);
             new HabilitacaoService(this.$http).findHabilitacao().then(
                 response => {
-                    console.log(response);
                     this.dadosHabilitacao = response.body;
                     this.loading = false;
                 },
                 error => {
-                    console.log('Erro ao consultar dados da habilitação');
-                    console.log(error);
                     this.loading = false;
                     if (error.status === 400) {
                         if (error.body.codigo === 'habilitacao.cpf.notfound') {
@@ -183,7 +179,8 @@
                             this.naoHabilitadoMsg = error.body.message;
                         }
                     } else {
-                        this.$router.push({path: '/500'});
+                        if (error.status === 500)
+                            this.$router.push({path: '/500'});
                     }
                 });
         },

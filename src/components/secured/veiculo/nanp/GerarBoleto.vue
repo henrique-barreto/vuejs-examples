@@ -18,7 +18,7 @@
             <div class="lista-borderos">
 
                 <div class="borderos" v-if="borderos && borderos.length > 0">
-                    <table class="table table-striped table-responsive">
+                    <table class="table table-responsive table-striped table-responsive">
                         <thead>
                         <tr>
                             <th class="text-center" colspan="2">Nº Auto de Infração</th>
@@ -63,7 +63,7 @@
                         Lorem ipsum dolor sit amet, consectetur adiimi culpa ipsam, iure magni, nemo quaerat quasi quisquam reprehenderit, tempore vero!</p>
                 </div>
 
-                <table class="table table-striped">
+                <table class="table table-responsive table-striped">
                     <thead>
                     <tr>
                         <th scope="col">Nº Auto de Infração</th>
@@ -157,12 +157,10 @@
             new VeiculoService(this.$http).transformarNaNp(request).then(
                 response => {
                     this.loading = false;
-                    console.log(response);
                     nanpStore.commit('setBorderos', response.body.borderos);
                     nanpStore.commit('setAutosErros', response.body.erros);
                 },
                 error => {
-                    console.log(error);
                     this.loading = false;
                     alert('Erro ao gerar penalidades');
                 }

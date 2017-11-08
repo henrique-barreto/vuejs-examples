@@ -90,6 +90,10 @@
                 this.showMenu = show;
             });
 
+            eventHub.$on('toggleUsuarioHeader', (show) => {
+                this.showUserMenu = !this.showUserMenu;
+            });
+
             document.addEventListener('click', this.documentClick);
         },
         destroyed() {

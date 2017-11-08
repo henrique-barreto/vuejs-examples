@@ -30,7 +30,7 @@
                                 </router-link>
                             </li>
                             <li>
-                                <router-link @click.native="toggleMenu" to="/area-segura/segunda-via-crlv">
+                                <router-link @click.native="toggleMenu" to="/em-construcao">
                                     Emissão de Autorização de Estacionamento para Idoso
                                 </router-link>
                             </li>

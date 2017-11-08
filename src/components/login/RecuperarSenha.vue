@@ -104,36 +104,47 @@
             enviar: function () {
                 if (this.loading)
                     return;
-                this.loading = true;
 
-                this.erroValidacao = null;
-                this.successMessage = null;
-                let cpfFormatado = this.cpf.split('-').join('');
-                cpfFormatado = cpfFormatado.split('.').join('');
-                new RegistroService(this.$http).sendResetPassword({cpf: cpfFormatado, email: this.email}).then(
-                    response => {
-                        this.loading = false;
-                        this.successMessage = response.body.message;
-                        this.cpf = '';
-                        this.email = '';
-                        this.errors.clear();
-                        this.$validator.clean();
-                    },
-                    error => {
-                        this.loading = false;
-                        if (error.status === 400) {
-                            if (error.body.codigo === 'validacao.error') {
-                                Object.keys(error.body.errors).forEach(key => {
-                                    this.erroValidacao = error.body.errors[key];
-                                });
+                this.$validator.validateAll().then((result) => {
+                    if (!result) {
+                        this.$validator.flag('cpf', {touched: true});
+                        this.$validator.flag('email', {touched: true});
+                        return;
+                    }
+
+
+                    this.loading = true;
+
+                    this.erroValidacao = null;
+                    this.successMessage = null;
+                    let cpfFormatado = this.cpf.split('-').join('');
+                    cpfFormatado = cpfFormatado.split('.').join('');
+                    new RegistroService(this.$http).sendResetPassword({cpf: cpfFormatado, email: this.email}).then(
+                        response => {
+                            this.loading = false;
+                            this.successMessage = response.body.message;
+                            this.cpf = '';
+                            this.email = '';
+                            this.errors.clear();
+                            this.$validator.clean();
+                        },
+                        error => {
+                            this.loading = false;
+                            if (error.status === 400) {
+                                if (error.body.codigo === 'validacao.error') {
+                                    Object.keys(error.body.errors).forEach(key => {
+                                        this.erroValidacao = error.body.errors[key];
+                                    });
+                                } else {
+                                    this.erroValidacao = error.body.message;
+                                }
                             } else {
-                                this.erroValidacao = error.body.message;
+                                this.erroValidacao = "Ocorreu um erro ao se conectar com o servidor!";
                             }
-                        } else {
-                            this.erroValidacao = "Ocorreu um erro ao se conectar com o servidor!";
-                        }
 
-                    });
+                        });
+
+                });
             }
 
         },

@@ -57,14 +57,9 @@
         methods: {
 
             desvincular: function (id, event) {
-                console.log(id);
-                console.log(event);
-
-
                 let target = document.getElementById(id);
                 target.innerHTML = 'Desvinculando <i class="fa fa-spinner fa-spin fa-1x fa-fw"></i>';
                 target.className += " disabled";
-                console.log(target);
                 new VinculoService(this.$http).desvincularVeiculo(id).then(
                     response => {
                         usuarioStore.commit('setVinculosVeiculo', response.body);
