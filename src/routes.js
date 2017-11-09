@@ -161,7 +161,9 @@ function setTitle(to) {
 
 function temVeiculosVinculados() {
     let usuarioLogado = usuarioStore.getters.dadosUsuarioLogado;
-    return usuarioLogado && usuarioLogado.vinculos && usuarioLogado.vinculos.length > 0;
+    let temVeiculos = usuarioLogado && usuarioLogado.vinculos && usuarioLogado.vinculos.length > 0;
+    console.log('tem eiculos? ' + temVeiculos);
+    return temVeiculos;
 }
 
 router.beforeEach((to, from, next) => {
@@ -175,7 +177,8 @@ router.beforeEach((to, from, next) => {
             return;
         }
 
-        if (to.fullPath !== '/area-segura/veiculos' && !temVeiculosVinculados()) {
+        console.log(to);
+        if (!to.path.includes('area-segura/veiculos') && !temVeiculosVinculados()) {
             next({path: '/area-segura/veiculos'});
             progressBar.done();
         } else {

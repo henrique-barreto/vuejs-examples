@@ -54,8 +54,8 @@
             </div>
 
             <div class="btns-form">
-                <button class="btn btn-outline-secondary" @click="continuar">Voltar</button>
-                <button class="btn btn-success" @click="continuar">Continuar</button>
+                <button class="btn btn-outline-secondary" @click="goTo('/area-segura/transformar-na-np')">Voltar</button>
+                <button class="btn btn-success" @click="goTo('/area-segura/transformar-na-np/termo')">Continuar</button>
             </div>
 
         </div>
@@ -86,9 +86,8 @@
             }
         },
         methods: {
-
-            continuar: function () {
-                this.$router.push({path: '/area-segura/transformar-na-np/termo'});
+            goTo: function (path) {
+                this.$router.push({path: path});
             }
         },
         mounted: function () {

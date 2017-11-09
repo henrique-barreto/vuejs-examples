@@ -44,7 +44,7 @@
                         </tr>
                         </tbody>
                     </table>
-                    {{ borderosSelecionados }}
+
                     <div class="btns-boleto">
                         <button class="btn btn-success" @click="gerarBoletos">Gerar Boletos</button>
                     </div>
@@ -126,14 +126,16 @@
 
 
             gerarBoletos: function() {
+                if (this.borderosSelecionados.length === 0) {
+                    this.$toast.error({
+                        title: '',
+                        message: 'Selecione um auto de infração para gerar o boleto'
+                    });
+                    return;
+                }
                 nanpStore.commit('setBorderosSelecionados', this.borderosSelecionados);
                 this.$router.push({path: '/area-segura/transformar-na-np/boleto'});
             },
-
-            confirmar: function () {
-
-            },
-
             buildRequest: function () {
                 let request = {placa: this.veiculo.placa, infracoes: []};
                 this.autosSelecionados.forEach(function (value) {

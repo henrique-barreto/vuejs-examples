@@ -147,3 +147,30 @@ button {
 
 /*fim toaster*/
 
+/*printing*/
+
+
+
+@media print {
+    /*html, body {*/
+        /*width: 210mm;*/
+        /*height: 297mm;*/
+    /*}*/
+    body {
+        background-color: #fff;
+    }
+    body * {
+        visibility: hidden;
+    }
+    section.section {
+        visibility: visible;
+        margin: 0 auto;
+        padding: 0;
+    }
+    section.section * {
+        visibility: visible;
+    }
+    .no-print {
+        visibility: hidden !important;
+    }
+}

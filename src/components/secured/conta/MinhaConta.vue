@@ -17,9 +17,11 @@
 
             <ul class="list-group">
                 <li class="list-group-item" @click="goTo('/area-segura/minha-conta/alterar-senha')">Alterar senha</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Alterar e-mail</li>
+                <li class="list-group-item">Alterar celular</li>
                 <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item">Lorem ipsum dolor sit</li>
+                <li class="list-group-item">Perferendis quae</li>
             </ul>
 
         </div>

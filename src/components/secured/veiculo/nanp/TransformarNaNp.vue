@@ -184,7 +184,7 @@
             <!--fim autos-list-->
 
             <div class="btns-form" v-if="infracoesNA.length > 0">
-                <button type="button" class="btn btn-outline-secondary" @click="continuar">Marcar todos</button>
+                <button type="button" class="btn btn-outline-secondary" @click="marcarTodos">Marcar todos</button>
                 <button type="button" class="btn btn-success" @click="continuar">Continuar</button>
             </div>
             <!--fim btns-form-->
@@ -274,10 +274,18 @@
                     }
                 );
             },
+            marcarTodos: function () {
+
+                this.autosMarcados = this.infracoesNA;
+
+            },
             continuar: function () {
                 if (this.autosMarcados.length === 0) {
-                    alert('selecione pelo um auto para transformar em penalidade');
-                    return
+                    this.$toast.error({
+                        title: '',
+                        message: 'Selecione pelo menos uma infração para transformar em penalidade'
+                    });
+                    return;
                 }
                 nanpStore.commit('setVeiculo', this.veiculoSelecionado);
                 nanpStore.commit('setAutos', this.autosMarcados);

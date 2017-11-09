@@ -37,7 +37,7 @@
             </form>
 
             <div class="btns-form">
-                <button class="btn btn-outline-secondary" @click="confirmar">Voltar</button>
+                <button class="btn btn-outline-secondary" @click="goTo('/area-segura/transformar-na-np')">Voltar</button>
                 <button class="btn btn-success" @click="confirmar">Confirmar</button>
             </div>
 
@@ -75,6 +75,9 @@
             }
         },
         methods: {
+            goTo: function (path) {
+                this.$router.push({path: path});
+            },
             confirmar: function () {
 
                 if (!this.checked) {

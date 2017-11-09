@@ -138,7 +138,7 @@
                             this.loading = false;
                             if (error.status === 400) {
                                 this.$toast.error({
-                                    title: 'Erro trocar senha',
+                                    title: 'Erro ao trocar senha',
                                     message: error.body.message
                                 });
                             }

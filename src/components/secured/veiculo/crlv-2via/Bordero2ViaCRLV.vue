@@ -1,6 +1,14 @@
 <template>
-    <div class="bordero-wrapper">
-        <div class="bordero-crlv" v-if="!loading">
+
+    <section class="section">
+
+        <div class="pagina-bordero" v-if="!loading">
+
+            <div class="print-helper no-print" style="text-align: right">
+                <button class="btn btn-success btn-sm no-print" @click="print">Imprimir <i class="fa fa-print" aria-hidden="true"></i></button>
+            </div>
+
+            <div class="bordero-wrapper">
             <table width="700" border="0" cellpadding="2" cellspacing="0" class="bordacompleta">
                 <tr>
                     <td width="325" height="17" rowspan="4" class="bordadireita">
@@ -170,13 +178,12 @@
                     </td>
                 </tr>
             </table>
-
-
+            </div>
         </div>
         <div v-else>
             <spinner :tipo="'md'"></spinner>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
@@ -196,6 +203,11 @@
         data() {
             return {
                 loading: true
+            }
+        },
+        methods: {
+            print: function () {
+                window.print();
             }
         },
         computed: {
@@ -241,19 +253,50 @@
 
 <style scoped>
 
-    .bordero-wrapper {
-        /*background-color: #fff;*/
+    @page {
+        size: A4;
+        margin-left: auto;
+        margin-right: auto;
     }
 
-    .bordero-crlv {
-        width: 700px;
+    .print-helper {
+        border-bottom: 1px solid #333;
+        margin-bottom: 20px;
+        padding: 5px;
+    }
+
+
+    @media print {
+        .pagina-bordero {
+            border: none !important;
+        }
+
+        .print-helper {
+            display: none;
+            visibility: hidden;
+        }
+    }
+
+    /*fim print*/
+
+    .pagina-bordero {
+        width: 750px;
         margin: 0 auto;
 
-        padding-top: 20px;
-        padding-bottom: 20px;
+        background-color: #fff;
+        padding: 10px 10px 30px;
+        border: 1px solid #ddd;
+
+        /*padding-top: 20px;*/
+        /*padding-bottom: 20px;*/
     }
 
-    .bordero-crlv td {
+    .bordero-wrapper {
+        width: 700px;
+        margin: 0 auto;
+    }
+
+    .bordero-wrapper td {
         padding-top: 0;
         padding-bottom: 0;
     }
